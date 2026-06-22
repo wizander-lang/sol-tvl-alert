@@ -3,162 +3,679 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOL TVL/Mcap Dashboard</title>
+<title>SOL Heat Index</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.min.js"></script>
 <style>
-  :root {
-    --bg: #0b0e14;
-    --panel: #131722;
-    --border: #232838;
-    --text: #e6e9ef;
-    --muted: #8b93a7;
-    --accent: #7c5cff;
-    --good: #3ecf8e;
-    --warn: #f0b429;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    padding: 20px 16px 40px;
-  }
-  h1 {
-    font-size: 1.3rem;
-    margin: 0 0 4px;
-    font-weight: 600;
-  }
-  .subtitle {
-    color: var(--muted);
-    font-size: 0.85rem;
-    margin-bottom: 20px;
-  }
-  .stat-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  .stat-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 14px;
-  }
-  .stat-label {
-    color: var(--muted);
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin-bottom: 4px;
-  }
-  .stat-value {
-    font-size: 1.25rem;
-    font-weight: 600;
-  }
-  .stat-value.good { color: var(--good); }
-  .stat-value.warn { color: var(--warn); }
-  .chart-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px;
-    margin-bottom: 16px;
-  }
-  .chart-card h2 {
-    font-size: 0.95rem;
-    margin: 0 0 10px;
-    font-weight: 600;
-    color: var(--text);
-  }
-  canvas { max-height: 260px; }
-  .status-banner {
-    border-radius: 10px;
-    padding: 12px 14px;
-    margin-bottom: 20px;
-    font-size: 0.88rem;
-    border: 1px solid var(--border);
-  }
-  .status-banner.met {
-    background: rgba(62, 207, 142, 0.12);
-    border-color: var(--good);
-    color: var(--good);
-  }
-  .status-banner.notmet {
-    background: rgba(255,255,255,0.03);
-    color: var(--muted);
-  }
-  .error {
-    color: #ff6b6b;
-    font-size: 0.85rem;
-    padding: 12px;
-    background: rgba(255,107,107,0.08);
-    border-radius: 8px;
-    border: 1px solid rgba(255,107,107,0.3);
-  }
-  .footer-note {
-    color: var(--muted);
-    font-size: 0.75rem;
-    margin-top: 24px;
-    line-height: 1.5;
-  }
+/* ── Solana palette ───────────────────────────────────────────────────────── */
+:root {
+  --bg:          #0a0a0f;
+  --panel:       #12131e;
+  --panel2:      #191a2a;
+  --border:      #21233a;
+  --text:        #e8e9f2;
+  --muted:       #5e6378;
+  --sol-purple:  #9945FF;
+  --sol-green:   #14F195;
+
+  --cold:        #00C2FF;
+  --cool:        #14F195;
+  --neutral:     #FFD700;
+  --warm:        #FF8C00;
+  --hot:         #FF3366;
+}
+
+/* ── Reset / base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding: 24px 16px 64px;
+  max-width: 860px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+.header { margin-bottom: 24px; }
+.header h1 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sol-logo {
+  width: 26px; height: 26px;
+  background: linear-gradient(135deg, var(--sol-purple), var(--sol-green));
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.header .sub {
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin-top: 5px;
+  padding-left: 36px;
+}
+
+/* ── Heat gauge ───────────────────────────────────────────────────────────── */
+.gauge-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px 20px 18px;
+  margin-bottom: 12px;
+}
+.gauge-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 12px;
+}
+.gauge-score-block { line-height: 1; }
+.gauge-score {
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  display: inline-block;
+  transition: color 0.4s;
+}
+.gauge-denom {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-left: 2px;
+}
+.gauge-label-col { text-align: right; }
+.gauge-action {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+  transition: background 0.4s, color 0.4s;
+}
+.gauge-zone-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: color 0.4s;
+}
+.gauge-ratio-sub {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+/* gradient bar */
+.gauge-bar-wrap { position: relative; margin-bottom: 6px; }
+.gauge-bar {
+  height: 14px;
+  border-radius: 7px;
+  background: linear-gradient(to right,
+    #00C2FF 0%,
+    #14F195 25%,
+    #FFD700 50%,
+    #FF8C00 75%,
+    #FF3366 100%
+  );
+}
+/* zone tick marks */
+.gauge-ticks {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+}
+.gauge-tick {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 14px;
+  background: rgba(10,10,15,0.5);
+}
+/* needle */
+.gauge-needle {
+  position: absolute;
+  top: -7px;
+  width: 3px;
+  height: 28px;
+  background: #fff;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px rgba(255,255,255,0.9);
+  transition: left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.gauge-needle::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-bottom-color: #fff;
+}
+/* axis labels */
+.gauge-axis {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.67rem;
+  color: var(--muted);
+  margin-top: 4px;
+  padding: 0 1px;
+}
+/* zone label row */
+.gauge-zones {
+  display: flex;
+  margin-top: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.gauge-zone-cell {
+  flex: 1;
+  text-align: center;
+  padding: 5px 2px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-right: 1px solid var(--border);
+}
+.gauge-zone-cell:last-child { border-right: none; }
+
+/* ── Stat grid ────────────────────────────────────────────────────────────── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+@media (min-width: 560px) { .stat-grid { grid-template-columns: repeat(4, 1fr); } }
+.stat-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 14px 12px;
+}
+.stat-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.stat-value { font-size: 1.15rem; font-weight: 700; }
+.stat-sub { font-size: 0.7rem; margin-top: 3px; color: var(--muted); }
+.pos { color: var(--sol-green); }
+.neg { color: var(--hot); }
+
+/* ── Range buttons ────────────────────────────────────────────────────────── */
+.range-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.range-btn {
+  padding: 6px 18px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.03em;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.range-btn:hover { border-color: var(--sol-purple); color: var(--text); }
+.range-btn.active {
+  background: var(--sol-purple);
+  border-color: var(--sol-purple);
+  color: #fff;
+}
+
+/* ── Chart cards ──────────────────────────────────────────────────────────── */
+.chart-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 16px 12px;
+  margin-bottom: 10px;
+}
+.chart-card h2 {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+canvas { max-height: 220px; }
+
+/* ── Footer ───────────────────────────────────────────────────────────────── */
+.footer {
+  color: var(--muted);
+  font-size: 0.72rem;
+  margin-top: 24px;
+  line-height: 1.7;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+.footer strong { color: var(--text); }
+
+.error {
+  color: #ff6b6b;
+  padding: 16px;
+  background: rgba(255,107,107,0.07);
+  border-radius: 10px;
+  border: 1px solid rgba(255,107,107,0.2);
+  font-size: 0.85rem;
+}
 </style>
 </head>
 <body>
 
-<h1>Solana TVL / Market Cap</h1>
-<div class="subtitle">Updated daily via GitHub Actions · data from DefiLlama + CoinGecko</div>
+<div class="header">
+  <h1><div class="sol-logo"></div>SOL Heat Index</h1>
+  <div class="sub">TVL / Market Cap signal · updated daily · DefiLlama + CoinGecko</div>
+</div>
 
-<div id="content">Loading…</div>
+<div id="root"><div style="color:var(--muted);font-size:0.85rem;padding:60px 0;text-align:center;letter-spacing:0.05em">LOADING…</div></div>
 
-<div class="footer-note">
-  This ratio is one signal among several. A rising or elevated TVL/Mcap ratio while price is flat or
-  falling can indicate usage holding up while valuation compresses — historically constructive, but not
-  a standalone buy signal. Cross-check against your Bitcoin macro dashboard before acting.
+<div class="footer">
+  <strong>Methodology —</strong>
+  The Heat Index scores the current TVL/Market Cap ratio on a 0–100 scale by its percentile rank
+  across all available history since 2021. A <em>lower</em> score means the ratio is historically elevated
+  relative to price — on-chain usage is high vs. valuation — which has historically preceded recoveries.
+  Zones: <strong style="color:#00C2FF">Deep Value</strong> 0–20 ·
+  <strong style="color:#14F195">Undervalued</strong> 20–40 ·
+  <strong style="color:#FFD700">Fair Value</strong> 40–60 ·
+  <strong style="color:#FF8C00">Overvalued</strong> 60–80 ·
+  <strong style="color:#FF3366">Overheated</strong> 80–100.
+  Cross-check Bitcoin macro context before acting.
 </div>
 
 <script>
-async function loadDashboard() {
-  const content = document.getElementById('content');
-  let history;
+// ── Zone definitions ─────────────────────────────────────────────────────────
+const ZONES = [
+  { max: 20,  label: 'Deep Value',  action: 'Strong Buy',  color: '#00C2FF', bg: 'rgba(0,194,255,0.13)'  },
+  { max: 40,  label: 'Undervalued', action: 'Accumulate',  color: '#14F195', bg: 'rgba(20,241,149,0.13)' },
+  { max: 60,  label: 'Fair Value',  action: 'Neutral',     color: '#FFD700', bg: 'rgba(255,215,0,0.13)'  },
+  { max: 80,  label: 'Overvalued',  action: 'Reduce',      color: '#FF8C00', bg: 'rgba(255,140,0,0.13)'  },
+  { max: 100, label: 'Overheated',  action: 'Strong Sell', color: '#FF3366', bg: 'rgba(255,51,102,0.13)' },
+];
+function zone(score) { return ZONES.find(z => score <= z.max) || ZONES[4]; }
+
+// ── Score calculation ─────────────────────────────────────────────────────────
+// Percentile rank of a ratio against all historical ratios (0–100).
+// Lower score = ratio historically high relative to price = potential buy signal.
+// Higher score = ratio historically low = market running hot.
+function scoreOf(ratio, sortedRatios) {
+  // Binary search for efficiency on large arrays
+  let lo = 0, hi = sortedRatios.length;
+  while (lo < hi) {
+    const mid = (lo + hi) >>> 1;
+    if (sortedRatios[mid] < ratio) lo = mid + 1;
+    else hi = mid;
+  }
+  return Math.round((lo / sortedRatios.length) * 100);
+}
+
+function percentileValue(sortedArr, p) {
+  const idx = (p / 100) * (sortedArr.length - 1);
+  const lo = Math.floor(idx), hi = Math.ceil(idx);
+  return sortedArr[lo] + (sortedArr[hi] - sortedArr[lo]) * (idx - lo);
+}
+
+// ── Date range filter ─────────────────────────────────────────────────────────
+function filterByRange(history, range) {
+  if (range === 'All') return history;
+  const last = new Date(history[history.length - 1].date + 'T00:00:00Z');
+  const cut = new Date(last);
+  if      (range === '1W') cut.setDate(cut.getDate() - 7);
+  else if (range === '1M') cut.setDate(cut.getDate() - 30);
+  else if (range === '1Y') cut.setFullYear(cut.getFullYear() - 1);
+  return history.filter(h => new Date(h.date + 'T00:00:00Z') >= cut);
+}
+
+// ── Chart.js plugin: horizontal band shading ──────────────────────────────────
+const bandPlugin = {
+  id: 'zoneBands',
+  beforeDatasetsDraw(chart, _, opts) {
+    if (!opts || !opts.bands) return;
+    const { ctx, chartArea: { left, right, top, bottom }, scales: { y } } = chart;
+    opts.bands.forEach(([lo, hi, color]) => {
+      const yTop = y.getPixelForValue(hi);
+      const yBot = y.getPixelForValue(lo);
+      ctx.save();
+      ctx.fillStyle = color;
+      ctx.fillRect(left, Math.min(yTop, top), right - left, Math.abs(yBot - yTop));
+      ctx.restore();
+    });
+  }
+};
+Chart.register(bandPlugin);
+
+// ── Shared chart options factory ──────────────────────────────────────────────
+function chartOpts(overrides = {}) {
+  return {
+    responsive: true,
+    maintainAspectRatio: true,
+    interaction: { mode: 'index', intersect: false },
+    animation: { duration: 300 },
+    plugins: {
+      legend: {
+        labels: { color: '#5e6378', font: { size: 11 }, boxWidth: 10, padding: 14 }
+      },
+      tooltip: {
+        backgroundColor: '#191a2a',
+        borderColor: '#21233a',
+        borderWidth: 1,
+        titleColor: '#e8e9f2',
+        bodyColor: '#9096b0',
+        padding: 10,
+        cornerRadius: 8,
+      },
+      zoneBands: { bands: [] },
+      ...overrides.plugins,
+    },
+    scales: {
+      x: {
+        ticks: { color: '#5e6378', maxTicksLimit: 7, font: { size: 10 } },
+        grid: { color: '#191a2a' },
+      },
+      y: {
+        ticks: { color: '#5e6378', font: { size: 10 } },
+        grid: { color: '#191a2a' },
+        ...overrides.yAxis,
+      }
+    },
+    ...overrides.root,
+  };
+}
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let fullHistory = [];
+let sortedRatios = [];
+let allScores = [];
+let pct = {};          // percentile breakpoints for ratio chart reference lines
+let activeRange = '1Y';
+let charts = {};
+
+// ── Render gauge ──────────────────────────────────────────────────────────────
+function renderGauge(score) {
+  const z = zone(score);
+  document.getElementById('gaugeScore').textContent = score;
+  document.getElementById('gaugeScore').style.color = z.color;
+  document.getElementById('gaugeAction').textContent = z.action;
+  document.getElementById('gaugeAction').style.background = z.bg;
+  document.getElementById('gaugeAction').style.color = z.color;
+  document.getElementById('gaugeZoneName').textContent = z.label;
+  document.getElementById('gaugeZoneName').style.color = z.color;
+  document.getElementById('gaugeNeedle').style.left = score + '%';
+}
+
+// ── Render charts ─────────────────────────────────────────────────────────────
+function renderCharts() {
+  const view = filterByRange(fullHistory, activeRange);
+  const labels = view.map(h => h.date);
+  const ratios  = view.map(h => h.ratio);
+  const prices  = view.map(h => h.price);
+  const scores  = view.map(h => {
+    const i = fullHistory.indexOf(h);
+    return i >= 0 ? allScores[i] : scoreOf(h.ratio, sortedRatios);
+  });
+  const thresholds = view.map(h => h.threshold);
+  const ptR = view.length > 90 ? 0 : 2;
+
+  // Destroy existing
+  Object.values(charts).forEach(c => c && c.destroy());
+
+  // ── Score chart ────────────────────────────────────────────────────────────
+  const scoreBands = [
+    [0,  20,  'rgba(0,194,255,0.07)'],
+    [20, 40,  'rgba(20,241,149,0.07)'],
+    [40, 60,  'rgba(255,215,0,0.07)'],
+    [60, 80,  'rgba(255,140,0,0.07)'],
+    [80, 100, 'rgba(255,51,102,0.07)'],
+  ];
+  charts.score = new Chart(document.getElementById('scoreChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Heat Score',
+        data: scores,
+        borderColor: '#9945FF',
+        borderWidth: 2,
+        backgroundColor: ctx => {
+          const { ctx: c, chartArea: a } = ctx.chart;
+          if (!a) return 'rgba(153,69,255,0.1)';
+          const g = c.createLinearGradient(0, a.top, 0, a.bottom);
+          g.addColorStop(0,   'rgba(255,51,102,0.25)');
+          g.addColorStop(0.4, 'rgba(255,215,0,0.1)');
+          g.addColorStop(1,   'rgba(0,194,255,0.02)');
+          return g;
+        },
+        fill: true,
+        tension: 0.35,
+        pointRadius: ptR,
+      }],
+    },
+    options: chartOpts({
+      root: { animation: { duration: 300 } },
+      plugins: {
+        zoneBands: { bands: scoreBands },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const s = ctx.parsed.y;
+              return '  Score: ' + s + '/100 — ' + zone(s).action;
+            }
+          }
+        }
+      },
+      yAxis: { min: 0, max: 100, ticks: { color: '#5e6378', font: { size: 10 }, stepSize: 20 } },
+    }),
+  });
+
+  // ── Ratio chart ────────────────────────────────────────────────────────────
+  charts.ratio = new Chart(document.getElementById('ratioChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'TVL/Mcap',
+          data: ratios,
+          borderColor: '#9945FF',
+          borderWidth: 2,
+          backgroundColor: 'rgba(153,69,255,0.07)',
+          fill: true,
+          tension: 0.3,
+          pointRadius: ptR,
+          order: 1,
+        },
+        {
+          label: 'Alert threshold',
+          data: thresholds,
+          borderColor: '#FFD700',
+          borderDash: [6, 4],
+          borderWidth: 1.5,
+          pointRadius: 0,
+          fill: false,
+          order: 2,
+        },
+        {
+          label: 'p80 zone boundary',
+          data: Array(labels.length).fill(pct.p80),
+          borderColor: 'rgba(255,51,102,0.35)',
+          borderDash: [3, 6],
+          borderWidth: 1,
+          pointRadius: 0,
+          fill: false,
+          order: 3,
+        },
+        {
+          label: 'p20 zone boundary',
+          data: Array(labels.length).fill(pct.p20),
+          borderColor: 'rgba(0,194,255,0.35)',
+          borderDash: [3, 6],
+          borderWidth: 1,
+          pointRadius: 0,
+          fill: false,
+          order: 4,
+        },
+      ],
+    },
+    options: chartOpts({
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              if (ctx.dataset.label === 'TVL/Mcap') {
+                const s = scoreOf(ctx.parsed.y, sortedRatios);
+                return '  TVL/Mcap: ' + ctx.parsed.y.toFixed(4) + '  (score ' + s + ')';
+              }
+              return '  ' + ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(4);
+            }
+          }
+        }
+      }
+    }),
+  });
+
+  // ── Price chart ────────────────────────────────────────────────────────────
+  charts.price = new Chart(document.getElementById('priceChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: 'SOL Price (USD)',
+        data: prices,
+        borderColor: '#14F195',
+        borderWidth: 2,
+        backgroundColor: ctx => {
+          const { ctx: c, chartArea: a } = ctx.chart;
+          if (!a) return 'rgba(20,241,149,0.08)';
+          const g = c.createLinearGradient(0, a.top, 0, a.bottom);
+          g.addColorStop(0, 'rgba(20,241,149,0.22)');
+          g.addColorStop(1, 'rgba(20,241,149,0)');
+          return g;
+        },
+        fill: true,
+        tension: 0.3,
+        pointRadius: ptR,
+      }],
+    },
+    options: chartOpts({
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: ctx => '  $' + ctx.parsed.y.toLocaleString(undefined, { maximumFractionDigits: 2 }),
+          }
+        }
+      }
+    }),
+  });
+}
+
+// ── Range toggle ──────────────────────────────────────────────────────────────
+function setRange(r) {
+  activeRange = r;
+  document.querySelectorAll('.range-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.r === r)
+  );
+  renderCharts();
+}
+
+// ── Bootstrap ─────────────────────────────────────────────────────────────────
+async function boot() {
+  const root = document.getElementById('root');
+
   try {
     const res = await fetch('history.json?_=' + Date.now());
     if (!res.ok) throw new Error('HTTP ' + res.status);
-    history = await res.json();
-  } catch (err) {
-    content.innerHTML = '<div class="error">Could not load history.json yet. ' +
-      'This is normal before the first GitHub Actions run has completed and committed data. ' +
-      'Error: ' + err.message + '</div>';
+    fullHistory = await res.json();
+  } catch (e) {
+    root.innerHTML = '<div class="error">Could not load history.json: ' + e.message + '</div>';
+    return;
+  }
+  if (!Array.isArray(fullHistory) || !fullHistory.length) {
+    root.innerHTML = '<div class="error">history.json is empty — trigger a workflow run from the Actions tab.</div>';
     return;
   }
 
-  if (!Array.isArray(history) || history.length === 0) {
-    content.innerHTML = '<div class="error">history.json exists but is empty. ' +
-      'Wait for the next scheduled run, or trigger one manually from the Actions tab.</div>';
-    return;
-  }
+  // Pre-compute sorted ratios and scores for the full dataset
+  sortedRatios = [...fullHistory.map(h => h.ratio)].sort((a, b) => a - b);
+  allScores    = fullHistory.map(h => scoreOf(h.ratio, sortedRatios));
 
-  const latest = history[history.length - 1];
-  const ratioMet = latest.ratio >= latest.threshold;
+  // Percentile breakpoints for reference lines on ratio chart
+  pct.p20 = percentileValue(sortedRatios, 20);
+  pct.p40 = percentileValue(sortedRatios, 40);
+  pct.p60 = percentileValue(sortedRatios, 60);
+  pct.p80 = percentileValue(sortedRatios, 80);
 
-  content.innerHTML = `
-    <div class="status-banner ${ratioMet ? 'met' : 'notmet'}">
-      ${ratioMet
-        ? '✅ Threshold currently met (' + latest.ratio.toFixed(4) + ' ≥ ' + latest.threshold.toFixed(4) + ')'
-        : 'Threshold not currently met (' + latest.ratio.toFixed(4) + ' vs ' + latest.threshold.toFixed(4) + ' target)'}
+  const latest     = fullHistory[fullHistory.length - 1];
+  const latestScore = allScores[allScores.length - 1];
+  const z          = zone(latestScore);
+  const chg        = latest.price_change_pct_24h;
+  const chgHtml    = chg != null
+    ? `<div class="stat-sub ${chg >= 0 ? 'pos' : 'neg'}">${chg >= 0 ? '+' : ''}${chg.toFixed(2)}% 24 h</div>`
+    : '';
+
+  root.innerHTML = `
+    <!-- Gauge -->
+    <div class="gauge-card">
+      <div class="gauge-top">
+        <div class="gauge-score-block">
+          <span class="gauge-score" id="gaugeScore">${latestScore}</span><span class="gauge-denom"> / 100</span>
+        </div>
+        <div class="gauge-label-col">
+          <span class="gauge-action" id="gaugeAction" style="background:${z.bg};color:${z.color}">${z.action}</span>
+          <div class="gauge-zone-name" id="gaugeZoneName" style="color:${z.color}">${z.label}</div>
+          <div class="gauge-ratio-sub">TVL/Mcap ${latest.ratio.toFixed(4)} · ${latest.date}</div>
+        </div>
+      </div>
+      <div class="gauge-bar-wrap">
+        <div class="gauge-bar"></div>
+        <div class="gauge-ticks">
+          <div class="gauge-tick" style="left:20%"></div>
+          <div class="gauge-tick" style="left:40%"></div>
+          <div class="gauge-tick" style="left:60%"></div>
+          <div class="gauge-tick" style="left:80%"></div>
+        </div>
+        <div class="gauge-needle" id="gaugeNeedle" style="left:${latestScore}%"></div>
+      </div>
+      <div class="gauge-axis">
+        <span>0 — Deep Value</span>
+        <span>50 — Fair Value</span>
+        <span>100 — Overheated</span>
+      </div>
+      <div class="gauge-zones">
+        ${ZONES.map(z2 => `<div class="gauge-zone-cell" style="background:${z2.bg};color:${z2.color}">${z2.label}</div>`).join('')}
+      </div>
     </div>
+
+    <!-- Stats -->
     <div class="stat-grid">
       <div class="stat-card">
         <div class="stat-label">SOL Price</div>
-        <div class="stat-value">$${latest.price.toLocaleString(undefined, {maximumFractionDigits: 2})}</div>
+        <div class="stat-value">$${latest.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}</div>
+        ${chgHtml}
       </div>
       <div class="stat-card">
-        <div class="stat-label">TVL / Mcap Ratio</div>
-        <div class="stat-value ${ratioMet ? 'good' : ''}">${latest.ratio.toFixed(4)}</div>
+        <div class="stat-label">TVL / Mcap</div>
+        <div class="stat-value" style="color:${z.color}">${latest.ratio.toFixed(4)}</div>
+        <div class="stat-sub">Score: ${latestScore}/100</div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">TVL</div>
+        <div class="stat-label">TVL (DeFi)</div>
         <div class="stat-value">$${(latest.tvl / 1e9).toFixed(2)}B</div>
       </div>
       <div class="stat-card">
@@ -166,79 +683,37 @@ async function loadDashboard() {
         <div class="stat-value">$${(latest.market_cap / 1e9).toFixed(2)}B</div>
       </div>
     </div>
+
+    <!-- Range buttons -->
+    <div class="range-row">
+      ${['1W','1M','1Y','All'].map(r =>
+        `<button class="range-btn${r === activeRange ? ' active' : ''}" data-r="${r}" onclick="setRange('${r}')">${r}</button>`
+      ).join('')}
+    </div>
+
+    <!-- Charts -->
     <div class="chart-card">
-      <h2>TVL / Mcap Ratio Over Time</h2>
+      <h2>Heat Score (0–100 percentile rank)</h2>
+      <canvas id="scoreChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h2>TVL / Market Cap Ratio</h2>
       <canvas id="ratioChart"></canvas>
     </div>
     <div class="chart-card">
-      <h2>SOL Price Over Time</h2>
+      <h2>SOL Price (USD)</h2>
       <canvas id="priceChart"></canvas>
     </div>
-    <div class="footer-note">Last updated: ${latest.date} · ${history.length} day(s) of history logged</div>
+    <div style="color:var(--muted);font-size:0.7rem;margin-top:8px">
+      ${fullHistory.length} days of history · ${fullHistory[0].date} to ${latest.date} ·
+      All-time score range: ${Math.min(...allScores)}–${Math.max(...allScores)}
+    </div>
   `;
 
-  const labels = history.map(h => h.date);
-
-  new Chart(document.getElementById('ratioChart'), {
-    type: 'line',
-    data: {
-      labels,
-      datasets: [
-        {
-          label: 'TVL/Mcap',
-          data: history.map(h => h.ratio),
-          borderColor: '#7c5cff',
-          backgroundColor: 'rgba(124,92,255,0.1)',
-          fill: true,
-          tension: 0.2,
-          pointRadius: 2,
-        },
-        {
-          label: 'Threshold',
-          data: history.map(h => h.threshold),
-          borderColor: '#f0b429',
-          borderDash: [6, 4],
-          pointRadius: 0,
-          fill: false,
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      plugins: { legend: { labels: { color: '#e6e9ef' } } },
-      scales: {
-        x: { ticks: { color: '#8b93a7', maxTicksLimit: 8 }, grid: { color: '#232838' } },
-        y: { ticks: { color: '#8b93a7' }, grid: { color: '#232838' } },
-      },
-    },
-  });
-
-  new Chart(document.getElementById('priceChart'), {
-    type: 'line',
-    data: {
-      labels,
-      datasets: [{
-        label: 'SOL Price (USD)',
-        data: history.map(h => h.price),
-        borderColor: '#3ecf8e',
-        backgroundColor: 'rgba(62,207,142,0.1)',
-        fill: true,
-        tension: 0.2,
-        pointRadius: 2,
-      }],
-    },
-    options: {
-      responsive: true,
-      plugins: { legend: { labels: { color: '#e6e9ef' } } },
-      scales: {
-        x: { ticks: { color: '#8b93a7', maxTicksLimit: 8 }, grid: { color: '#232838' } },
-        y: { ticks: { color: '#8b93a7' }, grid: { color: '#232838' } },
-      },
-    },
-  });
+  renderCharts();
 }
 
-loadDashboard();
+boot();
 </script>
 </body>
 </html>

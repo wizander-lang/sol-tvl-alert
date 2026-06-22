@@ -1,7 +1,7 @@
-name: One-Time SOL History Backfill
+name: One-Time SOL History Backfill (2021–today)
 
 on:
-  workflow_dispatch: {}  # manual trigger only - run this once, then delete this file
+  workflow_dispatch: {}
 
 permissions:
   contents: write
@@ -9,6 +9,7 @@ permissions:
 jobs:
   backfill:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
@@ -20,7 +21,6 @@ jobs:
 
       - name: Run backfill script
         env:
-          BACKFILL_DAYS: "90"
           TVL_MCAP_THRESHOLD: "0.13"
         run: python backfill_history.py
 
@@ -29,5 +29,5 @@ jobs:
           git config user.name "sol-alert-bot"
           git config user.email "actions@github.com"
           git add history.json
-          git commit -m "Backfill SOL history with 90 days of real data"
+          git commit -m "Backfill SOL history from 2021-01-01 to today"
           git push
