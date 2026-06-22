@@ -1,0 +1,43 @@
+name: Solana TVL/Mcap Daily Check
+
+on:
+  schedule:
+    # Runs at 09:00 UTC every day. Adjust the hour if you want it earlier/later
+    # in your local time — GitHub Actions cron is always in UTC.
+    - cron: "0 9 * * *"
+  workflow_dispatch: {}  # lets you trigger it manually from the Actions tab to test
+
+permissions:
+  contents: write  # required so the workflow can commit history.json back to the repo
+
+jobs:
+  check-sol:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run SOL alert script
+        env:
+          TVL_MCAP_THRESHOLD: "0.12"
+          ALERT_EMAIL_FROM: ${{ secrets.ALERT_EMAIL_FROM }}
+          ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
+          ALERT_EMAIL_APP_PASSWORD: ${{ secrets.ALERT_EMAIL_APP_PASSWORD }}
+          # Optional — leave the two secrets unset in GitHub if you don't want
+          # WhatsApp; the script skips it gracefully either way.
+          CALLMEBOT_PHONE: ${{ secrets.CALLMEBOT_PHONE }}
+          CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
+        run: python sol_alert.py
+
+      - name: Commit updated history.json
+        run: |
+          git config user.name "sol-alert-bot"
+          git config user.email "actions@github.com"
+          git add history.json
+          git diff --staged --quiet || git commit -m "Update SOL history $(date -u +%Y-%m-%d)"
+          git push
