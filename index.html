@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOL TVL/Mcap Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0b0e14;
+    --panel: #131722;
+    --border: #232838;
+    --text: #e6e9ef;
+    --muted: #8b93a7;
+    --accent: #7c5cff;
+    --good: #3ecf8e;
+    --warn: #f0b429;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 20px 16px 40px;
+  }
+  h1 {
+    font-size: 1.3rem;
+    margin: 0 0 4px;
+    font-weight: 600;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .stat-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .stat-label {
+    color: var(--muted);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+  .stat-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  .stat-value.good { color: var(--good); }
+  .stat-value.warn { color: var(--warn); }
+  .chart-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+  .chart-card h2 {
+    font-size: 0.95rem;
+    margin: 0 0 10px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  canvas { max-height: 260px; }
+  .status-banner {
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    font-size: 0.88rem;
+    border: 1px solid var(--border);
+  }
+  .status-banner.met {
+    background: rgba(62, 207, 142, 0.12);
+    border-color: var(--good);
+    color: var(--good);
+  }
+  .status-banner.notmet {
+    background: rgba(255,255,255,0.03);
+    color: var(--muted);
+  }
+  .error {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    padding: 12px;
+    background: rgba(255,107,107,0.08);
+    border-radius: 8px;
+    border: 1px solid rgba(255,107,107,0.3);
+  }
+  .footer-note {
+    color: var(--muted);
+    font-size: 0.75rem;
+    margin-top: 24px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<h1>Solana TVL / Market Cap</h1>
+<div class="subtitle">Updated daily via GitHub Actions · data from DefiLlama + CoinGecko</div>
+
+<div id="content">Loading…</div>
+
+<div class="footer-note">
+  This ratio is one signal among several. A rising or elevated TVL/Mcap ratio while price is flat or
+  falling can indicate usage holding up while valuation compresses — historically constructive, but not
+  a standalone buy signal. Cross-check against your Bitcoin macro dashboard before acting.
+</div>
+
+<script>
+async function loadDashboard() {
+  const content = document.getElementById('content');
+  let history;
+  try {
+    const res = await fetch('history.json?_=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    history = await res.json();
+  } catch (err) {
+    content.innerHTML = '<div class="error">Could not load history.json yet. ' +
+      'This is normal before the first GitHub Actions run has completed and committed data. ' +
+      'Error: ' + err.message + '</div>';
+    return;
+  }
+
+  if (!Array.isArray(history) || history.length === 0) {
+    content.innerHTML = '<div class="error">history.json exists but is empty. ' +
+      'Wait for the next scheduled run, or trigger one manually from the Actions tab.</div>';
+    return;
+  }
+
+  const latest = history[history.length - 1];
+  const ratioMet = latest.ratio >= latest.threshold;
+
+  content.innerHTML = `
+    <div class="status-banner ${ratioMet ? 'met' : 'notmet'}">
+      ${ratioMet
+        ? '✅ Threshold currently met (' + latest.ratio.toFixed(4) + ' ≥ ' + latest.threshold.toFixed(4) + ')'
+        : 'Threshold not currently met (' + latest.ratio.toFixed(4) + ' vs ' + latest.threshold.toFixed(4) + ' target)'}
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">SOL Price</div>
+        <div class="stat-value">$${latest.price.toLocaleString(undefined, {maximumFractionDigits: 2})}</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">TVL / Mcap Ratio</div>
+        <div class="stat-value ${ratioMet ? 'good' : ''}">${latest.ratio.toFixed(4)}</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">TVL</div>
+        <div class="stat-value">$${(latest.tvl / 1e9).toFixed(2)}B</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Market Cap</div>
+        <div class="stat-value">$${(latest.market_cap / 1e9).toFixed(2)}B</div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h2>TVL / Mcap Ratio Over Time</h2>
+      <canvas id="ratioChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h2>SOL Price Over Time</h2>
+      <canvas id="priceChart"></canvas>
+    </div>
+    <div class="footer-note">Last updated: ${latest.date} · ${history.length} day(s) of history logged</div>
+  `;
+
+  const labels = history.map(h => h.date);
+
+  new Chart(document.getElementById('ratioChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'TVL/Mcap',
+          data: history.map(h => h.ratio),
+          borderColor: '#7c5cff',
+          backgroundColor: 'rgba(124,92,255,0.1)',
+          fill: true,
+          tension: 0.2,
+          pointRadius: 2,
+        },
+        {
+          label: 'Threshold',
+          data: history.map(h => h.threshold),
+          borderColor: '#f0b429',
+          borderDash: [6, 4],
+          pointRadius: 0,
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { labels: { color: '#e6e9ef' } } },
+      scales: {
+        x: { ticks: { color: '#8b93a7', maxTicksLimit: 8 }, grid: { color: '#232838' } },
+        y: { ticks: { color: '#8b93a7' }, grid: { color: '#232838' } },
+      },
+    },
+  });
+
+  new Chart(document.getElementById('priceChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: 'SOL Price (USD)',
+        data: history.map(h => h.price),
+        borderColor: '#3ecf8e',
+        backgroundColor: 'rgba(62,207,142,0.1)',
+        fill: true,
+        tension: 0.2,
+        pointRadius: 2,
+      }],
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { labels: { color: '#e6e9ef' } } },
+      scales: {
+        x: { ticks: { color: '#8b93a7', maxTicksLimit: 8 }, grid: { color: '#232838' } },
+        y: { ticks: { color: '#8b93a7' }, grid: { color: '#232838' } },
+      },
+    },
+  });
+}
+
+loadDashboard();
+</script>
+</body>
+</html>
