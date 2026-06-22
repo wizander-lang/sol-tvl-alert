@@ -194,6 +194,8 @@ def main():
             "Cross-check against your Bitcoin macro dashboard before acting.\n"
         )
         send_email(subject, body)
+        
         send_whatsapp(
             f"SOL alert: TVL/Mcap = {ratio:.3f} (threshold {TVL_MCAP_THRESHOLD:.3f}). "
-            f"Price
+            f"Price ${market['price']:,.2f}. Check dashboard / email for details."
+        )
