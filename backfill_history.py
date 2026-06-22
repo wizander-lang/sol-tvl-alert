@@ -8,19 +8,18 @@ in a single call. The two are joined on ISO date string.
 
 import os
 import json
-import time
 import datetime
 import urllib.request
 
 TVL_MCAP_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.13"))
-START_DATE = datetime.date(2021, 1, 1)
-CHUNK_DAYS = 80
 HISTORY_FILE = "history.json"
 
 DEFILLAMA_URL = "https://api.llama.fi/v2/historicalChainTvl/Solana"
-COINGECKO_RANGE_URL = (
-    "https://api.coingecko.com/api/v3/coins/solana/market_chart/range"
-    "?vs_currency=usd&from={f}&to={t}"
+# days=max returns full history in one call (free tier friendly).
+# Granularity: daily for last ~365 days, weekly for older data — sufficient for trend analysis.
+COINGECKO_URL = (
+    "https://api.coingecko.com/api/v3/coins/solana/market_chart"
+    "?vs_currency=usd&days=max"
 )
 
 
@@ -45,42 +44,21 @@ def main():
         max(tvl_by_date),
     ))
 
-    # Chunk CoinGecko requests into 80-day windows to guarantee daily resolution
-    start_dt = datetime.datetime.combine(
-        START_DATE, datetime.time.min, tzinfo=datetime.timezone.utc
-    )
-    end_dt = datetime.datetime.now(datetime.timezone.utc)
-    chunk = datetime.timedelta(days=CHUNK_DAYS)
+    print("Fetching full SOL price/mcap history from CoinGecko (days=max)...")
+    data = fetch_json(COINGECKO_URL)
 
     all_prices = {}
     all_mcaps = {}
-    current = start_dt
-    chunk_n = 0
-    total = int((end_dt - start_dt).days / CHUNK_DAYS) + 1
-
-    while current < end_dt:
-        chunk_end = min(current + chunk, end_dt)
-        chunk_n += 1
-        print("  CoinGecko chunk {}/{}: {} → {}".format(
-            chunk_n, total, current.date(), chunk_end.date()
-        ))
-        url = COINGECKO_RANGE_URL.format(
-            f=int(current.timestamp()), t=int(chunk_end.timestamp())
-        )
-        data = fetch_json(url)
-        for ts_ms, price in data.get("prices", []):
-            d = datetime.datetime.fromtimestamp(
-                ts_ms / 1000, datetime.timezone.utc
-            ).date().isoformat()
-            all_prices[d] = float(price)
-        for ts_ms, mcap in data.get("market_caps", []):
-            d = datetime.datetime.fromtimestamp(
-                ts_ms / 1000, datetime.timezone.utc
-            ).date().isoformat()
-            all_mcaps[d] = float(mcap)
-        current = chunk_end
-        if current < end_dt:
-            time.sleep(2)
+    for ts_ms, price in data.get("prices", []):
+        d = datetime.datetime.fromtimestamp(
+            ts_ms / 1000, datetime.timezone.utc
+        ).date().isoformat()
+        all_prices[d] = float(price)
+    for ts_ms, mcap in data.get("market_caps", []):
+        d = datetime.datetime.fromtimestamp(
+            ts_ms / 1000, datetime.timezone.utc
+        ).date().isoformat()
+        all_mcaps[d] = float(mcap)
 
     print("  Got price/mcap for {} days".format(len(all_prices)))
 
