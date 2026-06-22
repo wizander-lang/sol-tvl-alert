@@ -21,7 +21,7 @@ jobs:
       - name: Run backfill script
         env:
           BACKFILL_DAYS: "90"
-          TVL_MCAP_THRESHOLD: "0.12"
+          TVL_MCAP_THRESHOLD: "0.13"
         run: python backfill_history.py
 
       - name: Commit backfilled history.json

@@ -14,7 +14,7 @@ import datetime
 import urllib.request
 
 BACKFILL_DAYS = int(os.environ.get("BACKFILL_DAYS", "90"))
-TVL_MCAP_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.12"))
+TVL_MCAP_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.13"))
 
 COINGECKO_CHART_URL = (
     "https://api.coingecko.com/api/v3/coins/solana/market_chart"
