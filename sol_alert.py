@@ -16,7 +16,7 @@ import urllib.error
 import urllib.parse
 from email.mime.text import MIMEText
 
-TVL_MCAP_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.12"))
+TVL_MCAP_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.13"))
 
 DEFILLAMA_TVL_URL = "https://api.llama.fi/v2/historicalChainTvl/Solana"
 COINGECKO_MARKETS_URL = (

@@ -24,7 +24,7 @@ jobs:
 
       - name: Run SOL alert script
         env:
-          TVL_MCAP_THRESHOLD: "0.12"
+          TVL_MCAP_THRESHOLD: "0.13"
           ALERT_EMAIL_FROM: ${{ secrets.ALERT_EMAIL_FROM }}
           ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
           ALERT_EMAIL_APP_PASSWORD: ${{ secrets.ALERT_EMAIL_APP_PASSWORD }}
