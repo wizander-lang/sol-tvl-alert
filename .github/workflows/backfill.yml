@@ -1,0 +1,33 @@
+name: One-Time SOL History Backfill
+
+on:
+  workflow_dispatch: {}  # manual trigger only - run this once, then delete this file
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run backfill script
+        env:
+          BACKFILL_DAYS: "90"
+          TVL_MCAP_THRESHOLD: "0.12"
+        run: python backfill_history.py
+
+      - name: Commit backfilled history.json
+        run: |
+          git config user.name "sol-alert-bot"
+          git config user.email "actions@github.com"
+          git add history.json
+          git commit -m "Backfill SOL history with 90 days of real data"
+          git push
