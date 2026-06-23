@@ -17309,9 +17309,18 @@
   {
     "date": "2026-06-22",
     "price": 71.97,
-    "tvl": 4877073793.0,
+    "tvl": 4847501271.0,
     "market_cap": null,
-    "ratio": 0.067765,
+    "ratio": 0.067354,
+    "threshold": 0.075,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-06-23",
+    "price": 71.95,
+    "tvl": 4846735880.0,
+    "market_cap": null,
+    "ratio": 0.067363,
     "threshold": 0.075,
     "price_change_pct_24h": null
   }
