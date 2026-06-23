@@ -1,34 +1,25 @@
 """
 Backfill: seeds history.json with daily SOL data from 2021-01-01 to today.
 
-Data sources (both free, no auth, no geo-restrictions):
-  TVL:        api.llama.fi/v2/historicalChainTvl/Solana   (DefiLlama)
-  Price+Mcap: api.coinpaprika.com/v1/coins/sol-solana/... (Coinpaprika)
+Data sources (free, no auth, no geo-restrictions):
+  TVL:   api.llama.fi/v2/historicalChainTvl/Solana  (DefiLlama)
+  Price: CoinCap → DefiLlama coins chart → Binance.US  (tried in order)
 
-Signal: TVL / Market Cap
-  HIGH ratio = strong on-chain usage vs market valuation = undervalued = buy signal
-  LOW ratio  = market pricing in future growth not yet on-chain = overvalued = sell signal
+Signal: (TVL in $B) / SOL price
+  HIGH ratio = strong on-chain usage per dollar of SOL = undervalued = buy signal
+  LOW ratio  = price outrunning on-chain activity = overvalued = sell signal
 """
 
 import os
 import json
-import time
 import datetime
 import urllib.request
+import urllib.error
 
-TVL_MCAP_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.13"))
+TVL_MCAP_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.075"))
 HISTORY_FILE = "history.json"
 
 DEFILLAMA_TVL_URL = "https://api.llama.fi/v2/historicalChainTvl/Solana"
-# Yahoo Finance chart — public, no auth, no geo-restriction, full history in one call
-YAHOO_URL = (
-    "https://query1.finance.yahoo.com/v8/finance/chart/SOL-USD"
-    "?period1=1577836800&period2=9999999999&interval=1d"
-)
-YAHOO_HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "Accept": "application/json,text/plain,*/*",
-}
 
 
 def fetch_json(url, headers=None):
@@ -37,22 +28,80 @@ def fetch_json(url, headers=None):
         return json.loads(resp.read().decode("utf-8"))
 
 
+def _try_coincap():
+    """CoinCap: free, no auth, returns up to 2000 daily records in one call."""
+    print("  Trying CoinCap...")
+    url = (
+        "https://api.coincap.io/v2/assets/solana/history"
+        "?interval=d1&start=1609459200000&end=9999999999999"
+    )
+    data = fetch_json(url)
+    prices = {}
+    for rec in data.get("data", []):
+        d = rec["date"][:10]
+        if rec.get("priceUsd"):
+            prices[d] = float(rec["priceUsd"])
+    if len(prices) < 100:
+        raise ValueError("CoinCap returned only {} records".format(len(prices)))
+    print("  CoinCap: {} records ({} to {})".format(len(prices), min(prices), max(prices)))
+    return prices
+
+
+def _try_defillama_coins():
+    """DefiLlama coins chart: same CDN as TVL data, no auth needed."""
+    print("  Trying DefiLlama coins chart...")
+    url = "https://coins.llama.fi/chart/coingecko:solana?start=1609459200&period=1d"
+    data = fetch_json(url)
+    coin = data.get("coins", {}).get("coingecko:solana", {})
+    prices = {}
+    for rec in coin.get("prices", []):
+        d = datetime.datetime.fromtimestamp(
+            rec["timestamp"], datetime.timezone.utc
+        ).date().isoformat()
+        prices[d] = float(rec["price"])
+    if len(prices) < 100:
+        raise ValueError("DefiLlama coins returned only {} records".format(len(prices)))
+    print("  DefiLlama coins: {} records ({} to {})".format(len(prices), min(prices), max(prices)))
+    return prices
+
+
+def _try_binance_us():
+    """Binance.US: US-domiciled exchange, no geo-block, paginate 1000 candles at a time."""
+    print("  Trying Binance.US...")
+    prices = {}
+    start_ms = 1609459200000  # 2021-01-01
+    while True:
+        url = (
+            "https://api.binance.us/api/v3/klines"
+            "?symbol=SOLUSDT&interval=1d&startTime={}&limit=1000".format(start_ms)
+        )
+        candles = fetch_json(url)
+        if not candles:
+            break
+        for c in candles:
+            ts    = c[0]          # open-time ms
+            close = float(c[4])   # close price
+            d = datetime.datetime.fromtimestamp(
+                ts / 1000, datetime.timezone.utc
+            ).date().isoformat()
+            prices[d] = close
+        if len(candles) < 1000:
+            break
+        start_ms = candles[-1][0] + 86_400_000
+    if not prices:
+        raise ValueError("Binance.US returned no records")
+    print("  Binance.US: {} records ({} to {})".format(len(prices), min(prices), max(prices)))
+    return prices
+
+
 def fetch_sol_prices():
-    """Fetch full daily SOL-USD price history from Yahoo Finance."""
-    print("  Fetching from Yahoo Finance (one call, full history)...")
-    data = fetch_json(YAHOO_URL, headers=YAHOO_HEADERS)
-    result = data["chart"]["result"][0]
-    timestamps = result["timestamp"]
-    closes     = result["indicators"]["quote"][0]["close"]
-
-    price_by_date = {}
-    for ts, close in zip(timestamps, closes):
-        if close is None:
-            continue
-        d = datetime.datetime.fromtimestamp(ts, datetime.timezone.utc).date().isoformat()
-        price_by_date[d] = float(close)
-
-    return price_by_date
+    """Try each price source in order; raise only if all fail."""
+    for fn in (_try_coincap, _try_defillama_coins, _try_binance_us):
+        try:
+            return fn()
+        except Exception as e:
+            print("  FAILED: {}".format(e))
+    raise RuntimeError("All price sources failed — cannot build history")
 
 
 def main():
