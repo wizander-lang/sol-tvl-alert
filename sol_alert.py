@@ -20,8 +20,9 @@ from email.mime.text import MIMEText
 
 TVL_PRICE_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.13"))
 
-DEFILLAMA_TVL_URL   = "https://api.llama.fi/v2/historicalChainTvl/Solana"
-DEFILLAMA_PRICE_URL = "https://coins.llama.fi/prices/current/coingecko:solana"
+DEFILLAMA_TVL_URL = "https://api.llama.fi/v2/historicalChainTvl/Solana"
+# Binance public API — latest daily close, no key needed
+BINANCE_TICKER_URL = "https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT"
 
 EMAIL_FROM     = os.environ.get("ALERT_EMAIL_FROM")
 EMAIL_TO       = os.environ.get("ALERT_EMAIL_TO")
@@ -57,12 +58,10 @@ def get_latest_tvl():
 
 
 def get_sol_price():
-    data = fetch_json(DEFILLAMA_PRICE_URL)
-    coins = data.get("coins", {})
-    sol = coins.get("coingecko:solana")
-    if not sol:
-        raise RuntimeError("SOL price missing from DefiLlama coins response")
-    return float(sol["price"])
+    data = fetch_json(BINANCE_TICKER_URL)
+    if "price" not in data:
+        raise RuntimeError("SOL price missing from Binance response")
+    return float(data["price"])
 
 
 def send_email(subject, body):

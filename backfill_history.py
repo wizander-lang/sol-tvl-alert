@@ -17,12 +17,11 @@ import urllib.request
 TVL_PRICE_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.13"))
 HISTORY_FILE = "history.json"
 
-DEFILLAMA_TVL_URL  = "https://api.llama.fi/v2/historicalChainTvl/Solana"
-DEFILLAMA_PRICE_URL = (
-    "https://coins.llama.fi/chart/coingecko:solana"
-    "?start=1609459200"   # 2021-01-01 UTC
-    "&span=2000"
-    "&period=1d"
+DEFILLAMA_TVL_URL = "https://api.llama.fi/v2/historicalChainTvl/Solana"
+# Binance public API — no key, no auth, returns daily OHLCV, max 1000 per call
+BINANCE_KLINES_URL = (
+    "https://api.binance.com/api/v3/klines"
+    "?symbol=SOLUSDT&interval=1d&limit=1000&startTime={start_ms}"
 )
 
 
@@ -30,6 +29,34 @@ def fetch_json(url):
     req = urllib.request.Request(url, headers={"User-Agent": "sol-backfill/2.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.loads(resp.read().decode("utf-8"))
+
+
+def fetch_sol_prices():
+    """Fetch daily SOL/USDT close prices from Binance in 1000-day chunks."""
+    price_by_date = {}
+    # SOL/USDT listed on Binance ~Sep 2020; start from 2021-01-01
+    start_ms = int(datetime.datetime(2021, 1, 1, tzinfo=datetime.timezone.utc).timestamp() * 1000)
+    now_ms   = int(datetime.datetime.now(datetime.timezone.utc).timestamp() * 1000)
+
+    while start_ms < now_ms:
+        url  = BINANCE_KLINES_URL.format(start_ms=start_ms)
+        rows = fetch_json(url)
+        if not rows:
+            break
+        for row in rows:
+            open_time_ms = int(row[0])
+            close_price  = float(row[4])
+            d = datetime.datetime.fromtimestamp(
+                open_time_ms / 1000, datetime.timezone.utc
+            ).date().isoformat()
+            price_by_date[d] = close_price
+        # Advance past the last candle's open time
+        last_open_ms = int(rows[-1][0])
+        if last_open_ms <= start_ms:
+            break
+        start_ms = last_open_ms + 86_400_000  # +1 day in ms
+
+    return price_by_date
 
 
 def main():
@@ -45,15 +72,8 @@ def main():
         len(tvl_by_date), min(tvl_by_date), max(tvl_by_date)
     ))
 
-    print("Fetching SOL price history from DefiLlama coins API...")
-    price_data = fetch_json(DEFILLAMA_PRICE_URL)
-    prices_raw = price_data.get("coins", {}).get("coingecko:solana", {}).get("prices", [])
-    price_by_date = {}
-    for point in prices_raw:
-        d = datetime.datetime.fromtimestamp(
-            point["timestamp"], datetime.timezone.utc
-        ).date().isoformat()
-        price_by_date[d] = float(point["price"])
+    print("Fetching SOL daily price from Binance public API...")
+    price_by_date = fetch_sol_prices()
     print("  {} days of price data ({} to {})".format(
         len(price_by_date), min(price_by_date), max(price_by_date)
     ))
