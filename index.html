@@ -100,7 +100,7 @@ canvas { max-height: 220px; }
 <div class="header">
   <div class="header-left">
     <h1><div class="sol-logo"></div>SOL Heat Index</h1>
-    <div class="sub">TVL / Market Cap signal · updated daily · DefiLlama + Coinpaprika</div>
+    <div class="sub">TVL(B) / Price signal · updated daily · DefiLlama + Yahoo Finance</div>
   </div>
   <div class="date-fmt-toggle">
     <button class="fmt-btn active" data-fmt="iso"  onclick="setDateFmt('iso')">ISO</button>
@@ -113,22 +113,22 @@ canvas { max-height: 220px; }
 
 <div class="footer">
   <strong>Methodology —</strong>
-  The Heat Index scores the current TVL/Market Cap ratio on a 0–100 scale by its percentile rank
-  across all available history since 2021. <em>Lower score = colder = higher TVL relative to market cap
-  = strong on-chain usage vs. valuation = historically a buy signal.</em>
-  Higher score = hotter = market cap running ahead of on-chain activity = caution.
+  The Heat Index scores the current TVL(B)/Price ratio on a 0–100 scale by its percentile rank
+  across all available history since 2021. <em>Lower score = colder = higher TVL relative to price
+  = strong on-chain usage per dollar of SOL = historically a buy signal.</em>
+  Higher score = hotter = price running ahead of on-chain activity = caution.
   Zones: <strong style="color:#00C2FF">Deep Value</strong> 0–20 ·
   <strong style="color:#14F195">Undervalued</strong> 20–40 ·
   <strong style="color:#FFD700">Fair Value</strong> 40–60 ·
   <strong style="color:#FF8C00">Overvalued</strong> 60–80 ·
   <strong style="color:#FF3366">Overheated</strong> 80–100.
-  Data: DefiLlama (TVL) + Coinpaprika (price/mcap). Cross-check Bitcoin macro before acting.
+  Data: DefiLlama (TVL) + Yahoo Finance (price). Ratio = TVL in billions ÷ SOL price. Cross-check Bitcoin macro before acting.
 </div>
 
 <script>
 // ── Zone definitions ──────────────────────────────────────────────────────────
-// Score 0 = cold = high TVL/Mcap = undervalued = BUY
-// Score 100 = hot = low TVL/Mcap = overvalued = SELL
+// Score 0 = cold = high TVL(B)/Price = undervalued = BUY
+// Score 100 = hot = low TVL(B)/Price = overvalued = SELL
 const ZONES = [
   { max: 20,  label: 'Deep Value',  action: 'Strong Buy',  color: '#00C2FF', bg: 'rgba(0,194,255,0.13)'  },
   { max: 40,  label: 'Undervalued', action: 'Accumulate',  color: '#14F195', bg: 'rgba(20,241,149,0.13)' },
@@ -139,8 +139,8 @@ const ZONES = [
 function zone(score) { return ZONES.find(z => score <= z.max) || ZONES[4]; }
 
 // ── Score: 100 - percentile rank ──────────────────────────────────────────────
-// HIGH TVL/Mcap ratio → high percentile → LOW score (cold) → BUY signal
-// LOW  TVL/Mcap ratio → low percentile  → HIGH score (hot) → SELL signal
+// HIGH TVL(B)/Price ratio → high percentile → LOW score (cold) → BUY signal
+// LOW  TVL(B)/Price ratio → low percentile  → HIGH score (hot) → SELL signal
 function scoreOf(ratio, sortedRatios) {
   let lo = 0, hi = sortedRatios.length;
   while (lo < hi) { const mid = (lo + hi) >>> 1; if (sortedRatios[mid] < ratio) lo = mid + 1; else hi = mid; }
@@ -285,7 +285,7 @@ function renderCharts() {
     data: {
       labels,
       datasets: [
-        { label: 'TVL/Mcap', data: ratios, borderColor: '#9945FF', borderWidth: 2, backgroundColor: 'rgba(153,69,255,0.07)', fill: true, tension: 0.3, pointRadius: ptR, order: 1 },
+        { label: 'TVL(B)/Price', data: ratios, borderColor: '#9945FF', borderWidth: 2, backgroundColor: 'rgba(153,69,255,0.07)', fill: true, tension: 0.3, pointRadius: ptR, order: 1 },
         { label: 'Alert threshold', data: thresholds, borderColor: '#FFD700', borderDash: [6,4], borderWidth: 1.5, pointRadius: 0, fill: false, order: 2 },
         { label: 'p20 (Deep Value boundary)', data: Array(labels.length).fill(pct.p80), borderColor: 'rgba(0,194,255,0.4)', borderDash: [3,6], borderWidth: 1, pointRadius: 0, fill: false, order: 3 },
         { label: 'p80 (Overheated boundary)', data: Array(labels.length).fill(pct.p20), borderColor: 'rgba(255,51,102,0.4)', borderDash: [3,6], borderWidth: 1, pointRadius: 0, fill: false, order: 4 },
@@ -296,9 +296,9 @@ function renderCharts() {
         tooltip: {
           callbacks: {
             label: ctx => {
-              if (ctx.dataset.label === 'TVL/Mcap') {
+              if (ctx.dataset.label === 'TVL(B)/Price') {
                 const s = scoreOf(ctx.parsed.y, sortedRatios);
-                return '  TVL/Mcap: ' + ctx.parsed.y.toFixed(4) + '  (score ' + s + ')';
+                return '  TVL(B)/Price: ' + ctx.parsed.y.toFixed(4) + '  (score ' + s + ')';
               }
               return '  ' + ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(4);
             }
@@ -387,7 +387,7 @@ async function boot() {
         <div class="gauge-label-col">
           <span class="gauge-action" id="gaugeAction" style="background:${z.bg};color:${z.color}">${z.action}</span>
           <div class="gauge-zone-name" id="gaugeZoneName" style="color:${z.color}">${z.label}</div>
-          <div class="gauge-ratio-sub">TVL/Mcap ${latest.ratio.toFixed(4)} · ${formatDate(latest.date)}</div>
+          <div class="gauge-ratio-sub">TVL(B)/Price ${latest.ratio.toFixed(4)} · ${formatDate(latest.date)}</div>
         </div>
       </div>
       <div class="gauge-bar-wrap">
@@ -417,7 +417,7 @@ async function boot() {
         ${chgHtml}
       </div>
       <div class="stat-card">
-        <div class="stat-label">TVL / Market Cap</div>
+        <div class="stat-label">TVL(B) / Price</div>
         <div class="stat-value" style="color:${z.color}">${latest.ratio.toFixed(4)}</div>
         <div class="stat-sub">Score: ${latestScore}/100</div>
       </div>
@@ -443,7 +443,7 @@ async function boot() {
       <canvas id="scoreChart"></canvas>
     </div>
     <div class="chart-card">
-      <h2>TVL / Market Cap Ratio</h2>
+      <h2>TVL(B) / Price Ratio</h2>
       <canvas id="ratioChart"></canvas>
     </div>
     <div class="chart-card">

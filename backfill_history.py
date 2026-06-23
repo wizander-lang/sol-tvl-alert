@@ -20,42 +20,39 @@ TVL_MCAP_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.13"))
 HISTORY_FILE = "history.json"
 
 DEFILLAMA_TVL_URL = "https://api.llama.fi/v2/historicalChainTvl/Solana"
-# Coinpaprika returns up to 366 records per call; chunk by year
-COINPAPRIKA_OHLCV_URL = (
-    "https://api.coinpaprika.com/v1/coins/sol-solana/ohlcv/historical"
-    "?start={start}&end={end}&limit=366"
+# Yahoo Finance chart — public, no auth, no geo-restriction, full history in one call
+YAHOO_URL = (
+    "https://query1.finance.yahoo.com/v8/finance/chart/SOL-USD"
+    "?period1=1577836800&period2=9999999999&interval=1d"
 )
+YAHOO_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "application/json,text/plain,*/*",
+}
 
 
-def fetch_json(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "sol-backfill/2.0"})
+def fetch_json(url, headers=None):
+    req = urllib.request.Request(url, headers=headers or {"User-Agent": "sol-backfill/2.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.loads(resp.read().decode("utf-8"))
 
 
-def fetch_coinpaprika_ohlcv():
-    """Fetch daily SOL OHLCV + market cap from Coinpaprika in yearly chunks."""
+def fetch_sol_prices():
+    """Fetch full daily SOL-USD price history from Yahoo Finance."""
+    print("  Fetching from Yahoo Finance (one call, full history)...")
+    data = fetch_json(YAHOO_URL, headers=YAHOO_HEADERS)
+    result = data["chart"]["result"][0]
+    timestamps = result["timestamp"]
+    closes     = result["indicators"]["quote"][0]["close"]
+
     price_by_date = {}
-    mcap_by_date  = {}
+    for ts, close in zip(timestamps, closes):
+        if close is None:
+            continue
+        d = datetime.datetime.fromtimestamp(ts, datetime.timezone.utc).date().isoformat()
+        price_by_date[d] = float(close)
 
-    start = datetime.date(2021, 1, 1)
-    today = datetime.date.today()
-
-    while start <= today:
-        end = min(datetime.date(start.year, 12, 31), today)
-        url = COINPAPRIKA_OHLCV_URL.format(start=start.isoformat(), end=end.isoformat())
-        print("  Coinpaprika: {} → {}".format(start, end))
-        rows = fetch_json(url)
-        for row in rows:
-            d = row["time_open"][:10]          # "2021-01-01T..." → "2021-01-01"
-            if row.get("close") and row["close"] > 0:
-                price_by_date[d] = float(row["close"])
-            if row.get("market_cap") and row["market_cap"] > 0:
-                mcap_by_date[d]  = float(row["market_cap"])
-        start = datetime.date(start.year + 1, 1, 1)
-        time.sleep(1)   # polite rate limiting
-
-    return price_by_date, mcap_by_date
+    return price_by_date
 
 
 def main():
@@ -71,28 +68,29 @@ def main():
         len(tvl_by_date), min(tvl_by_date), max(tvl_by_date)
     ))
 
-    print("Fetching SOL price + market cap from Coinpaprika...")
-    price_by_date, mcap_by_date = fetch_coinpaprika_ohlcv()
-    print("  {} days of price, {} days of mcap".format(
-        len(price_by_date), len(mcap_by_date)
+    print("Fetching SOL price history from Yahoo Finance...")
+    price_by_date = fetch_sol_prices()
+    print("  {} days of price data ({} to {})".format(
+        len(price_by_date), min(price_by_date), max(price_by_date)
     ))
 
     history = []
     skipped = 0
-    all_dates = sorted(set(tvl_by_date) & set(price_by_date) & set(mcap_by_date))
-    for date_str in all_dates:
+    for date_str in sorted(set(tvl_by_date) & set(price_by_date)):
         tvl   = tvl_by_date[date_str]
         price = price_by_date[date_str]
-        mcap  = mcap_by_date[date_str]
-        if mcap <= 0:
+        if price <= 0:
             skipped += 1
             continue
+        # Ratio: TVL (in billions USD) / SOL price — a clean 0.0x–0.1x range
+        # High = strong on-chain usage per dollar of SOL = undervalued signal
+        ratio = (tvl / 1e9) / price
         history.append({
             "date":                 date_str,
             "price":                round(price, 4),
             "tvl":                  round(tvl, 2),
-            "market_cap":           round(mcap, 2),
-            "ratio":                round(tvl / mcap, 6),
+            "market_cap":           None,
+            "ratio":                round(ratio, 6),
             "threshold":            TVL_MCAP_THRESHOLD,
             "price_change_pct_24h": None,
         })

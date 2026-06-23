@@ -1,12 +1,13 @@
 """
-Solana TVL / Market Cap Alert
-------------------------------
+Solana TVL-per-Price Alert
+---------------------------
 Data sources (free, no auth):
-  TVL:        DefiLlama  api.llama.fi
-  Price+Mcap: Coinpaprika api.coinpaprika.com
+  TVL:   DefiLlama    api.llama.fi
+  Price: Coinpaprika  api.coinpaprika.com
 
-Signal: TVL / Market Cap
-  HIGH ratio = strong on-chain usage vs market valuation = undervalued = buy signal
+Signal: (TVL in $B) / SOL price
+  HIGH ratio = strong on-chain usage per dollar of SOL = undervalued = buy signal
+  LOW  ratio = token price running ahead of on-chain utility = overvalued = sell signal
 """
 
 import os
@@ -19,7 +20,7 @@ import urllib.error
 import urllib.parse
 from email.mime.text import MIMEText
 
-TVL_MCAP_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.13"))
+TVL_MCAP_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.075"))
 
 DEFILLAMA_TVL_URL    = "https://api.llama.fi/v2/historicalChainTvl/Solana"
 COINPAPRIKA_TICK_URL = "https://api.coinpaprika.com/v1/tickers/sol-solana"
@@ -63,11 +64,11 @@ def get_market_data():
     price = usd.get("price")
     mcap  = usd.get("market_cap")
     chg   = usd.get("percent_change_24h")
-    if not price or not mcap:
-        raise RuntimeError("Missing price/mcap in Coinpaprika response")
+    if not price:
+        raise RuntimeError("Missing price in Coinpaprika response")
     return {
         "price":                float(price),
-        "market_cap":           float(mcap),
+        "market_cap":           float(mcap) if mcap else None,
         "price_change_pct_24h": float(chg) if chg is not None else None,
     }
 
@@ -123,48 +124,47 @@ def main():
         print("ERROR: " + str(e), file=sys.stderr)
         sys.exit(1)
 
-    mcap  = market["market_cap"]
     price = market["price"]
+    mcap  = market["market_cap"]
     chg   = market["price_change_pct_24h"]
 
-    if mcap <= 0:
-        print("ERROR: market cap is zero or negative; aborting.", file=sys.stderr)
+    if price <= 0:
+        print("ERROR: price is zero or negative; aborting.", file=sys.stderr)
         sys.exit(1)
 
-    ratio = tvl / mcap
+    # Ratio: TVL (in billions USD) / SOL price — consistent with backfill history
+    ratio = (tvl / 1e9) / price
     today = datetime.date.today().isoformat()
 
     print("Date: "         + today)
     print("SOL TVL: $"     + str(tvl))
-    print("SOL Market Cap: $" + str(mcap))
     print("SOL Price: $"   + str(price))
     print("24h change: "   + str(chg))
-    print("TVL/Mcap: "     + str(ratio))
+    print("TVL(B)/Price: " + str(ratio))
     print("Threshold: "    + str(TVL_MCAP_THRESHOLD))
 
     append_history({
         "date":                 today,
         "price":                round(price, 4),
         "tvl":                  round(tvl, 2),
-        "market_cap":           round(mcap, 2),
+        "market_cap":           round(mcap, 2) if mcap else None,
         "ratio":                round(ratio, 6),
         "threshold":            TVL_MCAP_THRESHOLD,
         "price_change_pct_24h": chg,
     })
 
     if ratio >= TVL_MCAP_THRESHOLD:
-        subject = "SOL TVL/Mcap signal: " + str(round(ratio, 3))
+        subject = "SOL TVL/Price signal: " + str(round(ratio, 4))
         body = (
-            "Solana's TVL/Market Cap ratio has reached " + str(round(ratio, 4)) +
+            "Solana's TVL(B)/Price ratio has reached " + str(round(ratio, 4)) +
             ", at or above your threshold of " + str(TVL_MCAP_THRESHOLD) + ".\n\n" +
-            "TVL: $"        + str(tvl)   + "\n" +
-            "Market Cap: $" + str(mcap)  + "\n" +
-            "Price: $"      + str(price) + "\n" +
-            "24h change: "  + str(chg)   + "%\n\n" +
+            "TVL: $"       + "{:.2f}B".format(tvl / 1e9) + "\n" +
+            "Price: $"     + str(price) + "\n" +
+            "24h change: " + str(chg)   + "%\n\n" +
             "Cross-check against your Bitcoin macro dashboard before acting.\n"
         )
         send_email(subject, body)
-        send_whatsapp("SOL alert: TVL/Mcap = " + str(round(ratio, 3)) + ". Price $" + str(price))
+        send_whatsapp("SOL alert: TVL(B)/Price = " + str(round(ratio, 4)) + ". Price $" + str(price))
         print("Threshold met — email + WhatsApp attempted.")
     else:
         print("Threshold not met — no alert sent today (history still logged).")
