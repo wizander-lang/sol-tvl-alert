@@ -1,821 +1,6482 @@
 [
   {
+    "date": "2024-07-03",
+    "price": 140.67,
+    "tvl": 4538843969.0,
+    "market_cap": null,
+    "ratio": 32265898.69,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-04",
+    "price": 127.79,
+    "tvl": 4228394749.0,
+    "market_cap": null,
+    "ratio": 33088619.99,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-05",
+    "price": 134.31,
+    "tvl": 4030942478.0,
+    "market_cap": null,
+    "ratio": 30012229.01,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-06",
+    "price": 143.05,
+    "tvl": 4121763262.0,
+    "market_cap": null,
+    "ratio": 28813444.68,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-07",
+    "price": 131.54,
+    "tvl": 4301961412.0,
+    "market_cap": null,
+    "ratio": 32704587.29,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-08",
+    "price": 139.77,
+    "tvl": 4083123784.0,
+    "market_cap": null,
+    "ratio": 29213162.94,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-09",
+    "price": 141.33,
+    "tvl": 4199884288.0,
+    "market_cap": null,
+    "ratio": 29716863.28,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-10",
+    "price": 142.04,
+    "tvl": 4291739156.0,
+    "market_cap": null,
+    "ratio": 30215003.91,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-11",
+    "price": 135.74,
+    "tvl": 4282750794.0,
+    "market_cap": null,
+    "ratio": 31551133.0,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-12",
+    "price": 139.53,
+    "tvl": 4178070260.0,
+    "market_cap": null,
+    "ratio": 29943884.9,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-13",
+    "price": 141.96,
+    "tvl": 4225298263.0,
+    "market_cap": null,
+    "ratio": 29764005.8,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-14",
+    "price": 147.8,
+    "tvl": 4289099440.0,
+    "market_cap": null,
+    "ratio": 29019617.32,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-15",
+    "price": 159.44,
+    "tvl": 4458228880.0,
+    "market_cap": null,
+    "ratio": 27961796.79,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-16",
+    "price": 160.57,
+    "tvl": 4710811099.0,
+    "market_cap": null,
+    "ratio": 29338052.56,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-17",
+    "price": 155.45,
+    "tvl": 4705342172.0,
+    "market_cap": null,
+    "ratio": 30269168.04,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-18",
+    "price": 159.18,
+    "tvl": 4613011600.0,
+    "market_cap": null,
+    "ratio": 28979844.2,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-19",
+    "price": 169.14,
+    "tvl": 4715956666.0,
+    "market_cap": null,
+    "ratio": 27881971.54,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-20",
+    "price": 173.66,
+    "tvl": 5040869657.0,
+    "market_cap": null,
+    "ratio": 29027235.15,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-21",
+    "price": 184.43,
+    "tvl": 5113550909.0,
+    "market_cap": null,
+    "ratio": 27726242.53,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-22",
+    "price": 178.98,
+    "tvl": 5293525544.0,
+    "market_cap": null,
+    "ratio": 29576072.99,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-23",
+    "price": 172.73,
+    "tvl": 5192995037.0,
+    "market_cap": null,
+    "ratio": 30064233.41,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-24",
+    "price": 178.09,
+    "tvl": 5041056345.0,
+    "market_cap": null,
+    "ratio": 28306229.13,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-25",
+    "price": 171.83,
+    "tvl": 5139865511.0,
+    "market_cap": null,
+    "ratio": 29912503.7,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-26",
+    "price": 183.16,
+    "tvl": 5009068831.0,
+    "market_cap": null,
+    "ratio": 27348049.96,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-27",
+    "price": 183.81,
+    "tvl": 5276251520.0,
+    "market_cap": null,
+    "ratio": 28704920.95,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-28",
+    "price": 184.96,
+    "tvl": 5358618446.0,
+    "market_cap": null,
+    "ratio": 28971769.28,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-29",
+    "price": 182.49,
+    "tvl": 5315370850.0,
+    "market_cap": null,
+    "ratio": 29126915.72,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-30",
+    "price": 179.03,
+    "tvl": 5311594655.0,
+    "market_cap": null,
+    "ratio": 29668740.74,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-07-31",
+    "price": 171.58,
+    "tvl": 5232327067.0,
+    "market_cap": null,
+    "ratio": 30494970.67,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-01",
+    "price": 167.38,
+    "tvl": 5093560964.0,
+    "market_cap": null,
+    "ratio": 30431120.59,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-02",
+    "price": 152.61,
+    "tvl": 4989080786.0,
+    "market_cap": null,
+    "ratio": 32691702.94,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-03",
+    "price": 142.42,
+    "tvl": 4702368400.0,
+    "market_cap": null,
+    "ratio": 33017612.69,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-04",
+    "price": 138.24,
+    "tvl": 4475691927.0,
+    "market_cap": null,
+    "ratio": 32376243.68,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-05",
+    "price": 129.79,
+    "tvl": 4386500058.0,
+    "market_cap": null,
+    "ratio": 33796903.14,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-06",
+    "price": 144.46,
+    "tvl": 4131063868.0,
+    "market_cap": null,
+    "ratio": 28596593.3,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-07",
+    "price": 144.48,
+    "tvl": 4490172614.0,
+    "market_cap": null,
+    "ratio": 31078160.4,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-08",
+    "price": 163.19,
+    "tvl": 4485326899.0,
+    "market_cap": null,
+    "ratio": 27485304.85,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-09",
+    "price": 156.36,
+    "tvl": 4824056397.0,
+    "market_cap": null,
+    "ratio": 30852240.96,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-10",
+    "price": 154.07,
+    "tvl": 4760798759.0,
+    "market_cap": null,
+    "ratio": 30900232.1,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-11",
+    "price": 141.55,
+    "tvl": 4798545413.0,
+    "market_cap": null,
+    "ratio": 33900002.92,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-12",
+    "price": 146.5,
+    "tvl": 4561806429.0,
+    "market_cap": null,
+    "ratio": 31138610.44,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-13",
+    "price": 146.75,
+    "tvl": 4619613825.0,
+    "market_cap": null,
+    "ratio": 31479480.92,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-14",
+    "price": 143.96,
+    "tvl": 4695380357.0,
+    "market_cap": null,
+    "ratio": 32615868.0,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-15",
+    "price": 142.58,
+    "tvl": 4653920864.0,
+    "market_cap": null,
+    "ratio": 32640769.14,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-16",
+    "price": 139.04,
+    "tvl": 4611127600.0,
+    "market_cap": null,
+    "ratio": 33164036.25,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-17",
+    "price": 141.9,
+    "tvl": 4570123608.0,
+    "market_cap": null,
+    "ratio": 32206649.81,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-18",
+    "price": 142.43,
+    "tvl": 4625000696.0,
+    "market_cap": null,
+    "ratio": 32472096.44,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-19",
+    "price": 144.35,
+    "tvl": 4692455891.0,
+    "market_cap": null,
+    "ratio": 32507487.99,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-20",
+    "price": 142.32,
+    "tvl": 4698395822.0,
+    "market_cap": null,
+    "ratio": 33012899.26,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-21",
+    "price": 142.76,
+    "tvl": 4747270483.0,
+    "market_cap": null,
+    "ratio": 33253505.76,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-22",
+    "price": 143.27,
+    "tvl": 4765841937.0,
+    "market_cap": null,
+    "ratio": 33264758.41,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-23",
+    "price": 153.3,
+    "tvl": 4794668764.0,
+    "market_cap": null,
+    "ratio": 31276378.11,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-24",
+    "price": 160.76,
+    "tvl": 5051448392.0,
+    "market_cap": null,
+    "ratio": 31422296.54,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-25",
+    "price": 159.01,
+    "tvl": 5202358175.0,
+    "market_cap": null,
+    "ratio": 32717176.12,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-26",
+    "price": 157.21,
+    "tvl": 5257917940.0,
+    "market_cap": null,
+    "ratio": 33445187.58,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-27",
+    "price": 146.87,
+    "tvl": 5244763330.0,
+    "market_cap": null,
+    "ratio": 35710242.6,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-28",
+    "price": 143.9,
+    "tvl": 4948021450.0,
+    "market_cap": null,
+    "ratio": 34385138.64,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-29",
+    "price": 140.05,
+    "tvl": 4849465135.0,
+    "market_cap": null,
+    "ratio": 34626670.01,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-30",
+    "price": 138.05,
+    "tvl": 4786433319.0,
+    "market_cap": null,
+    "ratio": 34671737.19,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-08-31",
+    "price": 135.37,
+    "tvl": 4726237175.0,
+    "market_cap": null,
+    "ratio": 34913475.47,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-01",
+    "price": 128.54,
+    "tvl": 4691290467.0,
+    "market_cap": null,
+    "ratio": 36496736.17,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-02",
+    "price": 134.95,
+    "tvl": 4608080901.0,
+    "market_cap": null,
+    "ratio": 34146579.48,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-03",
+    "price": 127.54,
+    "tvl": 4647036075.0,
+    "market_cap": null,
+    "ratio": 36435910.89,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-04",
+    "price": 133.61,
+    "tvl": 4529853940.0,
+    "market_cap": null,
+    "ratio": 33903554.67,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-05",
+    "price": 129.44,
+    "tvl": 4633157999.0,
+    "market_cap": null,
+    "ratio": 35793865.88,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-06",
+    "price": 125.02,
+    "tvl": 4501574549.0,
+    "market_cap": null,
+    "ratio": 36006835.3,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-07",
+    "price": 127.67,
+    "tvl": 4352634583.0,
+    "market_cap": null,
+    "ratio": 34092853.32,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-08",
+    "price": 130.0,
+    "tvl": 4423054781.0,
+    "market_cap": null,
+    "ratio": 34023498.32,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-09",
+    "price": 135.07,
+    "tvl": 4477556089.0,
+    "market_cap": null,
+    "ratio": 33149893.31,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-10",
+    "price": 135.66,
+    "tvl": 4628018412.0,
+    "market_cap": null,
+    "ratio": 34114834.23,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-11",
+    "price": 132.49,
+    "tvl": 4639058109.0,
+    "market_cap": null,
+    "ratio": 35014401.91,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-12",
+    "price": 136.06,
+    "tvl": 4557717603.0,
+    "market_cap": null,
+    "ratio": 33497850.97,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-13",
+    "price": 139.13,
+    "tvl": 4685408727.0,
+    "market_cap": null,
+    "ratio": 33676480.46,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-14",
+    "price": 137.21,
+    "tvl": 4763766563.0,
+    "market_cap": null,
+    "ratio": 34718800.11,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-15",
+    "price": 131.42,
+    "tvl": 4703659157.0,
+    "market_cap": null,
+    "ratio": 35791045.18,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-16",
+    "price": 131.4,
+    "tvl": 4558866437.0,
+    "market_cap": null,
+    "ratio": 34694569.54,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-17",
+    "price": 131.54,
+    "tvl": 4532118236.0,
+    "market_cap": null,
+    "ratio": 34454297.07,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-18",
+    "price": 134.32,
+    "tvl": 4564939793.0,
+    "market_cap": null,
+    "ratio": 33985555.34,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-19",
+    "price": 142.88,
+    "tvl": 4574687096.0,
+    "market_cap": null,
+    "ratio": 32017686.84,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-20",
+    "price": 146.65,
+    "tvl": 4845517901.0,
+    "market_cap": null,
+    "ratio": 33041376.75,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-21",
+    "price": 149.48,
+    "tvl": 4954247038.0,
+    "market_cap": null,
+    "ratio": 33143210.05,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-22",
+    "price": 144.76,
+    "tvl": 4975616173.0,
+    "market_cap": null,
+    "ratio": 34371485.03,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-23",
+    "price": 144.7,
+    "tvl": 4831734070.0,
+    "market_cap": null,
+    "ratio": 33391389.56,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-24",
+    "price": 152.64,
+    "tvl": 4895619087.0,
+    "market_cap": null,
+    "ratio": 32072976.2,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-25",
+    "price": 148.06,
+    "tvl": 5038368948.0,
+    "market_cap": null,
+    "ratio": 34029237.8,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-26",
+    "price": 155.58,
+    "tvl": 5031148407.0,
+    "market_cap": null,
+    "ratio": 32338015.21,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-27",
+    "price": 157.59,
+    "tvl": 5200399401.0,
+    "market_cap": null,
+    "ratio": 32999552.01,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-28",
+    "price": 156.85,
+    "tvl": 5278255109.0,
+    "market_cap": null,
+    "ratio": 33651610.51,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-29",
+    "price": 158.61,
+    "tvl": 5284598845.0,
+    "market_cap": null,
+    "ratio": 33318194.6,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-09-30",
+    "price": 152.66,
+    "tvl": 5358640686.0,
+    "market_cap": null,
+    "ratio": 35101799.33,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-01",
+    "price": 145.2,
+    "tvl": 5276698442.0,
+    "market_cap": null,
+    "ratio": 36340898.36,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-02",
+    "price": 140.15,
+    "tvl": 5227723139.0,
+    "market_cap": null,
+    "ratio": 37300914.3,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-03",
+    "price": 136.81,
+    "tvl": 4956061760.0,
+    "market_cap": null,
+    "ratio": 36225873.55,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-04",
+    "price": 143.15,
+    "tvl": 4859290966.0,
+    "market_cap": null,
+    "ratio": 33945448.59,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-05",
+    "price": 142.73,
+    "tvl": 5234791002.0,
+    "market_cap": null,
+    "ratio": 36676178.81,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-06",
+    "price": 146.49,
+    "tvl": 5364628143.0,
+    "market_cap": null,
+    "ratio": 36621121.87,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-07",
+    "price": 143.95,
+    "tvl": 5291080085.0,
+    "market_cap": null,
+    "ratio": 36756374.33,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-08",
+    "price": 143.42,
+    "tvl": 5323216176.0,
+    "market_cap": null,
+    "ratio": 37116275.11,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-09",
+    "price": 139.22,
+    "tvl": 5248011414.0,
+    "market_cap": null,
+    "ratio": 37695815.36,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-10",
+    "price": 138.89,
+    "tvl": 5102038174.0,
+    "market_cap": null,
+    "ratio": 36734380.98,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-11",
+    "price": 145.46,
+    "tvl": 5295491980.0,
+    "market_cap": null,
+    "ratio": 36405142.17,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-12",
+    "price": 146.36,
+    "tvl": 5529771903.0,
+    "market_cap": null,
+    "ratio": 37781988.95,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-13",
+    "price": 147.69,
+    "tvl": 5493752087.0,
+    "market_cap": null,
+    "ratio": 37197860.97,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-14",
+    "price": 157.52,
+    "tvl": 5693049728.0,
+    "market_cap": null,
+    "ratio": 36141758.05,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-15",
+    "price": 154.8,
+    "tvl": 5916019534.0,
+    "market_cap": null,
+    "ratio": 38217180.45,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-16",
+    "price": 154.14,
+    "tvl": 5934545659.0,
+    "market_cap": null,
+    "ratio": 38501009.85,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-17",
+    "price": 150.34,
+    "tvl": 5776897468.0,
+    "market_cap": null,
+    "ratio": 38425551.87,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-18",
+    "price": 154.92,
+    "tvl": 5839993085.0,
+    "market_cap": null,
+    "ratio": 37696831.17,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-19",
+    "price": 159.58,
+    "tvl": 5863630915.0,
+    "market_cap": null,
+    "ratio": 36744146.6,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-20",
+    "price": 167.32,
+    "tvl": 5922565499.0,
+    "market_cap": null,
+    "ratio": 35396638.17,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-21",
+    "price": 166.16,
+    "tvl": 6161252769.0,
+    "market_cap": null,
+    "ratio": 37080240.55,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-22",
+    "price": 167.35,
+    "tvl": 5981780581.0,
+    "market_cap": null,
+    "ratio": 35744132.54,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-23",
+    "price": 170.66,
+    "tvl": 6004590597.0,
+    "market_cap": null,
+    "ratio": 35184522.42,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-24",
+    "price": 177.06,
+    "tvl": 6342905468.0,
+    "market_cap": null,
+    "ratio": 35823480.56,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-25",
+    "price": 164.71,
+    "tvl": 6679281273.0,
+    "market_cap": null,
+    "ratio": 40551765.36,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-26",
+    "price": 170.69,
+    "tvl": 6008821368.0,
+    "market_cap": null,
+    "ratio": 35203124.78,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-27",
+    "price": 176.48,
+    "tvl": 6179673052.0,
+    "market_cap": null,
+    "ratio": 35016279.76,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-28",
+    "price": 178.1,
+    "tvl": 5993353660.0,
+    "market_cap": null,
+    "ratio": 33651620.77,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-29",
+    "price": 179.3,
+    "tvl": 6040170853.0,
+    "market_cap": null,
+    "ratio": 33687511.73,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-30",
+    "price": 174.8,
+    "tvl": 6080669930.0,
+    "market_cap": null,
+    "ratio": 34786441.25,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-10-31",
+    "price": 168.48,
+    "tvl": 5988479633.0,
+    "market_cap": null,
+    "ratio": 35544157.37,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-01",
+    "price": 166.06,
+    "tvl": 5802647315.0,
+    "market_cap": null,
+    "ratio": 34943076.69,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-02",
+    "price": 166.05,
+    "tvl": 5782464093.0,
+    "market_cap": null,
+    "ratio": 34823632.0,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-03",
+    "price": 162.44,
+    "tvl": 5721851418.0,
+    "market_cap": null,
+    "ratio": 35224399.27,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-04",
+    "price": 157.9,
+    "tvl": 5679521941.0,
+    "market_cap": null,
+    "ratio": 35969106.66,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-05",
+    "price": 166.66,
+    "tvl": 5545928574.0,
+    "market_cap": null,
+    "ratio": 33276902.52,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-06",
+    "price": 186.87,
+    "tvl": 5867375256.0,
+    "market_cap": null,
+    "ratio": 31398165.87,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-07",
+    "price": 196.44,
+    "tvl": 6502486268.0,
+    "market_cap": null,
+    "ratio": 33101640.54,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-08",
+    "price": 199.95,
+    "tvl": 6630393726.0,
+    "market_cap": null,
+    "ratio": 33160258.69,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-09",
+    "price": 200.1,
+    "tvl": 6715622292.0,
+    "market_cap": null,
+    "ratio": 33561330.79,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-10",
+    "price": 210.24,
+    "tvl": 6771924689.0,
+    "market_cap": null,
+    "ratio": 32210448.48,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-11",
+    "price": 222.37,
+    "tvl": 7087692135.0,
+    "market_cap": null,
+    "ratio": 31873418.78,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-12",
+    "price": 211.82,
+    "tvl": 7487029676.0,
+    "market_cap": null,
+    "ratio": 35346188.63,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-13",
+    "price": 215.46,
+    "tvl": 7372353495.0,
+    "market_cap": null,
+    "ratio": 34216808.2,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-14",
+    "price": 209.46,
+    "tvl": 7509790059.0,
+    "market_cap": null,
+    "ratio": 35853098.73,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-15",
+    "price": 218.43,
+    "tvl": 7571126114.0,
+    "market_cap": null,
+    "ratio": 34661567.16,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-16",
+    "price": 215.67,
+    "tvl": 7913701504.0,
+    "market_cap": null,
+    "ratio": 36693566.58,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-17",
+    "price": 237.51,
+    "tvl": 8118576748.0,
+    "market_cap": null,
+    "ratio": 34182041.8,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-18",
+    "price": 239.95,
+    "tvl": 8434201202.0,
+    "market_cap": null,
+    "ratio": 35149827.89,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-19",
+    "price": 238.0,
+    "tvl": 8601803956.0,
+    "market_cap": null,
+    "ratio": 36142033.43,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-20",
+    "price": 235.57,
+    "tvl": 8630055248.0,
+    "market_cap": null,
+    "ratio": 36634780.52,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-21",
+    "price": 256.78,
+    "tvl": 8603007243.0,
+    "market_cap": null,
+    "ratio": 33503416.32,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-22",
+    "price": 257.25,
+    "tvl": 9101407271.0,
+    "market_cap": null,
+    "ratio": 35379620.1,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-23",
+    "price": 255.26,
+    "tvl": 8996920015.0,
+    "market_cap": null,
+    "ratio": 35246102.07,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-24",
+    "price": 252.93,
+    "tvl": 9003515350.0,
+    "market_cap": null,
+    "ratio": 35596866.13,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-25",
+    "price": 233.96,
+    "tvl": 8980559327.0,
+    "market_cap": null,
+    "ratio": 38385020.2,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-26",
+    "price": 230.68,
+    "tvl": 8695242261.0,
+    "market_cap": null,
+    "ratio": 37693958.13,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-27",
+    "price": 242.26,
+    "tvl": 8711224299.0,
+    "market_cap": null,
+    "ratio": 35958161.89,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-28",
+    "price": 237.59,
+    "tvl": 9071885136.0,
+    "market_cap": null,
+    "ratio": 38182941.77,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-29",
+    "price": 243.47,
+    "tvl": 8966168235.0,
+    "market_cap": null,
+    "ratio": 36826583.3,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-11-30",
+    "price": 237.75,
+    "tvl": 9225501824.0,
+    "market_cap": null,
+    "ratio": 38803372.55,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-01",
+    "price": 237.0,
+    "tvl": 9124696980.0,
+    "market_cap": null,
+    "ratio": 38500831.14,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-02",
+    "price": 225.89,
+    "tvl": 9043394263.0,
+    "market_cap": null,
+    "ratio": 40034504.68,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-03",
+    "price": 234.04,
+    "tvl": 8761059941.0,
+    "market_cap": null,
+    "ratio": 37434028.12,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-04",
+    "price": 229.53,
+    "tvl": 9105643391.0,
+    "market_cap": null,
+    "ratio": 39670820.33,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-05",
+    "price": 236.22,
+    "tvl": 9008452696.0,
+    "market_cap": null,
+    "ratio": 38135859.35,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-06",
+    "price": 237.07,
+    "tvl": 9284194738.0,
+    "market_cap": null,
+    "ratio": 39162250.55,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-07",
+    "price": 238.32,
+    "tvl": 9425337179.0,
+    "market_cap": null,
+    "ratio": 39549081.82,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-08",
+    "price": 237.24,
+    "tvl": 9521826752.0,
+    "market_cap": null,
+    "ratio": 40135840.3,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-09",
+    "price": 216.93,
+    "tvl": 9397480989.0,
+    "market_cap": null,
+    "ratio": 43320338.31,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-10",
+    "price": 213.69,
+    "tvl": 8848650907.0,
+    "market_cap": null,
+    "ratio": 41408820.75,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-11",
+    "price": 227.47,
+    "tvl": 8773242221.0,
+    "market_cap": null,
+    "ratio": 38568788.06,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-12",
+    "price": 226.98,
+    "tvl": 9290486888.0,
+    "market_cap": null,
+    "ratio": 40930861.26,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-13",
+    "price": 224.92,
+    "tvl": 9281843412.0,
+    "market_cap": null,
+    "ratio": 41267310.21,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-14",
+    "price": 219.8,
+    "tvl": 9219828440.0,
+    "market_cap": null,
+    "ratio": 41946444.22,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-15",
+    "price": 224.21,
+    "tvl": 9124462941.0,
+    "market_cap": null,
+    "ratio": 40696057.0,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-16",
+    "price": 216.19,
+    "tvl": 9195610846.0,
+    "market_cap": null,
+    "ratio": 42534857.51,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-17",
+    "price": 223.23,
+    "tvl": 9072764429.0,
+    "market_cap": null,
+    "ratio": 40643123.37,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-18",
+    "price": 206.49,
+    "tvl": 9259537137.0,
+    "market_cap": null,
+    "ratio": 44842545.1,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-19",
+    "price": 193.65,
+    "tvl": 8829556435.0,
+    "market_cap": null,
+    "ratio": 45595437.31,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-20",
+    "price": 194.4,
+    "tvl": 8401020878.0,
+    "market_cap": null,
+    "ratio": 43215127.97,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-21",
+    "price": 181.06,
+    "tvl": 8325108166.0,
+    "market_cap": null,
+    "ratio": 45979830.81,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-22",
+    "price": 180.34,
+    "tvl": 8034331293.0,
+    "market_cap": null,
+    "ratio": 44551021.92,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-23",
+    "price": 189.91,
+    "tvl": 8018627108.0,
+    "market_cap": null,
+    "ratio": 42223301.08,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-24",
+    "price": 196.92,
+    "tvl": 8361869913.0,
+    "market_cap": null,
+    "ratio": 42463284.14,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-25",
+    "price": 197.38,
+    "tvl": 8631480282.0,
+    "market_cap": null,
+    "ratio": 43730267.92,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-26",
+    "price": 188.27,
+    "tvl": 8654074301.0,
+    "market_cap": null,
+    "ratio": 45966294.69,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-27",
+    "price": 183.81,
+    "tvl": 8375119179.0,
+    "market_cap": null,
+    "ratio": 45564001.84,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-28",
+    "price": 195.15,
+    "tvl": 8280408303.0,
+    "market_cap": null,
+    "ratio": 42430993.1,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-29",
+    "price": 189.6,
+    "tvl": 8643164130.0,
+    "market_cap": null,
+    "ratio": 45586308.7,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-30",
+    "price": 191.06,
+    "tvl": 8498205520.0,
+    "market_cap": null,
+    "ratio": 44479250.08,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2024-12-31",
+    "price": 188.95,
+    "tvl": 8521024391.0,
+    "market_cap": null,
+    "ratio": 45096715.49,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-01",
+    "price": 193.82,
+    "tvl": 8525825610.0,
+    "market_cap": null,
+    "ratio": 43988368.64,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-02",
+    "price": 208.0,
+    "tvl": 8719434684.0,
+    "market_cap": null,
+    "ratio": 41920359.06,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-03",
+    "price": 217.7,
+    "tvl": 9146151343.0,
+    "market_cap": null,
+    "ratio": 42012638.23,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-04",
+    "price": 216.67,
+    "tvl": 9468639468.0,
+    "market_cap": null,
+    "ratio": 43700740.61,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-05",
+    "price": 213.35,
+    "tvl": 9535529946.0,
+    "market_cap": null,
+    "ratio": 44694304.88,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-06",
+    "price": 218.45,
+    "tvl": 9419385506.0,
+    "market_cap": null,
+    "ratio": 43119182.91,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-07",
+    "price": 202.16,
+    "tvl": 9599832043.0,
+    "market_cap": null,
+    "ratio": 47486308.09,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-08",
+    "price": 197.48,
+    "tvl": 8991687754.0,
+    "market_cap": null,
+    "ratio": 45532143.78,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-09",
+    "price": 185.06,
+    "tvl": 8872063940.0,
+    "market_cap": null,
+    "ratio": 47941553.77,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-10",
+    "price": 187.56,
+    "tvl": 8511927977.0,
+    "market_cap": null,
+    "ratio": 45382426.83,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-11",
+    "price": 187.95,
+    "tvl": 8623361625.0,
+    "market_cap": null,
+    "ratio": 45881147.25,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-12",
+    "price": 188.48,
+    "tvl": 8623722409.0,
+    "market_cap": null,
+    "ratio": 45754045.04,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-13",
+    "price": 182.73,
+    "tvl": 8590476124.0,
+    "market_cap": null,
+    "ratio": 47011854.23,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-14",
+    "price": 187.49,
+    "tvl": 8421089186.0,
+    "market_cap": null,
+    "ratio": 44914871.12,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-15",
+    "price": 206.0,
+    "tvl": 8677466235.0,
+    "market_cap": null,
+    "ratio": 42123622.5,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-16",
+    "price": 211.06,
+    "tvl": 9337739916.0,
+    "market_cap": null,
+    "ratio": 44242110.85,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-17",
+    "price": 219.59,
+    "tvl": 9463509973.0,
+    "market_cap": null,
+    "ratio": 43096270.2,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-18",
+    "price": 261.51,
+    "tvl": 10385490886.0,
+    "market_cap": null,
+    "ratio": 39713551.63,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-19",
+    "price": 252.22,
+    "tvl": 11303167433.0,
+    "market_cap": null,
+    "ratio": 44814715.06,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-20",
+    "price": 241.91,
+    "tvl": 11479902110.0,
+    "market_cap": null,
+    "ratio": 47455260.68,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-21",
+    "price": 250.48,
+    "tvl": 11155926344.0,
+    "market_cap": null,
+    "ratio": 44538192.05,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-22",
+    "price": 257.5,
+    "tvl": 11736045453.0,
+    "market_cap": null,
+    "ratio": 45576875.55,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-23",
+    "price": 253.08,
+    "tvl": 11973290461.0,
+    "market_cap": null,
+    "ratio": 47310298.96,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-24",
+    "price": 253.35,
+    "tvl": 11721219555.0,
+    "market_cap": null,
+    "ratio": 46264928.18,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-25",
+    "price": 256.2,
+    "tvl": 11650659254.0,
+    "market_cap": null,
+    "ratio": 45474860.48,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-26",
+    "price": 240.59,
+    "tvl": 11810565435.0,
+    "market_cap": null,
+    "ratio": 49090009.71,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-27",
+    "price": 234.98,
+    "tvl": 11333455199.0,
+    "market_cap": null,
+    "ratio": 48231573.75,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-28",
+    "price": 227.04,
+    "tvl": 11181458070.0,
+    "market_cap": null,
+    "ratio": 49248846.33,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-29",
+    "price": 227.99,
+    "tvl": 10837267246.0,
+    "market_cap": null,
+    "ratio": 47533958.71,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-30",
+    "price": 238.53,
+    "tvl": 10952675915.0,
+    "market_cap": null,
+    "ratio": 45917393.68,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-01-31",
+    "price": 231.69,
+    "tvl": 11281462571.0,
+    "market_cap": null,
+    "ratio": 48692056.5,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-01",
+    "price": 212.94,
+    "tvl": 10994017835.0,
+    "market_cap": null,
+    "ratio": 51629650.77,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-02",
+    "price": 203.38,
+    "tvl": 10308113503.0,
+    "market_cap": null,
+    "ratio": 50684007.78,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-03",
+    "price": 216.53,
+    "tvl": 9772114545.0,
+    "market_cap": null,
+    "ratio": 45130534.08,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-04",
+    "price": 206.66,
+    "tvl": 10488309110.0,
+    "market_cap": null,
+    "ratio": 50751519.94,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-05",
+    "price": 195.94,
+    "tvl": 9506100200.0,
+    "market_cap": null,
+    "ratio": 48515362.87,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-06",
+    "price": 189.57,
+    "tvl": 9220897366.0,
+    "market_cap": null,
+    "ratio": 48641121.31,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-07",
+    "price": 192.16,
+    "tvl": 9001399957.0,
+    "market_cap": null,
+    "ratio": 46843255.4,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-08",
+    "price": 199.43,
+    "tvl": 9001845796.0,
+    "market_cap": null,
+    "ratio": 45137871.91,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-09",
+    "price": 200.59,
+    "tvl": 9245492096.0,
+    "market_cap": null,
+    "ratio": 46091490.58,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-10",
+    "price": 200.53,
+    "tvl": 9208641468.0,
+    "market_cap": null,
+    "ratio": 45921515.32,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-11",
+    "price": 197.96,
+    "tvl": 9243802837.0,
+    "market_cap": null,
+    "ratio": 46695306.31,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-12",
+    "price": 196.77,
+    "tvl": 9107629044.0,
+    "market_cap": null,
+    "ratio": 46285658.61,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-13",
+    "price": 194.31,
+    "tvl": 9110201081.0,
+    "market_cap": null,
+    "ratio": 46884880.25,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-14",
+    "price": 199.45,
+    "tvl": 9046330267.0,
+    "market_cap": null,
+    "ratio": 45356381.38,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-15",
+    "price": 194.42,
+    "tvl": 9283926448.0,
+    "market_cap": null,
+    "ratio": 47751910.54,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-16",
+    "price": 188.32,
+    "tvl": 9137782852.0,
+    "market_cap": null,
+    "ratio": 48522636.21,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-17",
+    "price": 177.39,
+    "tvl": 8933039825.0,
+    "market_cap": null,
+    "ratio": 50358192.82,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-18",
+    "price": 169.21,
+    "tvl": 8562889788.0,
+    "market_cap": null,
+    "ratio": 50605104.83,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-19",
+    "price": 168.86,
+    "tvl": 8267625943.0,
+    "market_cap": null,
+    "ratio": 48961423.33,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-20",
+    "price": 176.08,
+    "tvl": 8303974589.0,
+    "market_cap": null,
+    "ratio": 47160237.33,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-21",
+    "price": 168.81,
+    "tvl": 8499849067.0,
+    "market_cap": null,
+    "ratio": 50351573.17,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-22",
+    "price": 172.06,
+    "tvl": 8285627888.0,
+    "market_cap": null,
+    "ratio": 48155456.75,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-23",
+    "price": 167.99,
+    "tvl": 8373734599.0,
+    "market_cap": null,
+    "ratio": 49846625.39,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-24",
+    "price": 141.85,
+    "tvl": 8249916811.0,
+    "market_cap": null,
+    "ratio": 58159441.74,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-25",
+    "price": 144.13,
+    "tvl": 7318688821.0,
+    "market_cap": null,
+    "ratio": 50778386.32,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-26",
+    "price": 135.09,
+    "tvl": 7391148007.0,
+    "market_cap": null,
+    "ratio": 54712769.32,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-27",
+    "price": 137.54,
+    "tvl": 7167008010.0,
+    "market_cap": null,
+    "ratio": 52108535.77,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-02-28",
+    "price": 148.08,
+    "tvl": 7174089818.0,
+    "market_cap": null,
+    "ratio": 48447392.07,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-01",
+    "price": 143.64,
+    "tvl": 7504075821.0,
+    "market_cap": null,
+    "ratio": 52242243.25,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-02",
+    "price": 178.7,
+    "tvl": 7377984201.0,
+    "market_cap": null,
+    "ratio": 41286984.9,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-03",
+    "price": 142.0,
+    "tvl": 8396279817.0,
+    "market_cap": null,
+    "ratio": 59128731.11,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-04",
+    "price": 144.77,
+    "tvl": 7214551608.0,
+    "market_cap": null,
+    "ratio": 49834576.28,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-05",
+    "price": 146.31,
+    "tvl": 7346002071.0,
+    "market_cap": null,
+    "ratio": 50208475.64,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-06",
+    "price": 143.29,
+    "tvl": 7439526801.0,
+    "market_cap": null,
+    "ratio": 51919371.91,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-07",
+    "price": 139.33,
+    "tvl": 7292792185.0,
+    "market_cap": null,
+    "ratio": 52341865.97,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-08",
+    "price": 136.95,
+    "tvl": 7194490913.0,
+    "market_cap": null,
+    "ratio": 52533705.1,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-09",
+    "price": 126.45,
+    "tvl": 7126313557.0,
+    "market_cap": null,
+    "ratio": 56356769.92,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-10",
+    "price": 118.23,
+    "tvl": 6715166939.0,
+    "market_cap": null,
+    "ratio": 56797487.43,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-11",
+    "price": 125.32,
+    "tvl": 6393494444.0,
+    "market_cap": null,
+    "ratio": 51017351.13,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-12",
+    "price": 126.65,
+    "tvl": 6709996447.0,
+    "market_cap": null,
+    "ratio": 52980627.3,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-13",
+    "price": 123.33,
+    "tvl": 6744829532.0,
+    "market_cap": null,
+    "ratio": 54689285.11,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-14",
+    "price": 133.6,
+    "tvl": 6657809557.0,
+    "market_cap": null,
+    "ratio": 49833903.87,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-15",
+    "price": 135.87,
+    "tvl": 7004040433.0,
+    "market_cap": null,
+    "ratio": 51549572.63,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-16",
+    "price": 126.03,
+    "tvl": 7098372261.0,
+    "market_cap": null,
+    "ratio": 56322877.58,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-17",
+    "price": 128.01,
+    "tvl": 6784344641.0,
+    "market_cap": null,
+    "ratio": 52998552.0,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-18",
+    "price": 125.38,
+    "tvl": 6850637989.0,
+    "market_cap": null,
+    "ratio": 54639001.35,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-19",
+    "price": 135.42,
+    "tvl": 6756292265.0,
+    "market_cap": null,
+    "ratio": 49891391.71,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-20",
+    "price": 127.47,
+    "tvl": 7110949405.0,
+    "market_cap": null,
+    "ratio": 55785278.14,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-21",
+    "price": 128.42,
+    "tvl": 6861352880.0,
+    "market_cap": null,
+    "ratio": 53429005.45,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-22",
+    "price": 128.51,
+    "tvl": 6876550528.0,
+    "market_cap": null,
+    "ratio": 53509847.7,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-23",
+    "price": 132.83,
+    "tvl": 6877963879.0,
+    "market_cap": null,
+    "ratio": 51780199.35,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-24",
+    "price": 141.02,
+    "tvl": 7070839623.0,
+    "market_cap": null,
+    "ratio": 50140686.59,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-25",
+    "price": 143.63,
+    "tvl": 7275373234.0,
+    "market_cap": null,
+    "ratio": 50653576.79,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-26",
+    "price": 137.36,
+    "tvl": 7354582532.0,
+    "market_cap": null,
+    "ratio": 53542388.85,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-27",
+    "price": 138.43,
+    "tvl": 7134260510.0,
+    "market_cap": null,
+    "ratio": 51536953.77,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-28",
+    "price": 129.38,
+    "tvl": 7149833740.0,
+    "market_cap": null,
+    "ratio": 55262279.64,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-29",
+    "price": 124.49,
+    "tvl": 6792613618.0,
+    "market_cap": null,
+    "ratio": 54563528.14,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-30",
+    "price": 124.78,
+    "tvl": 6755995687.0,
+    "market_cap": null,
+    "ratio": 54143257.63,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-03-31",
+    "price": 124.6,
+    "tvl": 6637223106.0,
+    "market_cap": null,
+    "ratio": 53268243.23,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-01",
+    "price": 126.69,
+    "tvl": 6626623674.0,
+    "market_cap": null,
+    "ratio": 52305814.78,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-02",
+    "price": 117.31,
+    "tvl": 6694437039.0,
+    "market_cap": null,
+    "ratio": 57066209.52,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-03",
+    "price": 117.06,
+    "tvl": 6364059872.0,
+    "market_cap": null,
+    "ratio": 54365794.23,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-04",
+    "price": 122.74,
+    "tvl": 6608902085.0,
+    "market_cap": null,
+    "ratio": 53844729.39,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-05",
+    "price": 120.26,
+    "tvl": 6733291542.0,
+    "market_cap": null,
+    "ratio": 55989452.37,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-06",
+    "price": 105.85,
+    "tvl": 6680269761.0,
+    "market_cap": null,
+    "ratio": 63110720.46,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-07",
+    "price": 106.89,
+    "tvl": 6128805282.0,
+    "market_cap": null,
+    "ratio": 57337499.13,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-08",
+    "price": 105.38,
+    "tvl": 6204047750.0,
+    "market_cap": null,
+    "ratio": 58873104.48,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-09",
+    "price": 119.05,
+    "tvl": 6099888986.0,
+    "market_cap": null,
+    "ratio": 51238042.72,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-10",
+    "price": 112.79,
+    "tvl": 6586845392.0,
+    "market_cap": null,
+    "ratio": 58399196.67,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-11",
+    "price": 121.39,
+    "tvl": 6405922500.0,
+    "market_cap": null,
+    "ratio": 52771418.57,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-12",
+    "price": 132.28,
+    "tvl": 6687894162.0,
+    "market_cap": null,
+    "ratio": 50558619.31,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-13",
+    "price": 128.26,
+    "tvl": 7046848683.0,
+    "market_cap": null,
+    "ratio": 54941904.59,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-14",
+    "price": 129.29,
+    "tvl": 6943546429.0,
+    "market_cap": null,
+    "ratio": 53705208.67,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-15",
+    "price": 126.08,
+    "tvl": 6972213512.0,
+    "market_cap": null,
+    "ratio": 55299916.81,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-16",
+    "price": 131.27,
+    "tvl": 6912927776.0,
+    "market_cap": null,
+    "ratio": 52661901.24,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-17",
+    "price": 134.82,
+    "tvl": 7077980776.0,
+    "market_cap": null,
+    "ratio": 52499486.55,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-18",
+    "price": 134.15,
+    "tvl": 7161525882.0,
+    "market_cap": null,
+    "ratio": 53384464.27,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-19",
+    "price": 139.85,
+    "tvl": 7138074401.0,
+    "market_cap": null,
+    "ratio": 51040932.43,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-20",
+    "price": 137.88,
+    "tvl": 7373149285.0,
+    "market_cap": null,
+    "ratio": 53475118.11,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-21",
+    "price": 136.63,
+    "tvl": 7316494786.0,
+    "market_cap": null,
+    "ratio": 53549694.69,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-22",
+    "price": 148.85,
+    "tvl": 7294902094.0,
+    "market_cap": null,
+    "ratio": 49008411.78,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-23",
+    "price": 151.2,
+    "tvl": 7780939101.0,
+    "market_cap": null,
+    "ratio": 51461237.44,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-24",
+    "price": 152.54,
+    "tvl": 7932289624.0,
+    "market_cap": null,
+    "ratio": 52001374.22,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-25",
+    "price": 150.98,
+    "tvl": 7998689617.0,
+    "market_cap": null,
+    "ratio": 52978471.43,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-26",
+    "price": 149.27,
+    "tvl": 8046047944.0,
+    "market_cap": null,
+    "ratio": 53902645.84,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-27",
+    "price": 148.04,
+    "tvl": 7988631700.0,
+    "market_cap": null,
+    "ratio": 53962656.71,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-28",
+    "price": 147.76,
+    "tvl": 7921030713.0,
+    "market_cap": null,
+    "ratio": 53607408.72,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-29",
+    "price": 146.41,
+    "tvl": 7992507664.0,
+    "market_cap": null,
+    "ratio": 54589902.77,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-04-30",
+    "price": 147.62,
+    "tvl": 7878936956.0,
+    "market_cap": null,
+    "ratio": 53373099.55,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-01",
+    "price": 150.97,
+    "tvl": 7942787577.0,
+    "market_cap": null,
+    "ratio": 52611694.89,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-02",
+    "price": 148.1,
+    "tvl": 8053676038.0,
+    "market_cap": null,
+    "ratio": 54379986.75,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-03",
+    "price": 146.75,
+    "tvl": 7965310730.0,
+    "market_cap": null,
+    "ratio": 54278096.97,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-04",
+    "price": 144.0,
+    "tvl": 7842228322.0,
+    "market_cap": null,
+    "ratio": 54459918.9,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-05",
+    "price": 146.61,
+    "tvl": 7739363260.0,
+    "market_cap": null,
+    "ratio": 52788781.53,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-06",
+    "price": 146.82,
+    "tvl": 7796066525.0,
+    "market_cap": null,
+    "ratio": 53099485.94,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-07",
+    "price": 147.32,
+    "tvl": 7827440170.0,
+    "market_cap": null,
+    "ratio": 53132230.31,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-08",
+    "price": 164.41,
+    "tvl": 7864929061.0,
+    "market_cap": null,
+    "ratio": 47837291.29,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-09",
+    "price": 172.78,
+    "tvl": 8455115914.0,
+    "market_cap": null,
+    "ratio": 48935732.8,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-10",
+    "price": 177.94,
+    "tvl": 8794616415.0,
+    "market_cap": null,
+    "ratio": 49424617.37,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-11",
+    "price": 173.26,
+    "tvl": 9498560518.0,
+    "market_cap": null,
+    "ratio": 54822581.77,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-12",
+    "price": 174.2,
+    "tvl": 9324751004.0,
+    "market_cap": null,
+    "ratio": 53528995.43,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-13",
+    "price": 183.75,
+    "tvl": 9261280506.0,
+    "market_cap": null,
+    "ratio": 50401526.56,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-14",
+    "price": 176.63,
+    "tvl": 9658073861.0,
+    "market_cap": null,
+    "ratio": 54679691.22,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-15",
+    "price": 169.12,
+    "tvl": 9455585739.0,
+    "market_cap": null,
+    "ratio": 55910511.7,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-16",
+    "price": 167.49,
+    "tvl": 9150574263.0,
+    "market_cap": null,
+    "ratio": 54633555.81,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-17",
+    "price": 166.02,
+    "tvl": 9062748540.0,
+    "market_cap": null,
+    "ratio": 54588293.82,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-18",
+    "price": 173.39,
+    "tvl": 9027137374.0,
+    "market_cap": null,
+    "ratio": 52062618.22,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-19",
+    "price": 166.85,
+    "tvl": 9182633785.0,
+    "market_cap": null,
+    "ratio": 55035263.92,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-20",
+    "price": 168.62,
+    "tvl": 9070756437.0,
+    "market_cap": null,
+    "ratio": 53794072.1,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-21",
+    "price": 173.61,
+    "tvl": 9159184567.0,
+    "market_cap": null,
+    "ratio": 52757240.75,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-22",
+    "price": 179.7,
+    "tvl": 9453591284.0,
+    "market_cap": null,
+    "ratio": 52607630.96,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-23",
+    "price": 174.05,
+    "tvl": 9695906672.0,
+    "market_cap": null,
+    "ratio": 55707593.63,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-24",
+    "price": 175.97,
+    "tvl": 9329240584.0,
+    "market_cap": null,
+    "ratio": 53016085.61,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-25",
+    "price": 175.85,
+    "tvl": 9319189718.0,
+    "market_cap": null,
+    "ratio": 52995107.86,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-26",
+    "price": 175.07,
+    "tvl": 9413147976.0,
+    "market_cap": null,
+    "ratio": 53767909.84,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-27",
+    "price": 176.8,
+    "tvl": 9372048752.0,
+    "market_cap": null,
+    "ratio": 53009325.52,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-28",
+    "price": 172.28,
+    "tvl": 9441492866.0,
+    "market_cap": null,
+    "ratio": 54803185.9,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-29",
+    "price": 166.64,
+    "tvl": 9242733229.0,
+    "market_cap": null,
+    "ratio": 55465273.82,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-30",
+    "price": 156.2,
+    "tvl": 8970466282.0,
+    "market_cap": null,
+    "ratio": 57429361.6,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-05-31",
+    "price": 156.53,
+    "tvl": 8547777191.0,
+    "market_cap": null,
+    "ratio": 54607916.64,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-01",
+    "price": 157.74,
+    "tvl": 8588065436.0,
+    "market_cap": null,
+    "ratio": 54444436.64,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-02",
+    "price": 156.9,
+    "tvl": 8616505350.0,
+    "market_cap": null,
+    "ratio": 54917178.78,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-03",
+    "price": 155.31,
+    "tvl": 8771173110.0,
+    "market_cap": null,
+    "ratio": 56475263.09,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-04",
+    "price": 153.21,
+    "tvl": 8677119557.0,
+    "market_cap": null,
+    "ratio": 56635464.77,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-05",
+    "price": 144.39,
+    "tvl": 8565768256.0,
+    "market_cap": null,
+    "ratio": 59323833.06,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-06",
+    "price": 147.91,
+    "tvl": 8169833870.0,
+    "market_cap": null,
+    "ratio": 55235169.16,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-07",
+    "price": 150.14,
+    "tvl": 8341327154.0,
+    "market_cap": null,
+    "ratio": 55556994.5,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-08",
+    "price": 152.53,
+    "tvl": 8390061979.0,
+    "market_cap": null,
+    "ratio": 55005979.01,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-09",
+    "price": 161.22,
+    "tvl": 8504635215.0,
+    "market_cap": null,
+    "ratio": 52751738.09,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-10",
+    "price": 165.13,
+    "tvl": 8869209491.0,
+    "market_cap": null,
+    "ratio": 53710467.46,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-11",
+    "price": 160.99,
+    "tvl": 9035988711.0,
+    "market_cap": null,
+    "ratio": 56127639.67,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-12",
+    "price": 152.46,
+    "tvl": 8913363060.0,
+    "market_cap": null,
+    "ratio": 58463617.08,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-13",
+    "price": 148.66,
+    "tvl": 8462232834.0,
+    "market_cap": null,
+    "ratio": 56923401.28,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-14",
+    "price": 144.73,
+    "tvl": 8472203558.0,
+    "market_cap": null,
+    "ratio": 58537991.83,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-15",
+    "price": 152.91,
+    "tvl": 8353768767.0,
+    "market_cap": null,
+    "ratio": 54631932.29,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-16",
+    "price": 150.67,
+    "tvl": 8632735238.0,
+    "market_cap": null,
+    "ratio": 57295647.69,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-17",
+    "price": 147.6,
+    "tvl": 8621540963.0,
+    "market_cap": null,
+    "ratio": 58411524.14,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-18",
+    "price": 146.42,
+    "tvl": 8443261995.0,
+    "market_cap": null,
+    "ratio": 57664676.92,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-19",
+    "price": 147.09,
+    "tvl": 8383937922.0,
+    "market_cap": null,
+    "ratio": 56998694.15,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-20",
+    "price": 140.15,
+    "tvl": 8389978212.0,
+    "market_cap": null,
+    "ratio": 59864275.5,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-21",
+    "price": 135.46,
+    "tvl": 8112643376.0,
+    "market_cap": null,
+    "ratio": 59889586.42,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-22",
+    "price": 131.81,
+    "tvl": 7905594670.0,
+    "market_cap": null,
+    "ratio": 59977199.53,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-23",
+    "price": 144.62,
+    "tvl": 7796338320.0,
+    "market_cap": null,
+    "ratio": 53909129.58,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-24",
+    "price": 145.96,
+    "tvl": 8260888930.0,
+    "market_cap": null,
+    "ratio": 56596937.04,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-25",
+    "price": 143.61,
+    "tvl": 8404513382.0,
+    "market_cap": null,
+    "ratio": 58523176.53,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-26",
+    "price": 139.16,
+    "tvl": 8345961743.0,
+    "market_cap": null,
+    "ratio": 59973855.58,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-27",
+    "price": 142.15,
+    "tvl": 8146428096.0,
+    "market_cap": null,
+    "ratio": 57308674.61,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-28",
+    "price": 150.78,
+    "tvl": 8249800852.0,
+    "market_cap": null,
+    "ratio": 54714158.72,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-29",
+    "price": 153.41,
+    "tvl": 8556751357.0,
+    "market_cap": null,
+    "ratio": 55777011.65,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-06-30",
+    "price": 154.85,
+    "tvl": 8625335057.0,
+    "market_cap": null,
+    "ratio": 55701227.36,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-01",
+    "price": 146.91,
+    "tvl": 8680982187.0,
+    "market_cap": null,
+    "ratio": 59090478.44,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-02",
+    "price": 152.37,
+    "tvl": 8389191683.0,
+    "market_cap": null,
+    "ratio": 55058027.72,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-03",
+    "price": 152.41,
+    "tvl": 8582612341.0,
+    "market_cap": null,
+    "ratio": 56312658.89,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-04",
+    "price": 147.74,
+    "tvl": 8687163950.0,
+    "market_cap": null,
+    "ratio": 58800351.63,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-05",
+    "price": 147.59,
+    "tvl": 8514470857.0,
+    "market_cap": null,
+    "ratio": 57690025.46,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-06",
+    "price": 151.91,
+    "tvl": 8513407396.0,
+    "market_cap": null,
+    "ratio": 56042442.21,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-07",
+    "price": 148.91,
+    "tvl": 8670809123.0,
+    "market_cap": null,
+    "ratio": 58228521.41,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-08",
+    "price": 151.72,
+    "tvl": 8579012945.0,
+    "market_cap": null,
+    "ratio": 56545036.55,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-09",
+    "price": 157.09,
+    "tvl": 8700989730.0,
+    "market_cap": null,
+    "ratio": 55388565.34,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-10",
+    "price": 164.26,
+    "tvl": 8883604636.0,
+    "market_cap": null,
+    "ratio": 54082580.28,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-11",
+    "price": 162.99,
+    "tvl": 9259018509.0,
+    "market_cap": null,
+    "ratio": 56807279.64,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-12",
+    "price": 160.73,
+    "tvl": 9172296965.0,
+    "market_cap": null,
+    "ratio": 57066490.17,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-13",
+    "price": 161.21,
+    "tvl": 9131575630.0,
+    "market_cap": null,
+    "ratio": 56643977.61,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-14",
+    "price": 162.24,
+    "tvl": 9171478154.0,
+    "market_cap": null,
+    "ratio": 56530314.07,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-15",
+    "price": 164.0,
+    "tvl": 9184896269.0,
+    "market_cap": null,
+    "ratio": 56005465.05,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-16",
+    "price": 173.84,
+    "tvl": 9216052106.0,
+    "market_cap": null,
+    "ratio": 53014565.73,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-17",
+    "price": 175.97,
+    "tvl": 9646309159.0,
+    "market_cap": null,
+    "ratio": 54817918.73,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-18",
+    "price": 177.33,
+    "tvl": 9769929293.0,
+    "market_cap": null,
+    "ratio": 55094621.85,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-19",
+    "price": 177.06,
+    "tvl": 9684667864.0,
+    "market_cap": null,
+    "ratio": 54697096.26,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-20",
+    "price": 181.55,
+    "tvl": 9687139550.0,
+    "market_cap": null,
+    "ratio": 53357970.53,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-21",
+    "price": 195.82,
+    "tvl": 9931456658.0,
+    "market_cap": null,
+    "ratio": 50717274.32,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-22",
+    "price": 205.79,
+    "tvl": 9162284310.0,
+    "market_cap": null,
+    "ratio": 44522495.31,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-23",
+    "price": 189.48,
+    "tvl": 10763232329.0,
+    "market_cap": null,
+    "ratio": 56804054.93,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-24",
+    "price": 182.98,
+    "tvl": 10169267104.0,
+    "market_cap": null,
+    "ratio": 55575839.46,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-25",
+    "price": 186.78,
+    "tvl": 9876788536.0,
+    "market_cap": null,
+    "ratio": 52879261.89,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-26",
+    "price": 184.9,
+    "tvl": 10064465408.0,
+    "market_cap": null,
+    "ratio": 54431938.39,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-27",
+    "price": 188.71,
+    "tvl": 10004169673.0,
+    "market_cap": null,
+    "ratio": 53013458.07,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-28",
+    "price": 183.14,
+    "tvl": 10204334539.0,
+    "market_cap": null,
+    "ratio": 55718764.55,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-29",
+    "price": 181.46,
+    "tvl": 9874453111.0,
+    "market_cap": null,
+    "ratio": 54416693.0,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-30",
+    "price": 177.76,
+    "tvl": 9812668460.0,
+    "market_cap": null,
+    "ratio": 55201780.27,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-07-31",
+    "price": 172.24,
+    "tvl": 9748560510.0,
+    "market_cap": null,
+    "ratio": 56598702.45,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-01",
+    "price": 162.64,
+    "tvl": 9613879429.0,
+    "market_cap": null,
+    "ratio": 59111408.2,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-02",
+    "price": 158.47,
+    "tvl": 9429476230.0,
+    "market_cap": null,
+    "ratio": 59503226.04,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-03",
+    "price": 161.96,
+    "tvl": 9303002711.0,
+    "market_cap": null,
+    "ratio": 57440125.41,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-04",
+    "price": 169.54,
+    "tvl": 9508557015.0,
+    "market_cap": null,
+    "ratio": 56084446.24,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-05",
+    "price": 164.06,
+    "tvl": 9845304015.0,
+    "market_cap": null,
+    "ratio": 60010386.54,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-06",
+    "price": 168.14,
+    "tvl": 9602490762.0,
+    "market_cap": null,
+    "ratio": 57110091.36,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-07",
+    "price": 175.48,
+    "tvl": 9818596153.0,
+    "market_cap": null,
+    "ratio": 55952793.21,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-08",
+    "price": 176.77,
+    "tvl": 10193262220.0,
+    "market_cap": null,
+    "ratio": 57663982.69,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-09",
+    "price": 179.99,
+    "tvl": 10346536018.0,
+    "market_cap": null,
+    "ratio": 57483949.21,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-10",
+    "price": 182.81,
+    "tvl": 10538916580.0,
+    "market_cap": null,
+    "ratio": 57649562.82,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-11",
+    "price": 174.85,
+    "tvl": 10597052147.0,
+    "market_cap": null,
+    "ratio": 60606532.15,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-12",
+    "price": 191.69,
+    "tvl": 10229594135.0,
+    "market_cap": null,
+    "ratio": 53365298.84,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-13",
+    "price": 201.59,
+    "tvl": 10898725980.0,
+    "market_cap": null,
+    "ratio": 54063822.51,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-14",
+    "price": 192.6,
+    "tvl": 11108452566.0,
+    "market_cap": null,
+    "ratio": 57676285.39,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-15",
+    "price": 185.91,
+    "tvl": 10754729145.0,
+    "market_cap": null,
+    "ratio": 57849115.94,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-16",
+    "price": 189.73,
+    "tvl": 10403783250.0,
+    "market_cap": null,
+    "ratio": 54834676.91,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-17",
+    "price": 191.1,
+    "tvl": 10654626932.0,
+    "market_cap": null,
+    "ratio": 55754196.4,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-18",
+    "price": 182.9,
+    "tvl": 10665396516.0,
+    "market_cap": null,
+    "ratio": 58312720.15,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-19",
+    "price": 176.2,
+    "tvl": 10428525764.0,
+    "market_cap": null,
+    "ratio": 59185730.78,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-20",
+    "price": 187.9,
+    "tvl": 10146387871.0,
+    "market_cap": null,
+    "ratio": 53998871.05,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-21",
+    "price": 180.29,
+    "tvl": 10965362752.0,
+    "market_cap": null,
+    "ratio": 60820693.06,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-22",
+    "price": 200.62,
+    "tvl": 10421741495.0,
+    "market_cap": null,
+    "ratio": 51947669.7,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-23",
+    "price": 204.0,
+    "tvl": 11143747549.0,
+    "market_cap": null,
+    "ratio": 54626213.48,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-24",
+    "price": 205.8,
+    "tvl": 11379277658.0,
+    "market_cap": null,
+    "ratio": 55292894.35,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-25",
+    "price": 187.19,
+    "tvl": 11312082410.0,
+    "market_cap": null,
+    "ratio": 60431018.8,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-26",
+    "price": 195.85,
+    "tvl": 10566685429.0,
+    "market_cap": null,
+    "ratio": 53952950.88,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-27",
+    "price": 202.91,
+    "tvl": 10940119908.0,
+    "market_cap": null,
+    "ratio": 53916119.99,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-28",
+    "price": 214.47,
+    "tvl": 11301434815.0,
+    "market_cap": null,
+    "ratio": 52694711.68,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-29",
+    "price": 205.12,
+    "tvl": 11759176724.0,
+    "market_cap": null,
+    "ratio": 57328279.66,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-30",
+    "price": 202.71,
+    "tvl": 11391807645.0,
+    "market_cap": null,
+    "ratio": 56197561.27,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-08-31",
+    "price": 200.71,
+    "tvl": 11402304315.0,
+    "market_cap": null,
+    "ratio": 56809846.62,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-01",
+    "price": 197.27,
+    "tvl": 11225701914.0,
+    "market_cap": null,
+    "ratio": 56905266.46,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-02",
+    "price": 209.52,
+    "tvl": 11114744488.0,
+    "market_cap": null,
+    "ratio": 53048608.67,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-03",
+    "price": 210.71,
+    "tvl": 11667320942.0,
+    "market_cap": null,
+    "ratio": 55371462.87,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-04",
+    "price": 202.33,
+    "tvl": 11613934088.0,
+    "market_cap": null,
+    "ratio": 57400949.38,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-05",
+    "price": 203.36,
+    "tvl": 11352295430.0,
+    "market_cap": null,
+    "ratio": 55823640.0,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-06",
+    "price": 200.17,
+    "tvl": 11387433261.0,
+    "market_cap": null,
+    "ratio": 56888810.82,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-07",
+    "price": 206.41,
+    "tvl": 11351887644.0,
+    "market_cap": null,
+    "ratio": 54996791.07,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-08",
+    "price": 214.11,
+    "tvl": 11499807673.0,
+    "market_cap": null,
+    "ratio": 53709811.19,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-09",
+    "price": 217.11,
+    "tvl": 12112160514.0,
+    "market_cap": null,
+    "ratio": 55788128.2,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-10",
+    "price": 224.07,
+    "tvl": 12166925913.0,
+    "market_cap": null,
+    "ratio": 54299664.89,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-11",
+    "price": 228.78,
+    "tvl": 12328773447.0,
+    "market_cap": null,
+    "ratio": 53889209.93,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-12",
+    "price": 242.33,
+    "tvl": 12673308473.0,
+    "market_cap": null,
+    "ratio": 52297728.19,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-13",
+    "price": 242.45,
+    "tvl": 13186359474.0,
+    "market_cap": null,
+    "ratio": 54387954.11,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-14",
+    "price": 240.02,
+    "tvl": 13205250035.0,
+    "market_cap": null,
+    "ratio": 55017290.37,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-15",
+    "price": 234.47,
+    "tvl": 13001501423.0,
+    "market_cap": null,
+    "ratio": 55450596.76,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-16",
+    "price": 236.97,
+    "tvl": 12739787190.0,
+    "market_cap": null,
+    "ratio": 53761181.54,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-17",
+    "price": 244.85,
+    "tvl": 12553625430.0,
+    "market_cap": null,
+    "ratio": 51270677.68,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-18",
+    "price": 247.65,
+    "tvl": 12888834374.0,
+    "market_cap": null,
+    "ratio": 52044556.33,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-19",
+    "price": 238.54,
+    "tvl": 12737743661.0,
+    "market_cap": null,
+    "ratio": 53398774.47,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-20",
+    "price": 239.52,
+    "tvl": 12452658960.0,
+    "market_cap": null,
+    "ratio": 51990059.12,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-21",
+    "price": 236.28,
+    "tvl": 12461690017.0,
+    "market_cap": null,
+    "ratio": 52741196.96,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-22",
+    "price": 220.51,
+    "tvl": 12294856206.0,
+    "market_cap": null,
+    "ratio": 55756456.42,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-23",
+    "price": 213.33,
+    "tvl": 11946139950.0,
+    "market_cap": null,
+    "ratio": 55998405.99,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-24",
+    "price": 211.73,
+    "tvl": 11421651370.0,
+    "market_cap": null,
+    "ratio": 53944416.8,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-25",
+    "price": 192.8,
+    "tvl": 11328279347.0,
+    "market_cap": null,
+    "ratio": 58756635.62,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-26",
+    "price": 205.27,
+    "tvl": 10766116430.0,
+    "market_cap": null,
+    "ratio": 52448562.53,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-27",
+    "price": 203.54,
+    "tvl": 11104285854.0,
+    "market_cap": null,
+    "ratio": 54555791.76,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-28",
+    "price": 210.89,
+    "tvl": 11071642247.0,
+    "market_cap": null,
+    "ratio": 52499607.6,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-29",
+    "price": 213.01,
+    "tvl": 11328195916.0,
+    "market_cap": null,
+    "ratio": 53181521.6,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-09-30",
+    "price": 208.73,
+    "tvl": 11444637267.0,
+    "market_cap": null,
+    "ratio": 54829862.82,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-01",
+    "price": 222.13,
+    "tvl": 11503319198.0,
+    "market_cap": null,
+    "ratio": 51786427.76,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-02",
+    "price": 234.9,
+    "tvl": 12149046331.0,
+    "market_cap": null,
+    "ratio": 51720078.04,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-03",
+    "price": 232.83,
+    "tvl": 12563884205.0,
+    "market_cap": null,
+    "ratio": 53961620.95,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-04",
+    "price": 228.03,
+    "tvl": 12459808693.0,
+    "market_cap": null,
+    "ratio": 54641094.12,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-05",
+    "price": 228.63,
+    "tvl": 12584473686.0,
+    "market_cap": null,
+    "ratio": 55042967.62,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-06",
+    "price": 232.55,
+    "tvl": 12696321499.0,
+    "market_cap": null,
+    "ratio": 54596093.31,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-07",
+    "price": 220.1,
+    "tvl": 12894083165.0,
+    "market_cap": null,
+    "ratio": 58582840.37,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-08",
+    "price": 229.04,
+    "tvl": 12472494569.0,
+    "market_cap": null,
+    "ratio": 54455529.9,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-09",
+    "price": 220.97,
+    "tvl": 12728761706.0,
+    "market_cap": null,
+    "ratio": 57604026.37,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-10",
+    "price": 188.84,
+    "tvl": 12512078957.0,
+    "market_cap": null,
+    "ratio": 66257567.02,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-11",
+    "price": 177.8,
+    "tvl": 10919872230.0,
+    "market_cap": null,
+    "ratio": 61416604.22,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-12",
+    "price": 197.32,
+    "tvl": 10411745992.0,
+    "market_cap": null,
+    "ratio": 52765791.57,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-13",
+    "price": 208.75,
+    "tvl": 11270865730.0,
+    "market_cap": null,
+    "ratio": 53992171.16,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-14",
+    "price": 202.51,
+    "tvl": 11811924505.0,
+    "market_cap": null,
+    "ratio": 58327611.01,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-15",
+    "price": 193.95,
+    "tvl": 11560727337.0,
+    "market_cap": null,
+    "ratio": 59606740.59,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-16",
+    "price": 184.86,
+    "tvl": 11271954129.0,
+    "market_cap": null,
+    "ratio": 60975625.49,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-17",
+    "price": 182.02,
+    "tvl": 10940155194.0,
+    "market_cap": null,
+    "ratio": 60104137.97,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-18",
+    "price": 187.64,
+    "tvl": 10824437918.0,
+    "market_cap": null,
+    "ratio": 57687262.41,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-19",
+    "price": 187.93,
+    "tvl": 11011713541.0,
+    "market_cap": null,
+    "ratio": 58594761.57,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-20",
+    "price": 189.72,
+    "tvl": 11070231981.0,
+    "market_cap": null,
+    "ratio": 58350368.86,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-21",
+    "price": 185.75,
+    "tvl": 11129057039.0,
+    "market_cap": null,
+    "ratio": 59914169.79,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-22",
+    "price": 180.15,
+    "tvl": 11028040991.0,
+    "market_cap": null,
+    "ratio": 61215881.16,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-23",
+    "price": 191.4,
+    "tvl": 10778228148.0,
+    "market_cap": null,
+    "ratio": 56312581.76,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-24",
+    "price": 193.58,
+    "tvl": 11271295668.0,
+    "market_cap": null,
+    "ratio": 58225517.45,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-25",
+    "price": 193.89,
+    "tvl": 11430659590.0,
+    "market_cap": null,
+    "ratio": 58954353.45,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-26",
+    "price": 200.02,
+    "tvl": 11276926742.0,
+    "market_cap": null,
+    "ratio": 56378995.81,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-27",
+    "price": 198.71,
+    "tvl": 11843019571.0,
+    "market_cap": null,
+    "ratio": 59599514.72,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-28",
+    "price": 194.24,
+    "tvl": 11757796675.0,
+    "market_cap": null,
+    "ratio": 60532314.02,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-29",
+    "price": 194.07,
+    "tvl": 11580631143.0,
+    "market_cap": null,
+    "ratio": 59672443.67,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-30",
+    "price": 184.63,
+    "tvl": 11523181632.0,
+    "market_cap": null,
+    "ratio": 62412292.87,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-10-31",
+    "price": 187.11,
+    "tvl": 11312944215.0,
+    "market_cap": null,
+    "ratio": 60461462.32,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-01",
+    "price": 186.33,
+    "tvl": 11296683706.0,
+    "market_cap": null,
+    "ratio": 60627294.08,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-02",
+    "price": 187.96,
+    "tvl": 11203617266.0,
+    "market_cap": null,
+    "ratio": 59606391.07,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-03",
+    "price": 166.02,
+    "tvl": 11179675452.0,
+    "market_cap": null,
+    "ratio": 67339329.31,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-04",
+    "price": 155.05,
+    "tvl": 10476187234.0,
+    "market_cap": null,
+    "ratio": 67566509.09,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-05",
+    "price": 162.43,
+    "tvl": 9953153411.0,
+    "market_cap": null,
+    "ratio": 61276570.9,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-06",
+    "price": 155.24,
+    "tvl": 10003655284.0,
+    "market_cap": null,
+    "ratio": 64439933.55,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-07",
+    "price": 161.7,
+    "tvl": 9908137799.0,
+    "market_cap": null,
+    "ratio": 61274816.32,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-08",
+    "price": 157.99,
+    "tvl": 10183219239.0,
+    "market_cap": null,
+    "ratio": 64454834.1,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-09",
+    "price": 164.49,
+    "tvl": 9965028626.0,
+    "market_cap": null,
+    "ratio": 60581364.37,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-10",
+    "price": 167.25,
+    "tvl": 10364694502.0,
+    "market_cap": null,
+    "ratio": 61971267.58,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-11",
+    "price": 154.54,
+    "tvl": 10432676661.0,
+    "market_cap": null,
+    "ratio": 67507937.5,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-12",
+    "price": 153.31,
+    "tvl": 9933602226.0,
+    "market_cap": null,
+    "ratio": 64794222.33,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-13",
+    "price": 144.65,
+    "tvl": 9887240814.0,
+    "market_cap": null,
+    "ratio": 68352857.34,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-14",
+    "price": 138.71,
+    "tvl": 9490191417.0,
+    "market_cap": null,
+    "ratio": 68417499.94,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-15",
+    "price": 139.51,
+    "tvl": 9388847998.0,
+    "market_cap": null,
+    "ratio": 67298745.6,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-16",
+    "price": 137.07,
+    "tvl": 9360660065.0,
+    "market_cap": null,
+    "ratio": 68291092.62,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-17",
+    "price": 130.84,
+    "tvl": 9295062440.0,
+    "market_cap": null,
+    "ratio": 71041443.29,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-18",
+    "price": 140.61,
+    "tvl": 8768613941.0,
+    "market_cap": null,
+    "ratio": 62361239.89,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-19",
+    "price": 136.92,
+    "tvl": 9429201734.0,
+    "market_cap": null,
+    "ratio": 68866504.05,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-20",
+    "price": 133.49,
+    "tvl": 9196508119.0,
+    "market_cap": null,
+    "ratio": 68892861.78,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-21",
+    "price": 128.57,
+    "tvl": 8974829961.0,
+    "market_cap": null,
+    "ratio": 69805008.64,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-22",
+    "price": 127.52,
+    "tvl": 8791267621.0,
+    "market_cap": null,
+    "ratio": 68940304.43,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-23",
+    "price": 130.53,
+    "tvl": 8778377545.0,
+    "market_cap": null,
+    "ratio": 67251800.7,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-24",
+    "price": 138.39,
+    "tvl": 8497965980.0,
+    "market_cap": null,
+    "ratio": 61405925.14,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-25",
+    "price": 138.91,
+    "tvl": 9056551508.0,
+    "market_cap": null,
+    "ratio": 65197260.87,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-26",
+    "price": 143.02,
+    "tvl": 9039424038.0,
+    "market_cap": null,
+    "ratio": 63203915.8,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-27",
+    "price": 140.83,
+    "tvl": 9219103956.0,
+    "market_cap": null,
+    "ratio": 65462642.59,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-28",
+    "price": 137.36,
+    "tvl": 9033016666.0,
+    "market_cap": null,
+    "ratio": 65761623.95,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-29",
+    "price": 135.95,
+    "tvl": 8788743492.0,
+    "market_cap": null,
+    "ratio": 64646881.15,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-11-30",
+    "price": 133.55,
+    "tvl": 8828435072.0,
+    "market_cap": null,
+    "ratio": 66105841.05,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-01",
+    "price": 126.7,
+    "tvl": 8704019264.0,
+    "market_cap": null,
+    "ratio": 68697863.17,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-02",
+    "price": 138.66,
+    "tvl": 8216927485.0,
+    "market_cap": null,
+    "ratio": 59259537.61,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-03",
+    "price": 144.72,
+    "tvl": 9002481469.0,
+    "market_cap": null,
+    "ratio": 62206201.42,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-04",
+    "price": 139.04,
+    "tvl": 9242066475.0,
+    "market_cap": null,
+    "ratio": 66470558.65,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-05",
+    "price": 133.31,
+    "tvl": 9045542759.0,
+    "market_cap": null,
+    "ratio": 67853445.05,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-06",
+    "price": 132.23,
+    "tvl": 8806711375.0,
+    "market_cap": null,
+    "ratio": 66601462.41,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-07",
+    "price": 132.35,
+    "tvl": 8515390331.0,
+    "market_cap": null,
+    "ratio": 64339934.5,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-08",
+    "price": 133.25,
+    "tvl": 8406580410.0,
+    "market_cap": null,
+    "ratio": 63088783.56,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-09",
+    "price": 137.88,
+    "tvl": 8790073228.0,
+    "market_cap": null,
+    "ratio": 63751619.0,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-10",
+    "price": 136.3,
+    "tvl": 8974187195.0,
+    "market_cap": null,
+    "ratio": 65841432.1,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-11",
+    "price": 136.36,
+    "tvl": 8903394141.0,
+    "market_cap": null,
+    "ratio": 65293298.19,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-12",
+    "price": 132.23,
+    "tvl": 8935135280.0,
+    "market_cap": null,
+    "ratio": 67572678.51,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-13",
+    "price": 133.17,
+    "tvl": 8752204375.0,
+    "market_cap": null,
+    "ratio": 65722042.31,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-14",
+    "price": 129.34,
+    "tvl": 8808186194.0,
+    "market_cap": null,
+    "ratio": 68101022.07,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-15",
+    "price": 127.75,
+    "tvl": 8676655504.0,
+    "market_cap": null,
+    "ratio": 67919025.47,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-16",
+    "price": 129.15,
+    "tvl": 8573778765.0,
+    "market_cap": null,
+    "ratio": 66386208.01,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-17",
+    "price": 123.22,
+    "tvl": 8768273544.0,
+    "market_cap": null,
+    "ratio": 71159499.63,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-18",
+    "price": 119.55,
+    "tvl": 8513688675.0,
+    "market_cap": null,
+    "ratio": 71214459.85,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-19",
+    "price": 126.21,
+    "tvl": 8302839455.0,
+    "market_cap": null,
+    "ratio": 65785908.05,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-20",
+    "price": 125.79,
+    "tvl": 8479287238.0,
+    "market_cap": null,
+    "ratio": 67408277.59,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-21",
+    "price": 125.99,
+    "tvl": 8529507505.0,
+    "market_cap": null,
+    "ratio": 67699877.01,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-22",
+    "price": 125.78,
+    "tvl": 8495243064.0,
+    "market_cap": null,
+    "ratio": 67540491.84,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-23",
+    "price": 123.91,
+    "tvl": 8500992877.0,
+    "market_cap": null,
+    "ratio": 68606188.98,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-24",
+    "price": 122.45,
+    "tvl": 8359310794.0,
+    "market_cap": null,
+    "ratio": 68267135.92,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-25",
+    "price": 119.97,
+    "tvl": 8325594052.0,
+    "market_cap": null,
+    "ratio": 69397299.76,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-26",
+    "price": 122.17,
+    "tvl": 8180562858.0,
+    "market_cap": null,
+    "ratio": 66960488.32,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-27",
+    "price": 124.63,
+    "tvl": 8215357960.0,
+    "market_cap": null,
+    "ratio": 65917980.9,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-28",
+    "price": 125.14,
+    "tvl": 8243679383.0,
+    "market_cap": null,
+    "ratio": 65875654.33,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-29",
+    "price": 123.13,
+    "tvl": 8372385689.0,
+    "market_cap": null,
+    "ratio": 67996310.31,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-30",
+    "price": 124.88,
+    "tvl": 8198550917.0,
+    "market_cap": null,
+    "ratio": 65651432.71,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2025-12-31",
+    "price": 124.43,
+    "tvl": 7884543536.0,
+    "market_cap": null,
+    "ratio": 63365294.03,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-01",
+    "price": 126.72,
+    "tvl": 8146840119.0,
+    "market_cap": null,
+    "ratio": 64290089.32,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-02",
+    "price": 132.22,
+    "tvl": 9067759779.0,
+    "market_cap": null,
+    "ratio": 68580848.43,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-03",
+    "price": 133.3,
+    "tvl": 8485511347.0,
+    "market_cap": null,
+    "ratio": 63657249.41,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-04",
+    "price": 134.13,
+    "tvl": 8563150943.0,
+    "market_cap": null,
+    "ratio": 63842175.08,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-05",
+    "price": 137.89,
+    "tvl": 8644273452.0,
+    "market_cap": null,
+    "ratio": 62689632.69,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-06",
+    "price": 141.0,
+    "tvl": 8848101747.0,
+    "market_cap": null,
+    "ratio": 62752494.66,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-07",
+    "price": 136.29,
+    "tvl": 8941252958.0,
+    "market_cap": null,
+    "ratio": 65604614.85,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-08",
+    "price": 138.26,
+    "tvl": 8729878478.0,
+    "market_cap": null,
+    "ratio": 63141027.61,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-09",
+    "price": 135.79,
+    "tvl": 8795718286.0,
+    "market_cap": null,
+    "ratio": 64774418.48,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-10",
+    "price": 135.67,
+    "tvl": 8702198742.0,
+    "market_cap": null,
+    "ratio": 64142395.09,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-11",
+    "price": 139.45,
+    "tvl": 8710986336.0,
+    "market_cap": null,
+    "ratio": 62466736.01,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-12",
+    "price": 139.08,
+    "tvl": 8855105630.0,
+    "market_cap": null,
+    "ratio": 63669151.78,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-13",
+    "price": 145.43,
+    "tvl": 8703207264.0,
+    "market_cap": null,
+    "ratio": 59844648.72,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-14",
+    "price": 146.69,
+    "tvl": 9052498224.0,
+    "market_cap": null,
+    "ratio": 61711761.02,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-15",
+    "price": 142.38,
+    "tvl": 9079132613.0,
+    "market_cap": null,
+    "ratio": 63766909.77,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-16",
+    "price": 144.84,
+    "tvl": 8898335686.0,
+    "market_cap": null,
+    "ratio": 61435623.35,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-17",
+    "price": 143.68,
+    "tvl": 9018164170.0,
+    "market_cap": null,
+    "ratio": 62765619.22,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-18",
+    "price": 137.8,
+    "tvl": 8976681137.0,
+    "market_cap": null,
+    "ratio": 65142823.93,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-19",
+    "price": 133.36,
+    "tvl": 8668189185.0,
+    "market_cap": null,
+    "ratio": 64998419.2,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-20",
+    "price": 125.66,
+    "tvl": 8608144314.0,
+    "market_cap": null,
+    "ratio": 68503456.26,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-21",
+    "price": 129.41,
+    "tvl": 8291257208.0,
+    "market_cap": null,
+    "ratio": 64069679.38,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-22",
+    "price": 128.32,
+    "tvl": 8386076021.0,
+    "market_cap": null,
+    "ratio": 65352836.82,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-23",
+    "price": 127.29,
+    "tvl": 8200948983.0,
+    "market_cap": null,
+    "ratio": 64427284.02,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-24",
+    "price": 127.02,
+    "tvl": 8175851660.0,
+    "market_cap": null,
+    "ratio": 64366648.24,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-25",
+    "price": 118.74,
+    "tvl": 8165318436.0,
+    "market_cap": null,
+    "ratio": 68766367.16,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-26",
+    "price": 124.08,
+    "tvl": 7766998336.0,
+    "market_cap": null,
+    "ratio": 62596698.39,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-27",
+    "price": 127.03,
+    "tvl": 8127117161.0,
+    "market_cap": null,
+    "ratio": 63977935.61,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-28",
+    "price": 125.16,
+    "tvl": 8219078113.0,
+    "market_cap": null,
+    "ratio": 65668569.14,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-29",
+    "price": 117.62,
+    "tvl": 8317693252.0,
+    "market_cap": null,
+    "ratio": 70716657.47,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-30",
+    "price": 117.43,
+    "tvl": 8043383698.0,
+    "market_cap": null,
+    "ratio": 68495134.96,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-01-31",
+    "price": 105.44,
+    "tvl": 8067584831.0,
+    "market_cap": null,
+    "ratio": 76513513.19,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-01",
+    "price": 100.63,
+    "tvl": 7553884170.0,
+    "market_cap": null,
+    "ratio": 75065926.36,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-02",
+    "price": 104.46,
+    "tvl": 7392691659.0,
+    "market_cap": null,
+    "ratio": 70770550.06,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-03",
+    "price": 97.75,
+    "tvl": 7471404274.0,
+    "market_cap": null,
+    "ratio": 76433803.31,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-04",
+    "price": 91.94,
+    "tvl": 7231415138.0,
+    "market_cap": null,
+    "ratio": 78653634.3,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-05",
+    "price": 78.18,
+    "tvl": 6957161699.0,
+    "market_cap": null,
+    "ratio": 88989021.48,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-06",
+    "price": 87.42,
+    "tvl": 6111885410.0,
+    "market_cap": null,
+    "ratio": 69914040.38,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-07",
+    "price": 87.55,
+    "tvl": 6412198216.0,
+    "market_cap": null,
+    "ratio": 73240413.66,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-08",
+    "price": 86.95,
+    "tvl": 6460178931.0,
+    "market_cap": null,
+    "ratio": 74297630.03,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-09",
+    "price": 86.72,
+    "tvl": 6486423116.0,
+    "market_cap": null,
+    "ratio": 74797314.53,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-10",
+    "price": 82.94,
+    "tvl": 6463118999.0,
+    "market_cap": null,
+    "ratio": 77925235.1,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-11",
+    "price": 79.23,
+    "tvl": 6338549241.0,
+    "market_cap": null,
+    "ratio": 80001883.64,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-12",
+    "price": 78.32,
+    "tvl": 6333689748.0,
+    "market_cap": null,
+    "ratio": 80869378.8,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-13",
+    "price": 84.29,
+    "tvl": 6292209903.0,
+    "market_cap": null,
+    "ratio": 74649542.09,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-14",
+    "price": 88.04,
+    "tvl": 6588321028.0,
+    "market_cap": null,
+    "ratio": 74833269.29,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-15",
+    "price": 86.09,
+    "tvl": 6623987736.0,
+    "market_cap": null,
+    "ratio": 76942591.89,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-16",
+    "price": 86.42,
+    "tvl": 6609084695.0,
+    "market_cap": null,
+    "ratio": 76476332.97,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-17",
+    "price": 85.02,
+    "tvl": 6626577688.0,
+    "market_cap": null,
+    "ratio": 77941398.35,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-18",
+    "price": 81.56,
+    "tvl": 6569622609.0,
+    "market_cap": null,
+    "ratio": 80549566.07,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-19",
+    "price": 82.49,
+    "tvl": 6422808355.0,
+    "market_cap": null,
+    "ratio": 77861660.26,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-20",
+    "price": 84.62,
+    "tvl": 6439796544.0,
+    "market_cap": null,
+    "ratio": 76102535.38,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-21",
+    "price": 85.2,
+    "tvl": 6534343859.0,
+    "market_cap": null,
+    "ratio": 76694176.75,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-22",
+    "price": 82.73,
+    "tvl": 6527432261.0,
+    "market_cap": null,
+    "ratio": 78900426.22,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-23",
+    "price": 77.86,
+    "tvl": 6378676966.0,
+    "market_cap": null,
+    "ratio": 81924954.61,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-24",
+    "price": 78.96,
+    "tvl": 6316749004.0,
+    "market_cap": null,
+    "ratio": 79999354.15,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-25",
+    "price": 88.05,
+    "tvl": 6256729340.0,
+    "market_cap": null,
+    "ratio": 71058822.71,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-26",
+    "price": 85.89,
+    "tvl": 6584824086.0,
+    "market_cap": null,
+    "ratio": 76665782.82,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-27",
+    "price": 81.87,
+    "tvl": 6577790167.0,
+    "market_cap": null,
+    "ratio": 80344328.41,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-02-28",
+    "price": 84.38,
+    "tvl": 6453385301.0,
+    "market_cap": null,
+    "ratio": 76480034.38,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-01",
+    "price": 83.58,
+    "tvl": 6633508812.0,
+    "market_cap": null,
+    "ratio": 79367178.89,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-02",
+    "price": 86.59,
+    "tvl": 6535396924.0,
+    "market_cap": null,
+    "ratio": 75475192.56,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-03",
+    "price": 86.99,
+    "tvl": 6695278650.0,
+    "market_cap": null,
+    "ratio": 76966072.54,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-04",
+    "price": 90.89,
+    "tvl": 6588746124.0,
+    "market_cap": null,
+    "ratio": 72491430.56,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-05",
+    "price": 88.79,
+    "tvl": 6881554000.0,
+    "market_cap": null,
+    "ratio": 77503705.37,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-06",
+    "price": 84.69,
+    "tvl": 6759375449.0,
+    "market_cap": null,
+    "ratio": 79813147.35,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-07",
+    "price": 83.23,
+    "tvl": 6599362086.0,
+    "market_cap": null,
+    "ratio": 79290665.46,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-08",
+    "price": 81.58,
+    "tvl": 6542714462.0,
+    "market_cap": null,
+    "ratio": 80199981.15,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-09",
+    "price": 85.0,
+    "tvl": 6388925097.0,
+    "market_cap": null,
+    "ratio": 75163824.67,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-10",
+    "price": 85.9,
+    "tvl": 6635526320.0,
+    "market_cap": null,
+    "ratio": 77247105.01,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-11",
+    "price": 86.58,
+    "tvl": 6587312643.0,
+    "market_cap": null,
+    "ratio": 76083537.11,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-12",
+    "price": 86.83,
+    "tvl": 6668651005.0,
+    "market_cap": null,
+    "ratio": 76801232.35,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-13",
+    "price": 88.2,
+    "tvl": 6907463848.0,
+    "market_cap": null,
+    "ratio": 78315916.64,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-14",
+    "price": 88.05,
+    "tvl": 6842006741.0,
+    "market_cap": null,
+    "ratio": 77705925.51,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-15",
+    "price": 92.33,
+    "tvl": 6957998546.0,
+    "market_cap": null,
+    "ratio": 75360105.56,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-16",
+    "price": 96.17,
+    "tvl": 7134438386.0,
+    "market_cap": null,
+    "ratio": 74185696.02,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-17",
+    "price": 94.65,
+    "tvl": 7259475641.0,
+    "market_cap": null,
+    "ratio": 76698105.03,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-18",
+    "price": 90.11,
+    "tvl": 7006786515.0,
+    "market_cap": null,
+    "ratio": 77758145.77,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-19",
+    "price": 88.88,
+    "tvl": 6928444566.0,
+    "market_cap": null,
+    "ratio": 77952796.65,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-20",
+    "price": 89.86,
+    "tvl": 6853496763.0,
+    "market_cap": null,
+    "ratio": 76268604.08,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-21",
+    "price": 87.56,
+    "tvl": 6887397118.0,
+    "market_cap": null,
+    "ratio": 78659172.2,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-22",
+    "price": 86.19,
+    "tvl": 6765813539.0,
+    "market_cap": null,
+    "ratio": 78498822.82,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-23",
+    "price": 91.43,
+    "tvl": 6662621414.0,
+    "market_cap": null,
+    "ratio": 72871283.1,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-03-24",
+    "price": 90.78,
+    "tvl": 6756389607.0,
+    "market_cap": null,
+    "ratio": 74425970.56,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
+  },
+  {
     "date": "2026-03-25",
-    "price": 90.8784,
+    "price": 91.66,
     "tvl": 6650213670.0,
-    "market_cap": 52003762875.83,
-    "ratio": 0.127879,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 72553062.08,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-03-26",
-    "price": 91.6439,
+    "price": 86.48,
     "tvl": 6667432033.0,
-    "market_cap": 52443168886.95,
-    "ratio": 0.127136,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 77097965.23,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-03-27",
-    "price": 86.3742,
+    "price": 83.05,
     "tvl": 6543896596.0,
-    "market_cap": 49416237742.17,
-    "ratio": 0.132424,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 78794661.0,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-03-28",
-    "price": 82.9641,
+    "price": 82.02,
     "tvl": 6399068493.0,
-    "market_cap": 47482157575.12,
-    "ratio": 0.134768,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 78018391.77,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-03-29",
-    "price": 82.0137,
+    "price": 81.34,
     "tvl": 6359641625.0,
-    "market_cap": 46946235168.43,
-    "ratio": 0.135466,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 78185906.38,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-03-30",
-    "price": 81.3395,
+    "price": 82.49,
     "tvl": 6189716797.0,
-    "market_cap": 46566331230.15,
-    "ratio": 0.132923,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 75035965.54,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-03-31",
-    "price": 82.4374,
+    "price": 83.11,
     "tvl": 6161088052.0,
-    "market_cap": 47207778669.47,
-    "ratio": 0.13051,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 74131729.66,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-01",
-    "price": 83.056,
+    "price": 81.17,
     "tvl": 6337041330.0,
-    "market_cap": 47556772134.15,
-    "ratio": 0.133252,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 78071224.96,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-02",
-    "price": 81.2607,
+    "price": 78.95,
     "tvl": 5372813571.0,
-    "market_cap": 46548482069.97,
-    "ratio": 0.115424,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 68053370.12,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-03",
-    "price": 78.943,
+    "price": 80.39,
     "tvl": 5389110527.0,
-    "market_cap": 45212608422.97,
-    "ratio": 0.119195,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 67037075.84,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-04",
-    "price": 80.3443,
+    "price": 80.82,
     "tvl": 5351801422.0,
-    "market_cap": 46017469817.14,
-    "ratio": 0.116299,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 66218775.33,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-05",
-    "price": 80.7697,
+    "price": 81.86,
     "tvl": 5511587938.0,
-    "market_cap": 46263886927.85,
-    "ratio": 0.119134,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 67329439.75,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-06",
-    "price": 81.8061,
+    "price": 80.04,
     "tvl": 5528354296.0,
-    "market_cap": 46867233290.83,
-    "ratio": 0.117958,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 69069893.75,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-07",
-    "price": 80.0509,
+    "price": 85.57,
     "tvl": 5385492173.0,
-    "market_cap": 45861497291.41,
-    "ratio": 0.117429,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 62936685.44,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-08",
-    "price": 85.7197,
+    "price": 82.6,
     "tvl": 5682566254.0,
-    "market_cap": 49114239769.44,
-    "ratio": 0.115701,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 68796201.62,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-09",
-    "price": 82.5983,
+    "price": 83.37,
     "tvl": 5698532957.0,
-    "market_cap": 47378147716.35,
-    "ratio": 0.120278,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 68352320.46,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-10",
-    "price": 83.2962,
+    "price": 84.85,
     "tvl": 5723068363.0,
-    "market_cap": 47823179773.43,
-    "ratio": 0.119671,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 67449244.11,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-11",
-    "price": 84.8054,
+    "price": 84.95,
     "tvl": 5787290311.0,
-    "market_cap": 48697246110.08,
-    "ratio": 0.118842,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 68125842.39,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-12",
-    "price": 84.9288,
+    "price": 81.54,
     "tvl": 5807973029.0,
-    "market_cap": 48793432586.44,
-    "ratio": 0.119032,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 71228513.97,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-13",
-    "price": 81.5349,
+    "price": 86.58,
     "tvl": 5566479953.0,
-    "market_cap": 46868765847.1,
-    "ratio": 0.118767,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 64292907.75,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-14",
-    "price": 86.6043,
+    "price": 83.77,
     "tvl": 5903060246.0,
-    "market_cap": 49813329403.52,
-    "ratio": 0.118504,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 70467473.39,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-15",
-    "price": 83.7578,
+    "price": 84.92,
     "tvl": 5786778731.0,
-    "market_cap": 48174673566.94,
-    "ratio": 0.120121,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 68143885.2,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-16",
-    "price": 84.9392,
+    "price": 89.15,
     "tvl": 5882010138.0,
-    "market_cap": 48864815095.36,
-    "ratio": 0.120373,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 65978801.32,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-17",
-    "price": 88.9868,
+    "price": 88.85,
     "tvl": 5910319820.0,
-    "market_cap": 51190830617.6,
-    "ratio": 0.115457,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 66520200.56,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-18",
-    "price": 88.8359,
+    "price": 86.17,
     "tvl": 6024181367.0,
-    "market_cap": 51107677003.91,
-    "ratio": 0.117872,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 69910425.52,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-19",
-    "price": 86.179,
+    "price": 83.5,
     "tvl": 5808505582.0,
-    "market_cap": 49585975363.86,
-    "ratio": 0.11714,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 69562941.1,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-20",
-    "price": 83.5738,
+    "price": 85.31,
     "tvl": 5566826899.0,
-    "market_cap": 48106340678.34,
-    "ratio": 0.115719,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 65254095.64,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-21",
-    "price": 85.3232,
+    "price": 86.03,
     "tvl": 5536688202.0,
-    "market_cap": 49102916734.76,
-    "ratio": 0.112757,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 64357645.03,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-22",
-    "price": 85.9953,
+    "price": 86.93,
     "tvl": 5591715513.0,
-    "market_cap": 49490383959.58,
-    "ratio": 0.112986,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 64324347.33,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-23",
-    "price": 86.9392,
+    "price": 86.15,
     "tvl": 5595445954.0,
-    "market_cap": 50059858122.53,
-    "ratio": 0.111775,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 64950040.09,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-24",
-    "price": 86.1357,
+    "price": 86.23,
     "tvl": 5555158930.0,
-    "market_cap": 49591153248.48,
-    "ratio": 0.112019,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 64422578.34,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-25",
-    "price": 86.217,
+    "price": 86.21,
     "tvl": 5514158307.0,
-    "market_cap": 49639088898.26,
-    "ratio": 0.111085,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 63961933.73,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-26",
-    "price": 86.1498,
+    "price": 86.94,
     "tvl": 5545751520.0,
-    "market_cap": 49609472150.55,
-    "ratio": 0.111788,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 63788262.25,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-27",
-    "price": 86.962,
+    "price": 84.82,
     "tvl": 5578327140.0,
-    "market_cap": 50077229448.69,
-    "ratio": 0.111394,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 65766648.67,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-28",
-    "price": 84.7726,
+    "price": 84.05,
     "tvl": 5506160665.0,
-    "market_cap": 48848383633.37,
-    "ratio": 0.112719,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 65510537.36,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-29",
-    "price": 84.0718,
+    "price": 83.02,
     "tvl": 5457000503.0,
-    "market_cap": 48377375337.0,
-    "ratio": 0.112801,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 65731155.18,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-04-30",
-    "price": 83.0139,
+    "price": 83.05,
     "tvl": 5413323209.0,
-    "market_cap": 47817761675.61,
-    "ratio": 0.113207,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 65181495.59,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-01",
-    "price": 83.0144,
+    "price": 83.74,
     "tvl": 5421776613.0,
-    "market_cap": 47824493360.55,
-    "ratio": 0.113368,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 64745361.99,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-02",
-    "price": 83.6967,
+    "price": 84.25,
     "tvl": 5419296947.0,
-    "market_cap": 48211592564.61,
-    "ratio": 0.112407,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 64323999.37,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-03",
-    "price": 84.3468,
+    "price": 83.91,
     "tvl": 5448704950.0,
-    "market_cap": 48591957857.38,
-    "ratio": 0.112132,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 64935108.45,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-04",
-    "price": 83.8864,
+    "price": 84.1,
     "tvl": 5496384896.0,
-    "market_cap": 48346804631.2,
-    "ratio": 0.113687,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 65355349.54,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-05",
-    "price": 84.075,
+    "price": 86.31,
     "tvl": 5451985705.0,
-    "market_cap": 48453888458.29,
-    "ratio": 0.112519,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 63167485.86,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-06",
-    "price": 86.3302,
+    "price": 89.14,
     "tvl": 5527752735.0,
-    "market_cap": 49765264931.02,
-    "ratio": 0.111077,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 62012034.27,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-07",
-    "price": 89.0492,
+    "price": 88.41,
     "tvl": 5607620762.0,
-    "market_cap": 51321745365.62,
-    "ratio": 0.109264,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 63427448.95,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-08",
-    "price": 88.4226,
+    "price": 92.01,
     "tvl": 5582935602.0,
-    "market_cap": 51046707916.29,
-    "ratio": 0.109369,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 60677487.25,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-09",
-    "price": 91.9098,
+    "price": 93.16,
     "tvl": 5734448353.0,
-    "market_cap": 53037087092.22,
-    "ratio": 0.108121,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 61554834.19,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-10",
-    "price": 93.1543,
+    "price": 96.46,
     "tvl": 5778824906.0,
-    "market_cap": 53803876577.54,
-    "ratio": 0.107405,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 59909028.68,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-11",
-    "price": 96.4853,
+    "price": 97.35,
     "tvl": 5862059580.0,
-    "market_cap": 55729207857.62,
-    "ratio": 0.105188,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 60216328.51,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-12",
-    "price": 97.3228,
+    "price": 94.27,
     "tvl": 5735926581.0,
-    "market_cap": 56222248483.71,
-    "ratio": 0.102022,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 60845725.9,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-13",
-    "price": 94.3087,
+    "price": 91.11,
     "tvl": 5634649772.0,
-    "market_cap": 54499591538.01,
-    "ratio": 0.103389,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 61844471.21,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-14",
-    "price": 91.0676,
+    "price": 92.15,
     "tvl": 5514393821.0,
-    "market_cap": 52623776109.75,
-    "ratio": 0.104789,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 59841495.62,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-15",
-    "price": 92.1185,
+    "price": 89.22,
     "tvl": 5564031039.0,
-    "market_cap": 53275101113.66,
-    "ratio": 0.10444,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 62363046.84,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-16",
-    "price": 89.2003,
+    "price": 86.5,
     "tvl": 5541329987.0,
-    "market_cap": 51578477073.64,
-    "ratio": 0.107435,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 64061618.35,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-17",
-    "price": 86.5141,
+    "price": 85.2,
     "tvl": 5429206901.0,
-    "market_cap": 50020079079.52,
-    "ratio": 0.108541,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 63723085.69,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-18",
-    "price": 85.1589,
+    "price": 85.33,
     "tvl": 5379335542.0,
-    "market_cap": 49166144680.08,
-    "ratio": 0.109411,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 63041550.94,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-19",
-    "price": 85.2534,
+    "price": 84.23,
     "tvl": 5373894873.0,
-    "market_cap": 49339589998.39,
-    "ratio": 0.108916,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 63800247.81,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-20",
-    "price": 84.2674,
+    "price": 86.06,
     "tvl": 5389872481.0,
-    "market_cap": 48705820395.73,
-    "ratio": 0.110662,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 62629241.01,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-21",
-    "price": 86.0057,
+    "price": 87.26,
     "tvl": 5447126398.0,
-    "market_cap": 49690403389.96,
-    "ratio": 0.109621,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 62424093.49,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-22",
-    "price": 87.1491,
+    "price": 84.28,
     "tvl": 5528463754.0,
-    "market_cap": 50370881820.72,
-    "ratio": 0.109755,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 65596390.06,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-23",
-    "price": 84.3253,
+    "price": 85.66,
     "tvl": 5431940475.0,
-    "market_cap": 48737778204.1,
-    "ratio": 0.111452,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 63412800.32,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-24",
-    "price": 85.6357,
+    "price": 85.18,
     "tvl": 5480668200.0,
-    "market_cap": 49496064665.09,
-    "ratio": 0.110729,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 64342195.35,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-25",
-    "price": 85.3178,
+    "price": 84.96,
     "tvl": 5447900489.0,
-    "market_cap": 49311720276.34,
-    "ratio": 0.110479,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 64123122.52,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-26",
-    "price": 84.9654,
+    "price": 83.6,
     "tvl": 5440201504.0,
-    "market_cap": 49126738236.76,
-    "ratio": 0.110738,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 65074180.67,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-27",
-    "price": 83.6082,
+    "price": 82.31,
     "tvl": 5387073770.0,
-    "market_cap": 48368858303.27,
-    "ratio": 0.111375,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 65448593.97,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-28",
-    "price": 82.3007,
+    "price": 82.02,
     "tvl": 5289341866.0,
-    "market_cap": 47587492590.76,
-    "ratio": 0.11115,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 64488440.21,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-29",
-    "price": 81.9273,
+    "price": 81.9,
     "tvl": 5225581912.0,
-    "market_cap": 47385210996.37,
-    "ratio": 0.110279,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 63804418.95,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-30",
-    "price": 81.9382,
+    "price": 82.6,
     "tvl": 5345051375.0,
-    "market_cap": 47393846288.93,
-    "ratio": 0.112779,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 64710065.07,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-05-31",
-    "price": 82.537,
+    "price": 82.32,
     "tvl": 5393022812.0,
-    "market_cap": 47738327422.03,
-    "ratio": 0.112971,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 65512910.74,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-01",
-    "price": 82.2339,
+    "price": 81.17,
     "tvl": 5381762709.0,
-    "market_cap": 47531411808.51,
-    "ratio": 0.113225,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 66302361.82,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-02",
-    "price": 81.1321,
+    "price": 74.12,
     "tvl": 5280858065.0,
-    "market_cap": 46952730259.1,
-    "ratio": 0.112472,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 71247410.48,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-03",
-    "price": 73.9713,
+    "price": 71.53,
     "tvl": 5015682481.0,
-    "market_cap": 42794187191.18,
-    "ratio": 0.117205,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 70119984.36,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-04",
-    "price": 71.6792,
+    "price": 68.82,
     "tvl": 4985682379.0,
-    "market_cap": 41463157995.67,
-    "ratio": 0.120244,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 72445253.98,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-05",
-    "price": 68.7747,
+    "price": 63.61,
     "tvl": 4930243753.0,
-    "market_cap": 39790355007.83,
-    "ratio": 0.123905,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 77507369.17,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-06",
-    "price": 63.4369,
+    "price": 62.16,
     "tvl": 4712829297.0,
-    "market_cap": 36703780609.02,
-    "ratio": 0.128402,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 75817717.13,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-07",
-    "price": 62.1579,
+    "price": 66.47,
     "tvl": 4701049793.0,
-    "market_cap": 35966388973.02,
-    "ratio": 0.130707,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 70724383.83,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-08",
-    "price": 66.238,
+    "price": 66.82,
     "tvl": 4925315980.0,
-    "market_cap": 38396875748.62,
-    "ratio": 0.128274,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 73710206.23,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-09",
-    "price": 66.7153,
+    "price": 64.89,
     "tvl": 4877264301.0,
-    "market_cap": 38658052240.56,
-    "ratio": 0.126164,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 75162032.69,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-10",
-    "price": 64.9595,
+    "price": 63.13,
     "tvl": 4781674170.0,
-    "market_cap": 37642046442.18,
-    "ratio": 0.12703,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 75743294.31,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-11",
-    "price": 63.1718,
+    "price": 66.85,
     "tvl": 4438992543.0,
-    "market_cap": 36608494381.18,
-    "ratio": 0.121256,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 66402281.87,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-12",
-    "price": 66.7413,
+    "price": 66.79,
     "tvl": 4591621592.0,
-    "market_cap": 38714541347.92,
-    "ratio": 0.118602,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 68747141.67,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-13",
-    "price": 66.7038,
+    "price": 68.87,
     "tvl": 4700193801.0,
-    "market_cap": 38672420928.66,
-    "ratio": 0.121539,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 68247332.67,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-14",
-    "price": 68.8088,
+    "price": 71.24,
     "tvl": 4769195057.0,
-    "market_cap": 39896222165.98,
-    "ratio": 0.11954,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 66945466.83,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-15",
-    "price": 71.0923,
+    "price": 73.95,
     "tvl": 4882906236.0,
-    "market_cap": 41223828549.29,
-    "ratio": 0.118449,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 66029834.16,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-16",
-    "price": 73.9645,
+    "price": 73.39,
     "tvl": 4914704751.0,
-    "market_cap": 42870067431.06,
-    "ratio": 0.114642,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 66966953.96,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-17",
-    "price": 73.4651,
+    "price": 71.98,
     "tvl": 4924940215.0,
-    "market_cap": 42618693386.77,
-    "ratio": 0.115558,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 68420953.25,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-18",
-    "price": 71.9773,
+    "price": 69.64,
     "tvl": 4807784554.0,
-    "market_cap": 41746780613.4,
-    "ratio": 0.115165,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 69037687.45,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-19",
-    "price": 69.6417,
+    "price": 69.7,
     "tvl": 4777928869.0,
-    "market_cap": 40380866374.34,
-    "ratio": 0.118322,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 68549912.04,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-20",
-    "price": 69.4095,
+    "price": 73.14,
     "tvl": 4772404836.0,
-    "market_cap": 40261122330.71,
-    "ratio": 0.118536,
-    "threshold": 0.12,
+    "market_cap": null,
+    "ratio": 65250271.21,
+    "threshold": 0.13,
     "price_change_pct_24h": null
   },
   {
     "date": "2026-06-21",
-    "price": 73.2022,
+    "price": 72.42,
     "tvl": 4908520410.0,
-    "market_cap": 42487082777.75,
-    "ratio": 0.11553,
-    "threshold": 0.12,
-    "price_change_pct_24h": null
-  },
-  {
-    "date": "2026-06-22",
-    "price": 71.8242,
-    "tvl": 4903988488.0,
-    "market_cap": 41685562698.66,
-    "ratio": 0.117642,
-    "threshold": 0.12,
-    "price_change_pct_24h": null
-  },
-  {
-    "date": "2026-06-22",
-    "price": 71.91,
-    "tvl": 4897277109.0,
-    "market_cap": 41743298022.0,
-    "ratio": 0.117319,
+    "market_cap": null,
+    "ratio": 67778519.88,
     "threshold": 0.13,
-    "price_change_pct_24h": -1.23676
+    "price_change_pct_24h": null
+  },
+  {
+    "date": "2026-06-22",
+    "price": 71.88,
+    "tvl": 4897277110.0,
+    "market_cap": null,
+    "ratio": 68131289.79,
+    "threshold": 0.13,
+    "price_change_pct_24h": null
   }
 ]
