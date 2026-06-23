@@ -23,6 +23,7 @@ from email.mime.text import MIMEText
 TVL_MCAP_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.075"))
 
 DEFILLAMA_TVL_URL    = "https://api.llama.fi/v2/historicalChainTvl/Solana"
+DEFILLAMA_FEES_URL   = "https://api.llama.fi/summary/fees/Solana?dataType=dailyFees"
 COINPAPRIKA_TICK_URL = "https://api.coinpaprika.com/v1/tickers/sol-solana"
 
 EMAIL_FROM     = os.environ.get("ALERT_EMAIL_FROM")
@@ -56,6 +57,16 @@ def get_latest_tvl():
     if not isinstance(data, list) or not data:
         raise RuntimeError("Unexpected DefiLlama response shape")
     return float(data[-1]["tvl"])
+
+
+def get_latest_fees():
+    """Today's protocol fees from DefiLlama (returns None on failure, non-fatal)."""
+    try:
+        data = fetch_json(DEFILLAMA_FEES_URL)
+        return float(data.get("total24h") or 0) or None
+    except Exception as e:
+        print("Fee fetch failed (non-fatal): " + str(e), file=sys.stderr)
+        return None
 
 
 def get_market_data():
@@ -120,6 +131,7 @@ def main():
     try:
         tvl    = get_latest_tvl()
         market = get_market_data()
+        fees_usd = get_latest_fees()
     except RuntimeError as e:
         print("ERROR: " + str(e), file=sys.stderr)
         sys.exit(1)
@@ -141,13 +153,14 @@ def main():
     print("SOL Price: $"   + str(price))
     print("24h change: "   + str(chg))
     print("TVL(B)/Price: " + str(ratio))
+    print("Fees (24h): $"  + str(fees_usd))
     print("Threshold: "    + str(TVL_MCAP_THRESHOLD))
 
     append_history({
         "date":                 today,
         "price":                round(price, 4),
         "tvl":                  round(tvl, 2),
-        "market_cap":           round(mcap, 2) if mcap else None,
+        "fees_usd":             round(fees_usd, 2) if fees_usd is not None else None,
         "ratio":                round(ratio, 6),
         "threshold":            TVL_MCAP_THRESHOLD,
         "price_change_pct_24h": chg,

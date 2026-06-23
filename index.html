@@ -34,12 +34,9 @@ body {
 
 /* ── Header ───────────────────────────────────────────────────────────────── */
 .header { margin-bottom: 24px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-.header-left {}
 .header h1 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.025em; display: flex; align-items: center; gap: 10px; }
 .sol-logo { width: 26px; height: 26px; background: linear-gradient(135deg, var(--sol-purple), var(--sol-green)); border-radius: 6px; flex-shrink: 0; }
 .header .sub { color: var(--muted); font-size: 0.78rem; margin-top: 5px; padding-left: 36px; }
-
-/* date format toggle */
 .date-fmt-toggle { display: flex; gap: 4px; flex-shrink: 0; margin-top: 2px; }
 .fmt-btn { padding: 4px 10px; border-radius: 12px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.7rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.15s; }
 .fmt-btn:hover { border-color: var(--sol-purple); color: var(--text); }
@@ -54,9 +51,7 @@ body {
 .gauge-label-col { text-align: right; }
 .gauge-action { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; margin-bottom: 6px; }
 .gauge-zone-name { font-size: 0.95rem; font-weight: 700; }
-.gauge-ratio-sub { font-size: 0.72rem; color: var(--muted); margin-top: 3px; }
-
-/* gradient bar */
+.gauge-sub { font-size: 0.72rem; color: var(--muted); margin-top: 3px; }
 .gauge-bar-wrap { position: relative; margin-bottom: 6px; }
 .gauge-bar { height: 14px; border-radius: 7px; background: linear-gradient(to right, #00C2FF 0%, #14F195 25%, #FFD700 50%, #FF8C00 75%, #FF3366 100%); }
 .gauge-ticks { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; }
@@ -77,6 +72,17 @@ body {
 .stat-sub { font-size: 0.7rem; margin-top: 3px; color: var(--muted); }
 .pos { color: var(--sol-green); }
 .neg { color: var(--hot); }
+
+/* ── Factor breakdown ─────────────────────────────────────────────────────── */
+.factor-section-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 8px; }
+.factor-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 14px; }
+.factor-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 14px 14px 12px; }
+.factor-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin-bottom: 5px; }
+.factor-score { font-size: 1.3rem; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+.factor-detail { font-size: 0.68rem; color: var(--muted); margin-bottom: 10px; min-height: 1em; }
+.factor-bar-wrap { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; margin-bottom: 6px; }
+.factor-bar-fill { height: 100%; border-radius: 2px; transition: width 0.5s ease; }
+.factor-weight { font-size: 0.62rem; color: var(--muted); text-align: right; letter-spacing: 0.04em; }
 
 /* ── Range buttons ────────────────────────────────────────────────────────── */
 .range-row { display: flex; gap: 6px; margin-bottom: 12px; }
@@ -100,7 +106,7 @@ canvas { max-height: 220px; }
 <div class="header">
   <div class="header-left">
     <h1><div class="sol-logo"></div>SOL Heat Index</h1>
-    <div class="sub">DeFi TVL ÷ SOL Price · updated daily · DefiLlama + CoinCap</div>
+    <div class="sub">3-factor composite signal · updated daily · DefiLlama + CoinCap</div>
   </div>
   <div class="date-fmt-toggle">
     <button class="fmt-btn active" data-fmt="iso"  onclick="setDateFmt('iso')">ISO</button>
@@ -112,30 +118,32 @@ canvas { max-height: 220px; }
 <div id="root"><div style="color:var(--muted);font-size:0.85rem;padding:60px 0;text-align:center;letter-spacing:0.05em">LOADING…</div></div>
 
 <div class="footer">
-  <strong>How it works —</strong>
-  The ratio is <em>Solana DeFi TVL (in billions USD) ÷ SOL price</em>. When lots of value is locked
-  in Solana DeFi relative to the token price, the ratio is high — historically that has coincided
-  with attractive entry points. When the market price runs ahead of on-chain activity, the ratio
-  falls and the score rises toward the sell zone.
+  <strong>How the score works —</strong>
+  The Heat Index is a <strong>composite of three independent signals</strong>, each scored 0–100
+  (0 = deep value / buy, 100 = overheated / sell) and weighted together:
   <br><br>
-  The <strong>Heat Index score (0–100)</strong> is calculated as the percentile rank of today's ratio
-  across all history since 2021, then inverted: a high ratio (lots of DeFi per dollar of SOL) scores
-  low (cold/buy), a low ratio scores high (hot/sell).
+  <strong style="color:var(--text)">① 200-day MA Position (40%)</strong> — How far today's price sits below or above
+  its 200-day moving average. Price deeply below the MA = historically oversold territory.
+  Price well above = extended. This is the cleanest cycle-positioning signal because it has
+  no secular drift and has been reliable across every crypto cycle.
   <br><br>
-  <strong>Important limitation:</strong> during the 2022–2023 bear market, Solana DeFi TVL collapsed
-  alongside price (the FTX contagion nearly wiped out the ecosystem). That caused the ratio to stay low
-  even when SOL was at its cheapest, so the signal reads "hot" during that period — it is measuring
-  <em>DeFi ecosystem health</em>, not absolute price cheapness. Use it alongside macro context.
+  <strong style="color:var(--text)">② Protocol Revenue Yield (30%)</strong> — The 30-day average of daily fees paid
+  to Solana divided by SOL price. Think of it as a P/E ratio for the network: high yield means
+  the network is generating lots of fee revenue per dollar of SOL price = fundamentally cheap.
+  Low yield means the price has run ahead of actual on-chain demand.
   <br><br>
-  The two dashed lines on the ratio chart mark the historical 20th and 80th percentile ratio values
-  (the boundaries where roughly 20% or 80% of all daily readings fell below).
-  Data: <strong>DefiLlama</strong> (TVL) · <strong>CoinCap / Yahoo Finance</strong> (price). Updated daily.
+  <strong style="color:var(--text)">③ TVL / Price (30%)</strong> — Solana DeFi TVL (in billions USD) divided by SOL price.
+  High ratio = lots of on-chain activity per dollar of SOL = constructive.
+  <strong>Known limitation:</strong> during the 2022–2023 bear market, TVL collapsed with price (FTX wiped
+  the ecosystem), making this signal unreliable in isolation. At 30% weight it adds useful
+  information without dominating the composite.
+  <br><br>
+  Data: <strong>DefiLlama</strong> (TVL + fees) · <strong>CoinCap</strong> (price). Updated daily.
+  Not financial advice — always combine with macro context before acting.
 </div>
 
 <script>
 // ── Zone definitions ──────────────────────────────────────────────────────────
-// Score 0 = cold = high TVL(B)/Price = undervalued = BUY
-// Score 100 = hot = low TVL(B)/Price = overvalued = SELL
 const ZONES = [
   { max: 20,  label: 'Deep Value',  action: 'Strong Buy',  color: '#00C2FF', bg: 'rgba(0,194,255,0.13)'  },
   { max: 40,  label: 'Undervalued', action: 'Accumulate',  color: '#14F195', bg: 'rgba(20,241,149,0.13)' },
@@ -145,13 +153,12 @@ const ZONES = [
 ];
 function zone(score) { return ZONES.find(z => score <= z.max) || ZONES[4]; }
 
-// ── Score: 100 - percentile rank ──────────────────────────────────────────────
-// HIGH TVL(B)/Price ratio → high percentile → LOW score (cold) → BUY signal
-// LOW  TVL(B)/Price ratio → low percentile  → HIGH score (hot) → SELL signal
-function scoreOf(ratio, sortedRatios) {
-  let lo = 0, hi = sortedRatios.length;
-  while (lo < hi) { const mid = (lo + hi) >>> 1; if (sortedRatios[mid] < ratio) lo = mid + 1; else hi = mid; }
-  return Math.round(100 - (lo / sortedRatios.length) * 100);
+// ── Percentile score (inverted: high value → low score = cold/buy) ────────────
+function pctScore(val, sortedArr) {
+  if (val == null || !sortedArr.length) return null;
+  let lo = 0, hi = sortedArr.length;
+  while (lo < hi) { const mid = (lo + hi) >>> 1; if (sortedArr[mid] < val) lo = mid + 1; else hi = mid; }
+  return Math.round(100 - (lo / sortedArr.length) * 100);
 }
 
 function percentileValue(sortedArr, p) {
@@ -160,32 +167,99 @@ function percentileValue(sortedArr, p) {
   return sortedArr[lo] + (sortedArr[hi] - sortedArr[lo]) * (idx - lo);
 }
 
+// ── Derived series computation ────────────────────────────────────────────────
+function compute200MA(hist) {
+  const result = new Array(hist.length).fill(null);
+  let runningSum = 0;
+  for (let i = 0; i < hist.length; i++) {
+    runningSum += hist[i].price;
+    if (i >= 200) runningSum -= hist[i - 200].price;
+    if (i >= 199) result[i] = runningSum / 200;
+  }
+  return result;
+}
+
+function compute30dRolling(hist, field) {
+  return hist.map((_, i) => {
+    let sum = 0, count = 0;
+    for (let j = Math.max(0, i - 29); j <= i; j++) {
+      if (hist[j][field] != null) { sum += hist[j][field]; count++; }
+    }
+    return count > 0 ? sum / count : null;
+  });
+}
+
+// ── Process full history into derived arrays + scores ─────────────────────────
+let fullHistory   = [];
+let ma200Arr      = [];   // 200-day MA per entry
+let maDevArr      = [];   // % deviation from 200 MA per entry
+let fees30dArr    = [];   // 30d avg fees per entry
+let feesYieldArr  = [];   // fees30d / price per entry
+let allScores     = [];   // { composite, s_ma, s_fees, s_tvl } per entry
+let sortedRatios  = [];
+let sortedMADev   = [];
+let sortedFYield  = [];
+let pct           = {};
+let activeRange   = '1Y';
+let charts        = {};
+
+function processHistory(hist) {
+  ma200Arr     = compute200MA(hist);
+  fees30dArr   = compute30dRolling(hist, 'fees_usd');
+
+  maDevArr     = hist.map((h, i) =>
+    ma200Arr[i] != null ? (h.price / ma200Arr[i] - 1) * 100 : null
+  );
+  feesYieldArr = hist.map((h, i) =>
+    (fees30dArr[i] != null && h.price > 0) ? fees30dArr[i] / h.price : null
+  );
+
+  // Sorted arrays for percentile computation (nulls excluded)
+  sortedRatios = hist.map(h => h.ratio).sort((a, b) => a - b);
+  sortedMADev  = maDevArr.filter(x => x != null).sort((a, b) => a - b);
+  sortedFYield = feesYieldArr.filter(x => x != null).sort((a, b) => a - b);
+
+  // Reference percentile lines for ratio chart
+  pct.p20 = percentileValue(sortedRatios, 20);
+  pct.p80 = percentileValue(sortedRatios, 80);
+
+  allScores = hist.map((h, i) => {
+    const s_tvl  = pctScore(h.ratio,         sortedRatios);
+    const s_ma   = pctScore(maDevArr[i],     sortedMADev);
+    const s_fees = pctScore(feesYieldArr[i], sortedFYield);
+    // Use 50 (neutral) for any factor without enough data yet
+    const w_ma   = s_ma   ?? 50;
+    const w_fees = s_fees ?? 50;
+    const w_tvl  = s_tvl  ?? 50;
+    const composite = Math.round(0.40 * w_ma + 0.30 * w_fees + 0.30 * w_tvl);
+    return { composite, s_ma, s_fees, s_tvl };
+  });
+}
+
 // ── Date formatting ───────────────────────────────────────────────────────────
 let dateFmt = 'iso';
 function formatDate(isoStr) {
-  // isoStr is "YYYY-MM-DD"
   const [y, m, d] = isoStr.split('-');
   if (dateFmt === 'us') return m + '/' + d + '/' + y;
   if (dateFmt === 'eu') return d + '/' + m + '/' + y;
-  return isoStr; // ISO default
+  return isoStr;
 }
 function setDateFmt(fmt) {
   dateFmt = fmt;
   document.querySelectorAll('.fmt-btn').forEach(b => b.classList.toggle('active', b.dataset.fmt === fmt));
-  // Re-render charts with new date labels
   if (fullHistory.length) renderCharts();
 }
 
 // ── Date range filter ─────────────────────────────────────────────────────────
-function filterByRange(history, range) {
-  if (range === 'All') return history;
-  const last = new Date(history[history.length - 1].date + 'T00:00:00Z');
+function filterByRange(hist, range) {
+  if (range === 'All') return hist;
+  const last = new Date(hist[hist.length - 1].date + 'T00:00:00Z');
   const cut  = new Date(last);
   if      (range === '1W') cut.setDate(cut.getDate() - 7);
   else if (range === '1M') cut.setDate(cut.getDate() - 30);
   else if (range === '1Y') cut.setFullYear(cut.getFullYear() - 1);
   else if (range === '5Y') cut.setFullYear(cut.getFullYear() - 5);
-  return history.filter(h => new Date(h.date + 'T00:00:00Z') >= cut);
+  return hist.filter(h => new Date(h.date + 'T00:00:00Z') >= cut);
 }
 
 // ── Chart.js zone band plugin ─────────────────────────────────────────────────
@@ -193,7 +267,7 @@ const bandPlugin = {
   id: 'zoneBands',
   beforeDatasetsDraw(chart, _, opts) {
     if (!opts || !opts.bands) return;
-    const { ctx, chartArea: { left, right, top, bottom }, scales: { y } } = chart;
+    const { ctx, chartArea: { left, right, top }, scales: { y } } = chart;
     opts.bands.forEach(([lo, hi, color]) => {
       const yTop = y.getPixelForValue(hi);
       const yBot = y.getPixelForValue(lo);
@@ -225,31 +299,25 @@ function chartOpts(overrides = {}) {
   };
 }
 
-// ── State ─────────────────────────────────────────────────────────────────────
-let fullHistory  = [];
-let sortedRatios = [];
-let allScores    = [];
-let pct          = {};
-let activeRange  = '1Y';
-let charts       = {};
-
-// ── Render charts ─────────────────────────────────────────────────────────────
+// ── Render all charts ─────────────────────────────────────────────────────────
 function renderCharts() {
-  const view   = filterByRange(fullHistory, activeRange);
-  const labels = view.map(h => formatDate(h.date));
-  const ratios = view.map(h => h.ratio);
-  const prices = view.map(h => h.price);
-  const scores = view.map(h => {
-    const i = fullHistory.indexOf(h);
-    return i >= 0 ? allScores[i] : scoreOf(h.ratio, sortedRatios);
-  });
-  const thresholds = view.map(h => h.threshold);
-  const ptR = view.length > 90 ? 0 : 2;
+  const view    = filterByRange(fullHistory, activeRange);
+  const indices = view.map(h => fullHistory.indexOf(h));
+  const labels  = view.map(h => formatDate(h.date));
+  const ptR     = view.length > 90 ? 0 : 2;
+
+  const composites   = indices.map(i => allScores[i].composite);
+  const ratios       = view.map(h => h.ratio);
+  const prices       = view.map(h => h.price);
+  const ma200View    = indices.map(i => ma200Arr[i]);
+  const feesRaw      = view.map(h => h.fees_usd);
+  const fees30dView  = indices.map(i => fees30dArr[i]);
+  const thresholds   = view.map(h => h.threshold);
 
   Object.values(charts).forEach(c => c && c.destroy());
   charts = {};
 
-  // Score chart — zone bands
+  // ── Composite Heat Score chart ──
   const scoreBands = [
     [0,  20,  'rgba(0,194,255,0.07)'],
     [20, 40,  'rgba(20,241,149,0.07)'],
@@ -262,16 +330,15 @@ function renderCharts() {
     data: {
       labels,
       datasets: [{
-        label: 'Heat Score',
-        data: scores,
+        label: 'Composite Score',
+        data: composites,
         borderColor: '#9945FF',
         borderWidth: 2,
         backgroundColor: ctx => {
           const { ctx: c, chartArea: a } = ctx.chart;
           if (!a) return 'rgba(153,69,255,0.1)';
           const g = c.createLinearGradient(0, a.top, 0, a.bottom);
-          // Low score (cold/buy) at bottom = blue; high score (hot/sell) at top = red
-          g.addColorStop(0, 'rgba(255,51,102,0.2)');
+          g.addColorStop(0, 'rgba(255,51,102,0.18)');
           g.addColorStop(1, 'rgba(0,194,255,0.02)');
           return g;
         },
@@ -281,13 +348,26 @@ function renderCharts() {
     options: chartOpts({
       plugins: {
         zoneBands: { bands: scoreBands },
-        tooltip: { callbacks: { label: ctx => '  Score: ' + ctx.parsed.y + '/100 — ' + zone(ctx.parsed.y).action } }
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const i = indices[ctx.dataIndex];
+              const s = allScores[i];
+              return [
+                '  Composite: ' + ctx.parsed.y + '/100 — ' + zone(ctx.parsed.y).action,
+                '  MA Position: ' + (s.s_ma ?? '—'),
+                '  Rev Yield:   ' + (s.s_fees ?? '—'),
+                '  TVL/Price:   ' + (s.s_tvl ?? '—'),
+              ];
+            }
+          }
+        }
       },
       yAxis: { min: 0, max: 100, ticks: { color: '#5e6378', font: { size: 10 }, stepSize: 20 } },
     }),
   });
 
-  // Ratio chart — with zone reference lines
+  // ── TVL/Price ratio chart ──
   charts.ratio = new Chart(document.getElementById('ratioChart'), {
     type: 'line',
     data: {
@@ -295,8 +375,8 @@ function renderCharts() {
       datasets: [
         { label: 'TVL(B)/Price', data: ratios, borderColor: '#9945FF', borderWidth: 2, backgroundColor: 'rgba(153,69,255,0.07)', fill: true, tension: 0.3, pointRadius: ptR, order: 1 },
         { label: 'Alert threshold', data: thresholds, borderColor: '#FFD700', borderDash: [6,4], borderWidth: 1.5, pointRadius: 0, fill: false, order: 2 },
-        { label: 'Buy zone (ratio 80th %ile)', data: Array(labels.length).fill(pct.p80), borderColor: 'rgba(0,194,255,0.5)', borderDash: [3,6], borderWidth: 1.5, pointRadius: 0, fill: false, order: 3 },
-        { label: 'Sell zone (ratio 20th %ile)', data: Array(labels.length).fill(pct.p20), borderColor: 'rgba(255,51,102,0.5)', borderDash: [3,6], borderWidth: 1.5, pointRadius: 0, fill: false, order: 4 },
+        { label: 'Buy zone (80th %ile)', data: Array(labels.length).fill(pct.p80), borderColor: 'rgba(0,194,255,0.5)', borderDash: [3,6], borderWidth: 1.5, pointRadius: 0, fill: false, order: 3 },
+        { label: 'Sell zone (20th %ile)', data: Array(labels.length).fill(pct.p20), borderColor: 'rgba(255,51,102,0.5)', borderDash: [3,6], borderWidth: 1.5, pointRadius: 0, fill: false, order: 4 },
       ],
     },
     options: chartOpts({
@@ -305,8 +385,8 @@ function renderCharts() {
           callbacks: {
             label: ctx => {
               if (ctx.dataset.label === 'TVL(B)/Price') {
-                const s = scoreOf(ctx.parsed.y, sortedRatios);
-                return '  TVL(B)/Price: ' + ctx.parsed.y.toFixed(4) + '  (score ' + s + ')';
+                const i = indices[ctx.dataIndex];
+                return '  TVL(B)/Price: ' + ctx.parsed.y.toFixed(4) + '  (factor score ' + (allScores[i].s_tvl ?? '—') + ')';
               }
               return '  ' + ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(4);
             }
@@ -316,29 +396,105 @@ function renderCharts() {
     }),
   });
 
-  // Price chart
+  // ── Protocol Revenue (fees) chart ──
+  charts.fees = new Chart(document.getElementById('feesChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'Daily Fees (USD)',
+          data: feesRaw,
+          borderColor: 'rgba(255,215,0,0.3)',
+          borderWidth: 1,
+          pointRadius: 0,
+          fill: false,
+          tension: 0.2,
+          order: 2,
+        },
+        {
+          label: '30d Avg Fees',
+          data: fees30dView,
+          borderColor: '#FFD700',
+          borderWidth: 2,
+          pointRadius: ptR,
+          fill: true,
+          backgroundColor: 'rgba(255,215,0,0.06)',
+          tension: 0.3,
+          order: 1,
+        },
+      ],
+    },
+    options: chartOpts({
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const v = ctx.parsed.y;
+              if (v == null) return null;
+              const fmt = v >= 1e6
+                ? '$' + (v / 1e6).toFixed(2) + 'M'
+                : '$' + (v / 1e3).toFixed(1) + 'k';
+              return '  ' + ctx.dataset.label + ': ' + fmt;
+            }
+          }
+        }
+      },
+      yAxis: {
+        ticks: {
+          color: '#5e6378', font: { size: 10 },
+          callback: v => v >= 1e6 ? '$' + (v/1e6).toFixed(1) + 'M' : '$' + (v/1e3).toFixed(0) + 'k'
+        }
+      }
+    }),
+  });
+
+  // ── SOL Price + 200 MA chart ──
   charts.price = new Chart(document.getElementById('priceChart'), {
     type: 'line',
     data: {
       labels,
-      datasets: [{
-        label: 'SOL Price (USD)',
-        data: prices,
-        borderColor: '#14F195',
-        borderWidth: 2,
-        backgroundColor: ctx => {
-          const { ctx: c, chartArea: a } = ctx.chart;
-          if (!a) return 'rgba(20,241,149,0.08)';
-          const g = c.createLinearGradient(0, a.top, 0, a.bottom);
-          g.addColorStop(0, 'rgba(20,241,149,0.22)');
-          g.addColorStop(1, 'rgba(20,241,149,0)');
-          return g;
+      datasets: [
+        {
+          label: 'SOL Price (USD)',
+          data: prices,
+          borderColor: '#14F195',
+          borderWidth: 2,
+          backgroundColor: ctx => {
+            const { ctx: c, chartArea: a } = ctx.chart;
+            if (!a) return 'rgba(20,241,149,0.08)';
+            const g = c.createLinearGradient(0, a.top, 0, a.bottom);
+            g.addColorStop(0, 'rgba(20,241,149,0.20)');
+            g.addColorStop(1, 'rgba(20,241,149,0)');
+            return g;
+          },
+          fill: true, tension: 0.3, pointRadius: ptR, order: 1,
         },
-        fill: true, tension: 0.3, pointRadius: ptR,
-      }],
+        {
+          label: '200d MA',
+          data: ma200View,
+          borderColor: 'rgba(255,140,0,0.7)',
+          borderWidth: 1.5,
+          borderDash: [5, 4],
+          pointRadius: 0,
+          fill: false,
+          tension: 0.3,
+          order: 2,
+        },
+      ],
     },
     options: chartOpts({
-      plugins: { tooltip: { callbacks: { label: ctx => '  $' + ctx.parsed.y.toLocaleString(undefined, { maximumFractionDigits: 2 }) } } }
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const v = ctx.parsed.y;
+              if (v == null) return null;
+              return '  ' + ctx.dataset.label + ': $' + v.toLocaleString(undefined, { maximumFractionDigits: 2 });
+            }
+          }
+        }
+      }
     }),
   });
 }
@@ -361,37 +517,50 @@ async function boot() {
     return;
   }
   if (!Array.isArray(fullHistory) || !fullHistory.length) {
-    root.innerHTML = '<div class="error">history.json is empty — trigger a workflow run from the Actions tab.</div>';
+    root.innerHTML = '<div class="error">history.json is empty — trigger the backfill workflow from the Actions tab.</div>';
     return;
   }
 
-  sortedRatios = [...fullHistory.map(h => h.ratio)].sort((a, b) => a - b);
-  allScores    = fullHistory.map(h => scoreOf(h.ratio, sortedRatios));
-
-  // p20 of sorted ratios = bottom 20th percentile ratio value (historically low = overheated)
-  // p80 of sorted ratios = top 80th percentile ratio value (historically high = deep value)
-  pct.p20 = percentileValue(sortedRatios, 20);
-  pct.p40 = percentileValue(sortedRatios, 40);
-  pct.p60 = percentileValue(sortedRatios, 60);
-  pct.p80 = percentileValue(sortedRatios, 80);
+  processHistory(fullHistory);
 
   const latest      = fullHistory[fullHistory.length - 1];
-  const latestScore = allScores[allScores.length - 1];
-  const z           = zone(latestScore);
+  const lastIdx     = fullHistory.length - 1;
+  const latestScore = allScores[lastIdx];
+  const z           = zone(latestScore.composite);
   const chg         = latest.price_change_pct_24h;
   const chgHtml     = chg != null
-    ? `<div class="stat-sub ${chg >= 0 ? 'pos' : 'neg'}">${chg >= 0 ? '+' : ''}${chg.toFixed(2)}% 24h</div>`
+    ? `<span class="stat-sub ${chg >= 0 ? 'pos' : 'neg'}">${chg >= 0 ? '+' : ''}${chg.toFixed(2)}% 24h</span>`
     : '';
+
+  // Factor detail text
+  const maDevNow = maDevArr[lastIdx];
+  const maDetail = maDevNow != null
+    ? (maDevNow >= 0 ? '+' : '') + maDevNow.toFixed(1) + '% vs 200d avg'
+    : 'Insufficient history';
+
+  const fyNow = feesYieldArr[lastIdx];
+  const fyDetail = fyNow != null
+    ? (fyNow * 1000).toFixed(3) + ' fees/$k price'
+    : 'No fee data yet';
+
+  const ratioDetail = 'TVL(B)/Price ' + latest.ratio.toFixed(4);
+
+  const factors = [
+    { label: '200d MA Position', score: latestScore.s_ma, detail: maDetail, weight: '40% weight' },
+    { label: 'Revenue Yield',    score: latestScore.s_fees, detail: fyDetail, weight: '30% weight' },
+    { label: 'TVL / Price',      score: latestScore.s_tvl, detail: ratioDetail, weight: '30% weight' },
+  ];
+
   root.innerHTML = `
     <div class="gauge-card">
       <div class="gauge-top">
         <div class="gauge-score-block">
-          <span class="gauge-score" id="gaugeScore" style="color:${z.color}">${latestScore}</span><span class="gauge-denom"> / 100</span>
+          <span class="gauge-score" style="color:${z.color}">${latestScore.composite}</span><span class="gauge-denom"> / 100</span>
         </div>
         <div class="gauge-label-col">
-          <span class="gauge-action" id="gaugeAction" style="background:${z.bg};color:${z.color}">${z.action}</span>
-          <div class="gauge-zone-name" id="gaugeZoneName" style="color:${z.color}">${z.label}</div>
-          <div class="gauge-ratio-sub">TVL(B)/Price ${latest.ratio.toFixed(4)} · ${formatDate(latest.date)}</div>
+          <span class="gauge-action" style="background:${z.bg};color:${z.color}">${z.action}</span>
+          <div class="gauge-zone-name" style="color:${z.color}">${z.label}</div>
+          <div class="gauge-sub">Composite signal · ${formatDate(latest.date)}</div>
         </div>
       </div>
       <div class="gauge-bar-wrap">
@@ -402,7 +571,7 @@ async function boot() {
           <div class="gauge-tick" style="left:60%"></div>
           <div class="gauge-tick" style="left:80%"></div>
         </div>
-        <div class="gauge-needle" id="gaugeNeedle" style="left:${latestScore}%"></div>
+        <div class="gauge-needle" style="left:${latestScore.composite}%"></div>
       </div>
       <div class="gauge-axis">
         <span>0 — Deep Value (Buy)</span>
@@ -421,19 +590,34 @@ async function boot() {
         ${chgHtml}
       </div>
       <div class="stat-card">
-        <div class="stat-label">TVL(B) / Price</div>
-        <div class="stat-value" style="color:${z.color}">${latest.ratio.toFixed(4)}</div>
-        <div class="stat-sub">Score: ${latestScore}/100</div>
-      </div>
-      <div class="stat-card">
         <div class="stat-label">TVL (DeFi)</div>
         <div class="stat-value">$${(latest.tvl / 1e9).toFixed(2)}B</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Daily Revenue</div>
+        <div class="stat-value">${latest.fees_usd != null ? '$' + (latest.fees_usd >= 1e6 ? (latest.fees_usd/1e6).toFixed(2)+'M' : (latest.fees_usd/1e3).toFixed(0)+'k') : '—'}</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Signal</div>
         <div class="stat-value" style="color:${z.color}">${z.action}</div>
         <div class="stat-sub" style="color:${z.color}">${z.label}</div>
       </div>
+    </div>
+
+    <div class="factor-section-label">Score breakdown</div>
+    <div class="factor-grid">
+      ${factors.map(f => {
+        const s = f.score ?? 50;
+        const fz = zone(s);
+        return `
+        <div class="factor-card">
+          <div class="factor-label">${f.label}</div>
+          <div class="factor-score" style="color:${f.score != null ? fz.color : 'var(--muted)'}">${f.score ?? '—'}<span style="font-size:0.8rem;font-weight:500;color:var(--muted)"> /100</span></div>
+          <div class="factor-detail">${f.detail}</div>
+          <div class="factor-bar-wrap"><div class="factor-bar-fill" style="width:${s}%;background:${fz.color}"></div></div>
+          <div class="factor-weight">${f.weight}</div>
+        </div>`;
+      }).join('')}
     </div>
 
     <div class="range-row">
@@ -443,20 +627,23 @@ async function boot() {
     </div>
 
     <div class="chart-card">
-      <h2>Heat Score (0 = Deep Value · 100 = Overheated)</h2>
+      <h2>Composite Heat Score (0 = Deep Value · 100 = Overheated)</h2>
       <canvas id="scoreChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h2>SOL Price + 200-Day Moving Average</h2>
+      <canvas id="priceChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h2>Protocol Revenue — Daily Fees (USD)</h2>
+      <canvas id="feesChart"></canvas>
     </div>
     <div class="chart-card">
       <h2>TVL(B) / Price Ratio</h2>
       <canvas id="ratioChart"></canvas>
     </div>
-    <div class="chart-card">
-      <h2>SOL Price (USD)</h2>
-      <canvas id="priceChart"></canvas>
-    </div>
     <div style="color:var(--muted);font-size:0.7rem;margin-top:8px">
-      ${fullHistory.length} days of history · ${formatDate(fullHistory[0].date)} to ${formatDate(latest.date)} ·
-      Ratio range: ${sortedRatios[0].toFixed(4)}–${sortedRatios[sortedRatios.length-1].toFixed(4)}
+      ${fullHistory.length} days of history · ${formatDate(fullHistory[0].date)} to ${formatDate(latest.date)}
     </div>
   `;
 

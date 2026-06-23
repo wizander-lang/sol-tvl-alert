@@ -1,13 +1,12 @@
 """
 Backfill: seeds history.json with daily SOL data from 2021-01-01 to today.
 
-Data sources (free, no auth, no geo-restrictions):
+Data sources (all free, no auth, no geo-restrictions):
   TVL:   api.llama.fi/v2/historicalChainTvl/Solana  (DefiLlama)
+  Fees:  api.llama.fi/summary/fees/Solana            (DefiLlama)
   Price: CoinCap → DefiLlama coins chart → Binance.US  (tried in order)
 
-Signal: (TVL in $B) / SOL price
-  HIGH ratio = strong on-chain usage per dollar of SOL = undervalued = buy signal
-  LOW ratio  = price outrunning on-chain activity = overvalued = sell signal
+Composite heat score = 40% MA deviation + 30% Revenue Yield + 30% TVL/Price
 """
 
 import os
@@ -19,13 +18,30 @@ import urllib.error
 TVL_MCAP_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.075"))
 HISTORY_FILE = "history.json"
 
-DEFILLAMA_TVL_URL = "https://api.llama.fi/v2/historicalChainTvl/Solana"
+DEFILLAMA_TVL_URL  = "https://api.llama.fi/v2/historicalChainTvl/Solana"
+DEFILLAMA_FEES_URL = "https://api.llama.fi/summary/fees/Solana?dataType=dailyFees"
 
 
 def fetch_json(url, headers=None):
     req = urllib.request.Request(url, headers=headers or {"User-Agent": "sol-backfill/2.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.loads(resp.read().decode("utf-8"))
+
+
+def fetch_fees_history():
+    """Fetch daily Solana protocol fee history from DefiLlama."""
+    print("Fetching Solana fee history from DefiLlama...")
+    data = fetch_json(DEFILLAMA_FEES_URL)
+    fees_by_date = {}
+    for ts, fee_usd in data.get("totalDataChart", []):
+        d = datetime.datetime.fromtimestamp(
+            int(ts), datetime.timezone.utc
+        ).date().isoformat()
+        fees_by_date[d] = float(fee_usd)
+    print("  {} days of fee data ({} to {})".format(
+        len(fees_by_date), min(fees_by_date), max(fees_by_date)
+    ))
+    return fees_by_date
 
 
 def _try_coincap():
@@ -79,8 +95,8 @@ def _try_binance_us():
         if not candles:
             break
         for c in candles:
-            ts    = c[0]          # open-time ms
-            close = float(c[4])   # close price
+            ts    = c[0]
+            close = float(c[4])
             d = datetime.datetime.fromtimestamp(
                 ts / 1000, datetime.timezone.utc
             ).date().isoformat()
@@ -117,7 +133,9 @@ def main():
         len(tvl_by_date), min(tvl_by_date), max(tvl_by_date)
     ))
 
-    print("Fetching SOL price history from Yahoo Finance...")
+    fees_by_date = fetch_fees_history()
+
+    print("Fetching SOL price history...")
     price_by_date = fetch_sol_prices()
     print("  {} days of price data ({} to {})".format(
         len(price_by_date), min(price_by_date), max(price_by_date)
@@ -131,14 +149,13 @@ def main():
         if price <= 0:
             skipped += 1
             continue
-        # Ratio: TVL (in billions USD) / SOL price — a clean 0.0x–0.1x range
-        # High = strong on-chain usage per dollar of SOL = undervalued signal
-        ratio = (tvl / 1e9) / price
+        ratio    = (tvl / 1e9) / price
+        fees_usd = fees_by_date.get(date_str)
         history.append({
             "date":                 date_str,
             "price":                round(price, 4),
             "tvl":                  round(tvl, 2),
-            "market_cap":           None,
+            "fees_usd":             round(fees_usd, 2) if fees_usd is not None else None,
             "ratio":                round(ratio, 6),
             "threshold":            TVL_MCAP_THRESHOLD,
             "price_change_pct_24h": None,
@@ -147,6 +164,8 @@ def main():
     print("Built {} records ({} skipped)".format(len(history), skipped))
     if history:
         print("Date range: {} to {}".format(history[0]["date"], history[-1]["date"]))
+        with_fees = sum(1 for h in history if h["fees_usd"] is not None)
+        print("Records with fee data: {}".format(with_fees))
 
     with open(HISTORY_FILE, "w") as f:
         json.dump(history, f, indent=2)
