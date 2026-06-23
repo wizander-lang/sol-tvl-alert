@@ -21,8 +21,8 @@ from email.mime.text import MIMEText
 TVL_PRICE_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.13"))
 
 DEFILLAMA_TVL_URL = "https://api.llama.fi/v2/historicalChainTvl/Solana"
-# Binance public API — latest daily close, no key needed
-BINANCE_TICKER_URL = "https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT"
+# Kraken public API — no auth, no geo-restrictions
+KRAKEN_TICKER_URL = "https://api.kraken.com/0/public/Ticker?pair=SOLUSD"
 
 EMAIL_FROM     = os.environ.get("ALERT_EMAIL_FROM")
 EMAIL_TO       = os.environ.get("ALERT_EMAIL_TO")
@@ -58,10 +58,15 @@ def get_latest_tvl():
 
 
 def get_sol_price():
-    data = fetch_json(BINANCE_TICKER_URL)
-    if "price" not in data:
-        raise RuntimeError("SOL price missing from Binance response")
-    return float(data["price"])
+    data = fetch_json(KRAKEN_TICKER_URL)
+    if data.get("error"):
+        raise RuntimeError("Kraken error: " + str(data["error"]))
+    result = data.get("result", {})
+    pair_key = next((k for k in result), None)
+    if not pair_key:
+        raise RuntimeError("SOL price missing from Kraken response")
+    # "c" = last trade closed price [price, lot volume]
+    return float(result[pair_key]["c"][0])
 
 
 def send_email(subject, body):

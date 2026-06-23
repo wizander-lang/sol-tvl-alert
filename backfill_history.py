@@ -18,10 +18,11 @@ TVL_PRICE_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.13"))
 HISTORY_FILE = "history.json"
 
 DEFILLAMA_TVL_URL = "https://api.llama.fi/v2/historicalChainTvl/Solana"
-# Binance public API — no key, no auth, returns daily OHLCV, max 1000 per call
-BINANCE_KLINES_URL = (
-    "https://api.binance.com/api/v3/klines"
-    "?symbol=SOLUSDT&interval=1d&limit=1000&startTime={start_ms}"
+# Kraken public API — no auth, no geo-restrictions, 720 candles per call
+# interval=1440 = daily candles; since = Unix seconds
+KRAKEN_OHLC_URL = (
+    "https://api.kraken.com/0/public/OHLC"
+    "?pair=SOLUSD&interval=1440&since={since}"
 )
 
 
@@ -32,29 +33,35 @@ def fetch_json(url):
 
 
 def fetch_sol_prices():
-    """Fetch daily SOL/USDT close prices from Binance in 1000-day chunks."""
+    """Fetch daily SOL/USD close prices from Kraken in 720-day chunks."""
     price_by_date = {}
-    # SOL/USDT listed on Binance ~Sep 2020; start from 2021-01-01
-    start_ms = int(datetime.datetime(2021, 1, 1, tzinfo=datetime.timezone.utc).timestamp() * 1000)
-    now_ms   = int(datetime.datetime.now(datetime.timezone.utc).timestamp() * 1000)
+    # Kraken listed SOL in Sep 2021; starting from 2021-01-01 will auto-skip earlier
+    since = int(datetime.datetime(2021, 1, 1, tzinfo=datetime.timezone.utc).timestamp())
+    now   = int(datetime.datetime.now(datetime.timezone.utc).timestamp())
 
-    while start_ms < now_ms:
-        url  = BINANCE_KLINES_URL.format(start_ms=start_ms)
-        rows = fetch_json(url)
+    while since < now:
+        url  = KRAKEN_OHLC_URL.format(since=since)
+        data = fetch_json(url)
+        if data.get("error"):
+            raise RuntimeError("Kraken error: " + str(data["error"]))
+        result = data.get("result", {})
+        # Kraken returns the pair under various key names; grab the first non-"last" key
+        pair_key = next((k for k in result if k != "last"), None)
+        if not pair_key:
+            break
+        rows = result[pair_key]
         if not rows:
             break
         for row in rows:
-            open_time_ms = int(row[0])
-            close_price  = float(row[4])
-            d = datetime.datetime.fromtimestamp(
-                open_time_ms / 1000, datetime.timezone.utc
-            ).date().isoformat()
-            price_by_date[d] = close_price
-        # Advance past the last candle's open time
-        last_open_ms = int(rows[-1][0])
-        if last_open_ms <= start_ms:
+            ts    = int(row[0])
+            close = float(row[4])
+            d = datetime.datetime.fromtimestamp(ts, datetime.timezone.utc).date().isoformat()
+            price_by_date[d] = close
+        # Kraken's "last" field is the timestamp to use for the next page
+        last = int(result.get("last", 0))
+        if last <= since:
             break
-        start_ms = last_open_ms + 86_400_000  # +1 day in ms
+        since = last
 
     return price_by_date
 
