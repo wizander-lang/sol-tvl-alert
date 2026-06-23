@@ -282,16 +282,16 @@ canvas { max-height: 220px; }
 
 <div class="header">
   <h1><div class="sol-logo"></div>SOL Heat Index</h1>
-  <div class="sub">TVL / Market Cap signal · updated daily · DefiLlama + CoinGecko</div>
+  <div class="sub">TVL / Price signal · updated daily · DefiLlama (no API key required)</div>
 </div>
 
 <div id="root"><div style="color:var(--muted);font-size:0.85rem;padding:60px 0;text-align:center;letter-spacing:0.05em">LOADING…</div></div>
 
 <div class="footer">
   <strong>Methodology —</strong>
-  The Heat Index scores the current TVL/Market Cap ratio on a 0–100 scale by its percentile rank
-  across all available history since 2021. A <em>lower</em> score means the ratio is historically elevated
-  relative to price — on-chain usage is high vs. valuation — which has historically preceded recoveries.
+  The Heat Index scores the current TVL/Price ratio on a 0–100 scale by its percentile rank
+  across all available history since 2021. Both TVL and price data are sourced from DefiLlama — no API key required.
+  A <em>lower</em> score means on-chain usage is high relative to SOL's price — historically a constructive setup.
   Zones: <strong style="color:#00C2FF">Deep Value</strong> 0–20 ·
   <strong style="color:#14F195">Undervalued</strong> 20–40 ·
   <strong style="color:#FFD700">Fair Value</strong> 40–60 ·
@@ -424,7 +424,7 @@ function renderGauge(score) {
 function renderCharts() {
   const view = filterByRange(fullHistory, activeRange);
   const labels = view.map(h => h.date);
-  const ratios  = view.map(h => h.ratio);
+  const ratios  = view.map(h => h.ratio / 1e6);
   const prices  = view.map(h => h.price);
   const scores  = view.map(h => {
     const i = fullHistory.indexOf(h);
@@ -491,7 +491,7 @@ function renderCharts() {
       labels,
       datasets: [
         {
-          label: 'TVL/Mcap',
+          label: 'TVL/Price',
           data: ratios,
           borderColor: '#9945FF',
           borderWidth: 2,
@@ -538,11 +538,11 @@ function renderCharts() {
         tooltip: {
           callbacks: {
             label: ctx => {
-              if (ctx.dataset.label === 'TVL/Mcap') {
-                const s = scoreOf(ctx.parsed.y, sortedRatios);
-                return '  TVL/Mcap: ' + ctx.parsed.y.toFixed(4) + '  (score ' + s + ')';
+              if (ctx.dataset.label === 'TVL/Price') {
+                const s = scoreOf(ctx.parsed.y * 1e6, sortedRatios);
+                return '  TVL/Price: ' + ctx.parsed.y.toFixed(1) + 'M  (score ' + s + ')';
               }
-              return '  ' + ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(4);
+              return '  ' + ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + 'M';
             }
           }
         }
@@ -616,10 +616,10 @@ async function boot() {
   allScores    = fullHistory.map(h => scoreOf(h.ratio, sortedRatios));
 
   // Percentile breakpoints for reference lines on ratio chart
-  pct.p20 = percentileValue(sortedRatios, 20);
-  pct.p40 = percentileValue(sortedRatios, 40);
-  pct.p60 = percentileValue(sortedRatios, 60);
-  pct.p80 = percentileValue(sortedRatios, 80);
+  pct.p20 = percentileValue(sortedRatios, 20) / 1e6;
+  pct.p40 = percentileValue(sortedRatios, 40) / 1e6;
+  pct.p60 = percentileValue(sortedRatios, 60) / 1e6;
+  pct.p80 = percentileValue(sortedRatios, 80) / 1e6;
 
   const latest     = fullHistory[fullHistory.length - 1];
   const latestScore = allScores[allScores.length - 1];
@@ -639,7 +639,7 @@ async function boot() {
         <div class="gauge-label-col">
           <span class="gauge-action" id="gaugeAction" style="background:${z.bg};color:${z.color}">${z.action}</span>
           <div class="gauge-zone-name" id="gaugeZoneName" style="color:${z.color}">${z.label}</div>
-          <div class="gauge-ratio-sub">TVL/Mcap ${latest.ratio.toFixed(4)} · ${latest.date}</div>
+          <div class="gauge-ratio-sub">TVL/Price ${(latest.ratio/1e6).toFixed(1)}M · ${latest.date}</div>
         </div>
       </div>
       <div class="gauge-bar-wrap">
@@ -670,8 +670,8 @@ async function boot() {
         ${chgHtml}
       </div>
       <div class="stat-card">
-        <div class="stat-label">TVL / Mcap</div>
-        <div class="stat-value" style="color:${z.color}">${latest.ratio.toFixed(4)}</div>
+        <div class="stat-label">TVL / Price</div>
+        <div class="stat-value" style="color:${z.color}">${(latest.ratio/1e6).toFixed(1)}M</div>
         <div class="stat-sub">Score: ${latestScore}/100</div>
       </div>
       <div class="stat-card">
@@ -679,8 +679,9 @@ async function boot() {
         <div class="stat-value">$${(latest.tvl / 1e9).toFixed(2)}B</div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">Market Cap</div>
-        <div class="stat-value">$${(latest.market_cap / 1e9).toFixed(2)}B</div>
+        <div class="stat-label">Signal</div>
+        <div class="stat-value" style="color:${z.color}">${z.action}</div>
+        <div class="stat-sub" style="color:${z.color}">${z.label}</div>
       </div>
     </div>
 
@@ -697,7 +698,7 @@ async function boot() {
       <canvas id="scoreChart"></canvas>
     </div>
     <div class="chart-card">
-      <h2>TVL / Market Cap Ratio</h2>
+      <h2>TVL / SOL Price (millions)</h2>
       <canvas id="ratioChart"></canvas>
     </div>
     <div class="chart-card">

@@ -1,9 +1,11 @@
 """
-Solana TVL / Market Cap Alert
--------------------------------
-Pulls Solana's chain TVL (DefiLlama, free, no key) and SOL market cap
-(CoinGecko, free, no key), computes TVL/Mcap, and emails the user if the
-ratio is at/above a threshold while price is down.
+Solana TVL / Price Alert
+-------------------------
+Pulls Solana chain TVL and SOL price both from DefiLlama (free, no key).
+Computes TVL/Price ratio and alerts if it crosses the threshold.
+
+Signal: TVL / Price — on-chain usage per dollar of SOL.
+A rising ratio while price is flat/falling = usage holding up vs valuation.
 """
 
 import os
@@ -16,23 +18,20 @@ import urllib.error
 import urllib.parse
 from email.mime.text import MIMEText
 
-TVL_MCAP_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.13"))
+TVL_PRICE_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.13"))
 
-DEFILLAMA_TVL_URL = "https://api.llama.fi/v2/historicalChainTvl/Solana"
-COINGECKO_MARKETS_URL = (
-    "https://api.coingecko.com/api/v3/coins/markets"
-    "?vs_currency=usd&ids=solana"
-)
+DEFILLAMA_TVL_URL   = "https://api.llama.fi/v2/historicalChainTvl/Solana"
+DEFILLAMA_PRICE_URL = "https://coins.llama.fi/prices/current/coingecko:solana"
 
-EMAIL_FROM = os.environ.get("ALERT_EMAIL_FROM")
-EMAIL_TO = os.environ.get("ALERT_EMAIL_TO")
+EMAIL_FROM     = os.environ.get("ALERT_EMAIL_FROM")
+EMAIL_TO       = os.environ.get("ALERT_EMAIL_TO")
 EMAIL_PASSWORD = os.environ.get("ALERT_EMAIL_APP_PASSWORD")
-SMTP_HOST = "smtp.gmail.com"
-SMTP_PORT = 587
+SMTP_HOST      = "smtp.gmail.com"
+SMTP_PORT      = 587
 
-CALLMEBOT_PHONE = os.environ.get("CALLMEBOT_PHONE")
+CALLMEBOT_PHONE  = os.environ.get("CALLMEBOT_PHONE")
 CALLMEBOT_APIKEY = os.environ.get("CALLMEBOT_APIKEY")
-CALLMEBOT_URL = "https://api.callmebot.com/whatsapp.php"
+CALLMEBOT_URL    = "https://api.callmebot.com/whatsapp.php"
 
 HISTORY_FILE = "history.json"
 
@@ -53,21 +52,17 @@ def fetch_json(url, timeout=15):
 def get_latest_tvl():
     data = fetch_json(DEFILLAMA_TVL_URL)
     if not isinstance(data, list) or not data:
-        raise RuntimeError("Unexpected DefiLlama response shape")
-    latest = data[-1]
-    return float(latest["tvl"])
+        raise RuntimeError("Unexpected DefiLlama TVL response shape")
+    return float(data[-1]["tvl"])
 
 
-def get_market_data():
-    data = fetch_json(COINGECKO_MARKETS_URL)
-    if not isinstance(data, list) or not data:
-        raise RuntimeError("Unexpected CoinGecko response shape")
-    entry = data[0]
-    return {
-        "market_cap": float(entry["market_cap"]),
-        "price": float(entry["current_price"]),
-        "price_change_pct_24h": entry.get("price_change_percentage_24h"),
-    }
+def get_sol_price():
+    data = fetch_json(DEFILLAMA_PRICE_URL)
+    coins = data.get("coins", {})
+    sol = coins.get("coingecko:solana")
+    if not sol:
+        raise RuntimeError("SOL price missing from DefiLlama coins response")
+    return float(sol["price"])
 
 
 def send_email(subject, body):
@@ -77,8 +72,8 @@ def send_email(subject, body):
         return
     msg = MIMEText(body)
     msg["Subject"] = subject
-    msg["From"] = EMAIL_FROM
-    msg["To"] = EMAIL_TO
+    msg["From"]    = EMAIL_FROM
+    msg["To"]      = EMAIL_TO
     with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
         server.starttls()
         server.login(EMAIL_FROM, EMAIL_PASSWORD)
@@ -107,7 +102,7 @@ def append_history(record):
         else:
             history = []
     except (json.JSONDecodeError, OSError) as e:
-        print("Could not read existing history file, starting fresh: " + str(e), file=sys.stderr)
+        print("Could not read history file, starting fresh: " + str(e), file=sys.stderr)
         history = []
 
     history.append(record)
@@ -121,56 +116,49 @@ def append_history(record):
 
 def main():
     try:
-        tvl = get_latest_tvl()
-        market = get_market_data()
+        tvl   = get_latest_tvl()
+        price = get_sol_price()
     except RuntimeError as e:
         print("ERROR: " + str(e), file=sys.stderr)
         sys.exit(1)
 
-    mcap = market["market_cap"]
-    if mcap <= 0:
-        print("ERROR: market cap is zero or negative; aborting.", file=sys.stderr)
+    if price <= 0:
+        print("ERROR: SOL price is zero or negative; aborting.", file=sys.stderr)
         sys.exit(1)
 
-    ratio = tvl / mcap
+    ratio = tvl / price
     today = datetime.date.today().isoformat()
-    price = market["price"]
-    change = market["price_change_pct_24h"]
 
-    print("Date: " + today)
-    print("SOL TVL: " + str(tvl))
-    print("SOL Market Cap: " + str(mcap))
-    print("SOL Price: " + str(price))
-    print("24h change: " + str(change))
-    print("TVL/Mcap ratio: " + str(ratio))
-    print("Threshold: " + str(TVL_MCAP_THRESHOLD))
+    print("Date: "         + today)
+    print("SOL TVL: $"     + str(tvl))
+    print("SOL Price: $"   + str(price))
+    print("TVL/Price: "    + str(ratio))
+    print("Threshold: "    + str(TVL_PRICE_THRESHOLD))
 
     append_history({
-        "date": today,
-        "price": round(price, 4),
-        "tvl": round(tvl, 2),
-        "market_cap": round(mcap, 2),
-        "ratio": round(ratio, 6),
-        "threshold": TVL_MCAP_THRESHOLD,
-        "price_change_pct_24h": change,
+        "date":                 today,
+        "price":                round(price, 4),
+        "tvl":                  round(tvl, 2),
+        "market_cap":           None,
+        "ratio":                round(ratio, 2),
+        "threshold":            TVL_PRICE_THRESHOLD,
+        "price_change_pct_24h": None,
     })
 
-    if ratio >= TVL_MCAP_THRESHOLD:
-        subject = "SOL TVL/Mcap signal: " + str(round(ratio, 3))
+    if ratio >= TVL_PRICE_THRESHOLD:
+        subject = "SOL TVL/Price signal: " + str(round(ratio, 1))
         body = (
-            "Solana's TVL/Market Cap ratio has reached " + str(round(ratio, 4)) +
-            ", at or above your threshold of " + str(TVL_MCAP_THRESHOLD) + ".\n\n" +
-            "TVL: " + str(tvl) + "\n" +
-            "Market Cap: " + str(mcap) + "\n" +
-            "Price: " + str(price) + "\n" +
-            "24h price change: " + str(change) + "%\n\n" +
+            "Solana's TVL/Price ratio has reached " + str(round(ratio, 2)) +
+            ", at or above your threshold of " + str(TVL_PRICE_THRESHOLD) + ".\n\n" +
+            "TVL: $"   + str(tvl)   + "\n" +
+            "Price: $" + str(price) + "\n\n" +
             "Cross-check against your Bitcoin macro dashboard before acting.\n"
         )
         send_email(subject, body)
-        send_whatsapp("SOL alert: TVL/Mcap = " + str(round(ratio, 3)) + ". Price $" + str(price))
-        print("Threshold met - email + WhatsApp attempted.")
+        send_whatsapp("SOL alert: TVL/Price = " + str(round(ratio, 1)) + ". Price $" + str(price))
+        print("Threshold met — email + WhatsApp attempted.")
     else:
-        print("Threshold not met - no alert sent today (history still logged).")
+        print("Threshold not met — no alert sent today (history still logged).")
 
 
 if __name__ == "__main__":
