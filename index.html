@@ -225,7 +225,10 @@ function processHistory(hist) {
 
   allScores = hist.map((h, i) => {
     const s_tvl  = pctScore(h.ratio,         sortedRatios);
-    const s_ma   = pctScore(maDevArr[i],     sortedMADev);
+    // MA deviation: deeply negative (price far below MA) = oversold = BUY = LOW score.
+    // pctScore maps high-value→low-score, so a -80% deviation gets high score (wrong).
+    // Fix: invert so that most-negative deviation = score 0 (Deep Value).
+    const s_ma   = maDevArr[i] != null ? (100 - pctScore(maDevArr[i], sortedMADev)) : null;
     const s_fees = pctScore(feesYieldArr[i], sortedFYield);
     // Use 50 (neutral) for any factor without enough data yet
     const w_ma   = s_ma   ?? 50;
