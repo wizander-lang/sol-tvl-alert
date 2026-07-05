@@ -16,7 +16,7 @@ import urllib.request
 import urllib.error
 
 TVL_MCAP_THRESHOLD = float(os.environ.get("TVL_MCAP_THRESHOLD", "0.075"))
-HISTORY_FILE = "history.json"
+HISTORY_FILE = "history_sol.json"
 
 DEFILLAMA_TVL_URL  = "https://api.llama.fi/v2/historicalChainTvl/Solana"
 DEFILLAMA_FEES_URL = "https://api.llama.fi/summary/fees/Solana?dataType=dailyFees"

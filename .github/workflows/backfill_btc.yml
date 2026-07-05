@@ -1,4 +1,4 @@
-name: One-Time SOL History Backfill (2021–today)
+name: One-Time BTC History Backfill
 
 on:
   workflow_dispatch: {}
@@ -7,7 +7,7 @@ permissions:
   contents: write
 
 jobs:
-  backfill:
+  backfill-btc:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -19,15 +19,13 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run backfill script
-        env:
-          TVL_MCAP_THRESHOLD: "0.075"
-        run: python backfill_history.py
+      - name: Run BTC backfill script
+        run: python backfill_btc.py
 
-      - name: Commit backfilled history_sol.json
+      - name: Commit backfilled history_btc.json
         run: |
           git config user.name "sol-alert-bot"
           git config user.email "actions@github.com"
-          git add history_sol.json
-          git diff --staged --quiet || git commit -m "Backfill SOL history from 2021-01-01 to today"
+          git add history_btc.json
+          git diff --staged --quiet || git commit -m "Backfill BTC history to today"
           git push

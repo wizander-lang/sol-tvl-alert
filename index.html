@@ -3,55 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOL Heat Index</title>
+<title>Crypto Heat Index</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.min.js"></script>
 <style>
-/* ── Solana palette ───────────────────────────────────────────────────────── */
 :root {
-  --bg:         #0a0a0f;
-  --panel:      #12131e;
-  --border:     #21233a;
-  --text:       #e8e9f2;
-  --muted:      #5e6378;
-  --sol-purple: #9945FF;
-  --sol-green:  #14F195;
-  --cold:       #00C2FF;
-  --cool:       #14F195;
-  --neutral:    #FFD700;
-  --warm:       #FF8C00;
-  --hot:        #FF3366;
+  --bg:       #0a0a0f;
+  --panel:    #12131e;
+  --border:   #21233a;
+  --text:     #e8e9f2;
+  --muted:    #5e6378;
+  --primary:  #9945FF;
+  --accent:   #14F195;
+  --cold:     #00C2FF;
+  --cool:     #14F195;
+  --neutral:  #FFD700;
+  --warm:     #FF8C00;
+  --hot:      #FF3366;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: var(--bg);
   color: var(--text);
-  padding: 24px 16px 64px;
+  padding: 20px 16px 64px;
   max-width: 860px;
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
+  transition: background 0.4s, color 0.4s;
 }
 
+/* ── Asset nav ────────────────────────────────────────────────────────────── */
+.asset-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.asset-nav-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-right: 4px;
+}
+.asset-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.03em;
+  transition: all 0.2s;
+}
+.asset-btn:hover { border-color: var(--primary); color: var(--text); }
+.asset-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+.asset-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; opacity: 0.8; }
+
 /* ── Header ───────────────────────────────────────────────────────────────── */
-.header { margin-bottom: 24px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-.header h1 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.025em; display: flex; align-items: center; gap: 10px; }
-.sol-logo { width: 26px; height: 26px; background: linear-gradient(135deg, var(--sol-purple), var(--sol-green)); border-radius: 6px; flex-shrink: 0; }
+.header { margin-bottom: 20px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.header h1 { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.025em; display: flex; align-items: center; gap: 10px; }
+.asset-logo { width: 26px; height: 26px; border-radius: 6px; flex-shrink: 0; transition: background 0.4s; }
 .header .sub { color: var(--muted); font-size: 0.78rem; margin-top: 5px; padding-left: 36px; }
 .date-fmt-toggle { display: flex; gap: 4px; flex-shrink: 0; margin-top: 2px; }
 .fmt-btn { padding: 4px 10px; border-radius: 12px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.7rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.15s; }
-.fmt-btn:hover { border-color: var(--sol-purple); color: var(--text); }
-.fmt-btn.active { background: var(--panel); border-color: var(--sol-purple); color: var(--sol-purple); }
+.fmt-btn:hover { border-color: var(--primary); color: var(--text); }
+.fmt-btn.active { background: var(--panel); border-color: var(--primary); color: var(--primary); }
 
 /* ── Heat gauge ───────────────────────────────────────────────────────────── */
 .gauge-card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 22px 20px 18px; margin-bottom: 12px; }
 .gauge-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; gap: 12px; }
-.gauge-score-block { line-height: 1; }
+.gauge-score-block { line-height: 1; display: flex; align-items: baseline; gap: 6px; }
 .gauge-score { font-size: 4rem; font-weight: 900; letter-spacing: -0.04em; display: inline-block; transition: color 0.4s; }
-.gauge-denom { font-size: 1.4rem; font-weight: 500; color: var(--muted); margin-left: 2px; }
+.gauge-denom { font-size: 1.4rem; font-weight: 500; color: var(--muted); }
+.gauge-trend { font-size: 0.75rem; font-weight: 700; padding: 3px 8px; border-radius: 10px; align-self: center; white-space: nowrap; }
 .gauge-label-col { text-align: right; }
 .gauge-action { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; margin-bottom: 6px; }
 .gauge-zone-name { font-size: 0.95rem; font-weight: 700; }
 .gauge-sub { font-size: 0.72rem; color: var(--muted); margin-top: 3px; }
+.gauge-days { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
 .gauge-bar-wrap { position: relative; margin-bottom: 6px; }
 .gauge-bar { height: 14px; border-radius: 7px; background: linear-gradient(to right, #00C2FF 0%, #14F195 25%, #FFD700 50%, #FF8C00 75%, #FF3366 100%); }
 .gauge-ticks { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; }
@@ -70,7 +107,7 @@ body {
 .stat-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin-bottom: 6px; }
 .stat-value { font-size: 1.15rem; font-weight: 700; }
 .stat-sub { font-size: 0.7rem; margin-top: 3px; color: var(--muted); }
-.pos { color: var(--sol-green); }
+.pos { color: var(--cool); }
 .neg { color: var(--hot); }
 
 /* ── Factor breakdown ─────────────────────────────────────────────────────── */
@@ -87,8 +124,8 @@ body {
 /* ── Range buttons ────────────────────────────────────────────────────────── */
 .range-row { display: flex; gap: 6px; margin-bottom: 12px; }
 .range-btn { padding: 6px 18px; border-radius: 20px; border: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 0.78rem; font-weight: 700; cursor: pointer; font-family: inherit; letter-spacing: 0.03em; transition: all 0.15s; }
-.range-btn:hover { border-color: var(--sol-purple); color: var(--text); }
-.range-btn.active { background: var(--sol-purple); border-color: var(--sol-purple); color: #fff; }
+.range-btn:hover { border-color: var(--primary); color: var(--text); }
+.range-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
 
 /* ── Chart cards ──────────────────────────────────────────────────────────── */
 .chart-card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 16px 16px 12px; margin-bottom: 10px; }
@@ -103,46 +140,102 @@ canvas { max-height: 220px; }
 </head>
 <body>
 
+<!-- Asset navigation -->
+<div class="asset-nav">
+  <span class="asset-nav-label">Asset</span>
+  <button class="asset-btn active" id="nav-SOL" onclick="switchAsset('SOL')">
+    <span class="asset-dot"></span>SOL
+  </button>
+  <button class="asset-btn" id="nav-BTC" onclick="switchAsset('BTC')">
+    <span class="asset-dot"></span>BTC
+  </button>
+</div>
+
 <div class="header">
   <div class="header-left">
-    <h1><div class="sol-logo"></div>SOL Heat Index</h1>
-    <div class="sub">3-factor composite signal · updated daily · DefiLlama + CoinCap</div>
+    <h1><div class="asset-logo" id="assetLogo"></div><span id="assetTitle">Heat Index</span></h1>
+    <div class="sub" id="assetSub"></div>
   </div>
   <div class="date-fmt-toggle">
-    <button class="fmt-btn active" data-fmt="iso"  onclick="setDateFmt('iso')">ISO</button>
-    <button class="fmt-btn"        data-fmt="us"   onclick="setDateFmt('us')">US</button>
-    <button class="fmt-btn"        data-fmt="eu"   onclick="setDateFmt('eu')">EU</button>
+    <button class="fmt-btn active" data-fmt="iso" onclick="setDateFmt('iso')">ISO</button>
+    <button class="fmt-btn"        data-fmt="us"  onclick="setDateFmt('us')">US</button>
+    <button class="fmt-btn"        data-fmt="eu"  onclick="setDateFmt('eu')">EU</button>
   </div>
 </div>
 
 <div id="root"><div style="color:var(--muted);font-size:0.85rem;padding:60px 0;text-align:center;letter-spacing:0.05em">LOADING…</div></div>
 
-<div class="footer">
-  <strong>How the score works —</strong>
-  The Heat Index is a <strong>composite of three independent signals</strong>, each scored 0–100
-  (0 = deep value / buy, 100 = overheated / sell) and weighted together:
-  <br><br>
-  <strong style="color:var(--text)">① 200-day MA Position (40%)</strong> — How far today's price sits below or above
-  its 200-day moving average. Price deeply below the MA = historically oversold territory.
-  Price well above = extended. This is the cleanest cycle-positioning signal because it has
-  no secular drift and has been reliable across every crypto cycle.
-  <br><br>
-  <strong style="color:var(--text)">② Protocol Revenue Yield (30%)</strong> — The 30-day average of daily fees paid
-  to Solana divided by SOL price. Think of it as a P/E ratio for the network: high yield means
-  the network is generating lots of fee revenue per dollar of SOL price = fundamentally cheap.
-  Low yield means the price has run ahead of actual on-chain demand.
-  <br><br>
-  <strong style="color:var(--text)">③ TVL / Price (30%)</strong> — Solana DeFi TVL (in billions USD) divided by SOL price.
-  High ratio = lots of on-chain activity per dollar of SOL = constructive.
-  <strong>Known limitation:</strong> during the 2022–2023 bear market, TVL collapsed with price (FTX wiped
-  the ecosystem), making this signal unreliable in isolation. At 30% weight it adds useful
-  information without dominating the composite.
-  <br><br>
-  Data: <strong>DefiLlama</strong> (TVL + fees) · <strong>CoinCap</strong> (price). Updated daily.
-  Not financial advice — always combine with macro context before acting.
-</div>
+<div class="footer" id="footerText"></div>
 
 <script>
+// ── Asset configuration ───────────────────────────────────────────────────────
+const ASSET_CONFIG = {
+  SOL: {
+    name: 'Solana',
+    symbol: 'SOL',
+    dataFile: 'history_sol.json',
+    logoGradient: 'linear-gradient(135deg, #9945FF, #14F195)',
+    subtitle: '3-factor composite signal · updated daily · DefiLlama + CoinCap',
+    theme: {
+      '--bg':      '#0a0a0f',
+      '--panel':   '#12131e',
+      '--border':  '#21233a',
+      '--primary': '#9945FF',
+      '--accent':  '#14F195',
+      priceColor:  '#14F195',
+      priceFill:   'rgba(20,241,149,0.18)',
+    },
+    weights: { ma: 0.40, fees: 0.30, tvl: 0.30 },
+    footer: `
+      <strong>How the score works —</strong>
+      The Heat Index is a <strong>composite of three independent signals</strong>, each scored 0–100
+      (0 = deep value / buy, 100 = overheated / sell) and weighted together:<br><br>
+      <strong>① 200-day MA Position (40%)</strong> — How far today's price sits below or above its 200-day moving
+      average. Price deeply below the MA = historically oversold. Price well above = extended. The cleanest
+      cycle-positioning signal with no secular drift.<br><br>
+      <strong>② Protocol Revenue Yield (30%)</strong> — 30-day average daily fees divided by SOL price. High yield
+      (cheap network per dollar of SOL) = fundamentally undervalued. Known distortion: meme coin activity
+      can temporarily spike fees, making yield look attractive at price peaks.<br><br>
+      <strong>③ TVL / Price (30%)</strong> — Solana DeFi TVL (billions) ÷ SOL price. High ratio = lots of on-chain
+      activity per dollar. <strong>Known limitation:</strong> TVL collapsed with FTX in 2022, making this signal
+      unreliable in isolation during ecosystem crises.<br><br>
+      Data: <strong>DefiLlama</strong> (TVL + fees) · <strong>CoinCap</strong> (price). Not financial advice.`,
+  },
+
+  BTC: {
+    name: 'Bitcoin',
+    symbol: 'BTC',
+    dataFile: 'history_btc.json',
+    logoGradient: 'linear-gradient(135deg, #F7931A, #FFD700)',
+    subtitle: '3-factor composite signal · updated daily · CoinCap + CoinMetrics + Alternative.me',
+    theme: {
+      '--bg':      '#0f0a00',
+      '--panel':   '#1a1200',
+      '--border':  '#2e2200',
+      '--primary': '#F7931A',
+      '--accent':  '#FFD700',
+      priceColor:  '#F7931A',
+      priceFill:   'rgba(247,147,26,0.18)',
+    },
+    weights: { ma: 0.45, mvrv: 0.35, fg: 0.20 },
+    footer: `
+      <strong>How the score works —</strong>
+      The Bitcoin Heat Index is a <strong>composite of three independent signals</strong>, each scored 0–100
+      (0 = deep value / buy, 100 = overheated / sell) and weighted together:<br><br>
+      <strong>① 200-day MA Position (45%)</strong> — How far price sits relative to its 200-day moving average.
+      Deeply below = historically oversold across every Bitcoin cycle. The single most reliable
+      cycle-positioning signal for BTC.<br><br>
+      <strong>② MVRV Z-Score (35%)</strong> — Market Value vs Realised Value Z-Score. Compares current market cap
+      to the aggregate cost basis of all Bitcoin holders, normalised by standard deviation. Negative or near-zero
+      MVRV = average holder is underwater = genuine capitulation signal, independent of price momentum.<br><br>
+      <strong>③ Fear & Greed Index (20%)</strong> — Composite sentiment indicator from Alternative.me. Extreme fear
+      historically precedes recoveries; extreme greed precedes corrections. Provides crowd-psychology context
+      independent from on-chain data.<br><br>
+      Data: <strong>CoinCap</strong> (price) · <strong>CoinMetrics</strong> (MVRV) ·
+      <strong>Alternative.me</strong> (Fear &amp; Greed). Not financial advice.`,
+  },
+};
+
 // ── Zone definitions ──────────────────────────────────────────────────────────
 const ZONES = [
   { max: 20,  label: 'Deep Value',  action: 'Strong Buy',  color: '#00C2FF', bg: 'rgba(0,194,255,0.13)'  },
@@ -153,32 +246,52 @@ const ZONES = [
 ];
 function zone(score) { return ZONES.find(z => score <= z.max) || ZONES[4]; }
 
-// ── Percentile score (inverted: high value → low score = cold/buy) ────────────
+// Score → heat color for colored-dot chart
+function scoreColor(s) {
+  if (s == null) return 'rgba(94,99,120,0.4)';
+  if (s <= 20)  return '#00C2FF';
+  if (s <= 40)  return '#14F195';
+  if (s <= 60)  return '#FFD700';
+  if (s <= 80)  return '#FF8C00';
+  return '#FF3366';
+}
+
+// ── Percentile helpers ────────────────────────────────────────────────────────
 function pctScore(val, sortedArr) {
   if (val == null || !sortedArr.length) return null;
   let lo = 0, hi = sortedArr.length;
   while (lo < hi) { const mid = (lo + hi) >>> 1; if (sortedArr[mid] < val) lo = mid + 1; else hi = mid; }
   return Math.round(100 - (lo / sortedArr.length) * 100);
 }
-
 function percentileValue(sortedArr, p) {
   const idx = (p / 100) * (sortedArr.length - 1);
   const lo = Math.floor(idx), hi = Math.ceil(idx);
   return sortedArr[lo] + (sortedArr[hi] - sortedArr[lo]) * (idx - lo);
 }
 
-// ── Derived series computation ────────────────────────────────────────────────
-function compute200MA(hist) {
-  const result = new Array(hist.length).fill(null);
-  let runningSum = 0;
+// ── Moving averages ───────────────────────────────────────────────────────────
+function compute200dMA(hist) {
+  const r = new Array(hist.length).fill(null);
+  let sum = 0;
   for (let i = 0; i < hist.length; i++) {
-    runningSum += hist[i].price;
-    if (i >= 200) runningSum -= hist[i - 200].price;
-    if (i >= 199) result[i] = runningSum / 200;
+    sum += hist[i].price;
+    if (i >= 200) sum -= hist[i - 200].price;
+    if (i >= 199) r[i] = sum / 200;
   }
-  return result;
+  return r;
 }
-
+function compute200wSMA(hist) {
+  // 200-week = 1400 days
+  const r = new Array(hist.length).fill(null);
+  const W = 1400;
+  let sum = 0;
+  for (let i = 0; i < hist.length; i++) {
+    sum += hist[i].price;
+    if (i >= W) sum -= hist[i - W].price;
+    if (i >= W - 1) r[i] = sum / W;
+  }
+  return r;
+}
 function compute30dRolling(hist, field) {
   return hist.map((_, i) => {
     let sum = 0, count = 0;
@@ -189,54 +302,77 @@ function compute30dRolling(hist, field) {
   });
 }
 
-// ── Process full history into derived arrays + scores ─────────────────────────
+// ── State ─────────────────────────────────────────────────────────────────────
+let activeAsset   = 'SOL';
 let fullHistory   = [];
-let ma200Arr      = [];   // 200-day MA per entry
-let maDevArr      = [];   // % deviation from 200 MA per entry
-let fees30dArr    = [];   // 30d avg fees per entry
-let feesYieldArr  = [];   // fees30d / price per entry
-let allScores     = [];   // { composite, s_ma, s_fees, s_tvl } per entry
+let ma200Arr      = [];
+let ma200wArr     = [];
+let maDevArr      = [];
+let fees30dArr    = [];
+let feesYieldArr  = [];
+let allScores     = [];
 let sortedRatios  = [];
 let sortedMADev   = [];
 let sortedFYield  = [];
+let sortedMVRV    = [];
+let sortedFG      = [];
 let pct           = {};
 let activeRange   = '1Y';
 let charts        = {};
+let hasMVRV       = false;
 
+// ── Process history (asset-aware) ─────────────────────────────────────────────
 function processHistory(hist) {
-  ma200Arr     = compute200MA(hist);
-  fees30dArr   = compute30dRolling(hist, 'fees_usd');
-
-  maDevArr     = hist.map((h, i) =>
+  ma200Arr  = compute200dMA(hist);
+  ma200wArr = compute200wSMA(hist);
+  maDevArr  = hist.map((h, i) =>
     ma200Arr[i] != null ? (h.price / ma200Arr[i] - 1) * 100 : null
   );
-  feesYieldArr = hist.map((h, i) =>
-    (fees30dArr[i] != null && h.price > 0) ? fees30dArr[i] / h.price : null
-  );
 
-  // Sorted arrays for percentile computation (nulls excluded)
-  sortedRatios = hist.map(h => h.ratio).sort((a, b) => a - b);
-  sortedMADev  = maDevArr.filter(x => x != null).sort((a, b) => a - b);
-  sortedFYield = feesYieldArr.filter(x => x != null).sort((a, b) => a - b);
+  sortedMADev = maDevArr.filter(x => x != null).sort((a, b) => a - b);
 
-  // Reference percentile lines for ratio chart
-  pct.p20 = percentileValue(sortedRatios, 20);
-  pct.p80 = percentileValue(sortedRatios, 80);
+  if (activeAsset === 'SOL') {
+    fees30dArr   = compute30dRolling(hist, 'fees_usd');
+    feesYieldArr = hist.map((h, i) =>
+      (fees30dArr[i] != null && h.price > 0) ? fees30dArr[i] / h.price : null
+    );
+    sortedRatios = hist.map(h => h.ratio).filter(x => x != null).sort((a, b) => a - b);
+    sortedFYield = feesYieldArr.filter(x => x != null).sort((a, b) => a - b);
+    pct.p20 = percentileValue(sortedRatios, 20);
+    pct.p80 = percentileValue(sortedRatios, 80);
 
-  allScores = hist.map((h, i) => {
-    const s_tvl  = pctScore(h.ratio,         sortedRatios);
-    // MA deviation: deeply negative (price far below MA) = oversold = BUY = LOW score.
-    // pctScore maps high-value→low-score, so a -80% deviation gets high score (wrong).
-    // Fix: invert so that most-negative deviation = score 0 (Deep Value).
-    const s_ma   = maDevArr[i] != null ? (100 - pctScore(maDevArr[i], sortedMADev)) : null;
-    const s_fees = pctScore(feesYieldArr[i], sortedFYield);
-    // Use 50 (neutral) for any factor without enough data yet
-    const w_ma   = s_ma   ?? 50;
-    const w_fees = s_fees ?? 50;
-    const w_tvl  = s_tvl  ?? 50;
-    const composite = Math.round(0.40 * w_ma + 0.30 * w_fees + 0.30 * w_tvl);
-    return { composite, s_ma, s_fees, s_tvl };
-  });
+    const cfg = ASSET_CONFIG.SOL;
+    allScores = hist.map((h, i) => {
+      const s_tvl  = pctScore(h.ratio, sortedRatios);
+      const s_ma   = maDevArr[i] != null ? (100 - pctScore(maDevArr[i], sortedMADev)) : null;
+      const s_fees = pctScore(feesYieldArr[i], sortedFYield);
+      const w_ma   = s_ma   ?? 50;
+      const w_fees = s_fees ?? 50;
+      const w_tvl  = s_tvl  ?? 50;
+      const composite = Math.round(cfg.weights.ma * w_ma + cfg.weights.fees * w_fees + cfg.weights.tvl * w_tvl);
+      return { composite, s_ma, s_fees, s_tvl };
+    });
+
+  } else { // BTC
+    const mvrvArr = hist.map(h => h.mvrv_zscore ?? null);
+    const fgArr   = hist.map(h => h.fear_greed   ?? null);
+    sortedMVRV = mvrvArr.filter(x => x != null).sort((a, b) => a - b);
+    sortedFG   = fgArr.filter(x => x != null).sort((a, b) => a - b);
+    hasMVRV    = sortedMVRV.length > 50;
+
+    const cfg = ASSET_CONFIG.BTC;
+    allScores = hist.map((h, i) => {
+      // All three: high value = expensive = sell = HIGH score → invert pctScore
+      const s_ma   = maDevArr[i]  != null ? (100 - pctScore(maDevArr[i],  sortedMADev)) : null;
+      const s_mvrv = mvrvArr[i]   != null ? (100 - pctScore(mvrvArr[i],   sortedMVRV))  : null;
+      const s_fg   = fgArr[i]     != null ? (100 - pctScore(fgArr[i],     sortedFG))    : null;
+      const w_ma   = s_ma   ?? 50;
+      const w_mvrv = s_mvrv ?? 50;
+      const w_fg   = s_fg   ?? 50;
+      const composite = Math.round(cfg.weights.ma * w_ma + cfg.weights.mvrv * w_mvrv + cfg.weights.fg * w_fg);
+      return { composite, s_ma, s_mvrv, s_fg };
+    });
+  }
 }
 
 // ── Date formatting ───────────────────────────────────────────────────────────
@@ -253,7 +389,7 @@ function setDateFmt(fmt) {
   if (fullHistory.length) renderCharts();
 }
 
-// ── Date range filter ─────────────────────────────────────────────────────────
+// ── Range filter ──────────────────────────────────────────────────────────────
 function filterByRange(hist, range) {
   if (range === 'All') return hist;
   const last = new Date(hist[hist.length - 1].date + 'T00:00:00Z');
@@ -265,11 +401,21 @@ function filterByRange(hist, range) {
   return hist.filter(h => new Date(h.date + 'T00:00:00Z') >= cut);
 }
 
-// ── Chart.js zone band plugin ─────────────────────────────────────────────────
+// ── "Days in zone" helper ─────────────────────────────────────────────────────
+function daysInCurrentZone(scores, latestZone) {
+  let count = 0;
+  for (let i = scores.length - 1; i >= 0; i--) {
+    if (zone(scores[i].composite).label === latestZone.label) count++;
+    else break;
+  }
+  return count;
+}
+
+// ── Zone band plugin ──────────────────────────────────────────────────────────
 const bandPlugin = {
   id: 'zoneBands',
   beforeDatasetsDraw(chart, _, opts) {
-    if (!opts || !opts.bands) return;
+    if (!opts?.bands) return;
     const { ctx, chartArea: { left, right, top }, scales: { y } } = chart;
     opts.bands.forEach(([lo, hi, color]) => {
       const yTop = y.getPixelForValue(hi);
@@ -287,7 +433,7 @@ function chartOpts(overrides = {}) {
     responsive: true,
     maintainAspectRatio: true,
     interaction: { mode: 'index', intersect: false },
-    animation: { duration: 250 },
+    animation: { duration: 200 },
     plugins: {
       legend: { labels: { color: '#5e6378', font: { size: 11 }, boxWidth: 10, padding: 14 } },
       tooltip: { backgroundColor: '#191a2a', borderColor: '#21233a', borderWidth: 1, titleColor: '#e8e9f2', bodyColor: '#9096b0', padding: 10, cornerRadius: 8 },
@@ -295,38 +441,36 @@ function chartOpts(overrides = {}) {
       ...(overrides.plugins || {}),
     },
     scales: {
-      x: { ticks: { color: '#5e6378', maxTicksLimit: 7, font: { size: 10 } }, grid: { color: '#191a2a' } },
-      y: { ticks: { color: '#5e6378', font: { size: 10 } }, grid: { color: '#191a2a' }, ...(overrides.yAxis || {}) }
+      x: { ticks: { color: '#5e6378', maxTicksLimit: 7, font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.03)' } },
+      y: { ticks: { color: '#5e6378', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.03)' }, ...(overrides.yAxis || {}) }
     },
     ...(overrides.root || {}),
   };
 }
 
-// ── Render all charts ─────────────────────────────────────────────────────────
+// ── Render charts ─────────────────────────────────────────────────────────────
 function renderCharts() {
+  const cfg     = ASSET_CONFIG[activeAsset];
   const view    = filterByRange(fullHistory, activeRange);
   const indices = view.map(h => fullHistory.indexOf(h));
   const labels  = view.map(h => formatDate(h.date));
-  const ptR     = view.length > 90 ? 0 : 2;
+  // Dot size: visible for shorter ranges, tiny for full history
+  const ptR = view.length > 500 ? 1.5 : view.length > 90 ? 2.5 : 4;
 
-  const composites   = indices.map(i => allScores[i].composite);
-  const ratios       = view.map(h => h.ratio);
-  const prices       = view.map(h => h.price);
-  const ma200View    = indices.map(i => ma200Arr[i]);
-  const feesRaw      = view.map(h => h.fees_usd);
-  const fees30dView  = indices.map(i => fees30dArr[i]);
-  const thresholds   = view.map(h => h.threshold);
+  const composites = indices.map(i => allScores[i].composite);
+  const prices     = view.map(h => h.price);
+  const ma200View  = indices.map(i => ma200Arr[i]);
+  const ma200wView = indices.map(i => ma200wArr[i]);
+  // Colored dots for price chart
+  const dotColors  = indices.map(i => scoreColor(allScores[i]?.composite));
 
-  Object.values(charts).forEach(c => c && c.destroy());
+  Object.values(charts).forEach(c => c?.destroy());
   charts = {};
 
-  // ── Composite Heat Score chart ──
+  // ── Composite score chart ──
   const scoreBands = [
-    [0,  20,  'rgba(0,194,255,0.07)'],
-    [20, 40,  'rgba(20,241,149,0.07)'],
-    [40, 60,  'rgba(255,215,0,0.07)'],
-    [60, 80,  'rgba(255,140,0,0.07)'],
-    [80, 100, 'rgba(255,51,102,0.07)'],
+    [0,20,'rgba(0,194,255,0.06)'],[20,40,'rgba(20,241,149,0.06)'],
+    [40,60,'rgba(255,215,0,0.06)'],[60,80,'rgba(255,140,0,0.06)'],[80,100,'rgba(255,51,102,0.06)'],
   ];
   charts.score = new Chart(document.getElementById('scoreChart'), {
     type: 'line',
@@ -335,7 +479,7 @@ function renderCharts() {
       datasets: [{
         label: 'Composite Score',
         data: composites,
-        borderColor: '#9945FF',
+        borderColor: cfg.theme['--primary'],
         borderWidth: 2,
         backgroundColor: ctx => {
           const { ctx: c, chartArea: a } = ctx.chart;
@@ -346,6 +490,8 @@ function renderCharts() {
           return g;
         },
         fill: true, tension: 0.35, pointRadius: ptR,
+        pointBackgroundColor: dotColors,
+        pointBorderWidth: 0,
       }],
     },
     options: chartOpts({
@@ -356,12 +502,16 @@ function renderCharts() {
             label: ctx => {
               const i = indices[ctx.dataIndex];
               const s = allScores[i];
-              return [
-                '  Composite: ' + ctx.parsed.y + '/100 — ' + zone(ctx.parsed.y).action,
-                '  MA Position: ' + (s.s_ma ?? '—'),
-                '  Rev Yield:   ' + (s.s_fees ?? '—'),
-                '  TVL/Price:   ' + (s.s_tvl ?? '—'),
-              ];
+              const lines = ['  Composite: ' + ctx.parsed.y + '/100 — ' + zone(ctx.parsed.y).action,
+                             '  MA Position: ' + (s.s_ma ?? '—')];
+              if (activeAsset === 'SOL') {
+                lines.push('  Rev Yield:   ' + (s.s_fees ?? '—'));
+                lines.push('  TVL/Price:   ' + (s.s_tvl ?? '—'));
+              } else {
+                lines.push('  MVRV Z-Score: ' + (s.s_mvrv ?? '—'));
+                lines.push('  Fear & Greed: ' + (s.s_fg   ?? '—'));
+              }
+              return lines;
             }
           }
         }
@@ -370,122 +520,51 @@ function renderCharts() {
     }),
   });
 
-  // ── TVL/Price ratio chart ──
-  charts.ratio = new Chart(document.getElementById('ratioChart'), {
-    type: 'line',
-    data: {
-      labels,
-      datasets: [
-        { label: 'TVL(B)/Price', data: ratios, borderColor: '#9945FF', borderWidth: 2, backgroundColor: 'rgba(153,69,255,0.07)', fill: true, tension: 0.3, pointRadius: ptR, order: 1 },
-        { label: 'Alert threshold', data: thresholds, borderColor: '#FFD700', borderDash: [6,4], borderWidth: 1.5, pointRadius: 0, fill: false, order: 2 },
-        { label: 'Buy zone (80th %ile)', data: Array(labels.length).fill(pct.p80), borderColor: 'rgba(0,194,255,0.5)', borderDash: [3,6], borderWidth: 1.5, pointRadius: 0, fill: false, order: 3 },
-        { label: 'Sell zone (20th %ile)', data: Array(labels.length).fill(pct.p20), borderColor: 'rgba(255,51,102,0.5)', borderDash: [3,6], borderWidth: 1.5, pointRadius: 0, fill: false, order: 4 },
-      ],
-    },
-    options: chartOpts({
-      plugins: {
-        tooltip: {
-          callbacks: {
-            label: ctx => {
-              if (ctx.dataset.label === 'TVL(B)/Price') {
-                const i = indices[ctx.dataIndex];
-                return '  TVL(B)/Price: ' + ctx.parsed.y.toFixed(4) + '  (factor score ' + (allScores[i].s_tvl ?? '—') + ')';
-              }
-              return '  ' + ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(4);
-            }
-          }
-        }
-      }
-    }),
-  });
-
-  // ── Protocol Revenue (fees) chart ──
-  charts.fees = new Chart(document.getElementById('feesChart'), {
-    type: 'line',
-    data: {
-      labels,
-      datasets: [
-        {
-          label: 'Daily Fees (USD)',
-          data: feesRaw,
-          borderColor: 'rgba(255,215,0,0.3)',
-          borderWidth: 1,
-          pointRadius: 0,
-          fill: false,
-          tension: 0.2,
-          order: 2,
-        },
-        {
-          label: '30d Avg Fees',
-          data: fees30dView,
-          borderColor: '#FFD700',
-          borderWidth: 2,
-          pointRadius: ptR,
-          fill: true,
-          backgroundColor: 'rgba(255,215,0,0.06)',
-          tension: 0.3,
-          order: 1,
-        },
-      ],
-    },
-    options: chartOpts({
-      plugins: {
-        tooltip: {
-          callbacks: {
-            label: ctx => {
-              const v = ctx.parsed.y;
-              if (v == null) return null;
-              const fmt = v >= 1e6
-                ? '$' + (v / 1e6).toFixed(2) + 'M'
-                : '$' + (v / 1e3).toFixed(1) + 'k';
-              return '  ' + ctx.dataset.label + ': ' + fmt;
-            }
-          }
-        }
+  // ── Price + MA chart (with colored dots) ──
+  const priceDatasets = [
+    {
+      label: activeAsset + ' Price (USD)',
+      data: prices,
+      borderColor: cfg.theme.priceColor,
+      borderWidth: 2,
+      backgroundColor: ctx => {
+        const { ctx: c, chartArea: a } = ctx.chart;
+        if (!a) return cfg.theme.priceFill;
+        const g = c.createLinearGradient(0, a.top, 0, a.bottom);
+        g.addColorStop(0, cfg.theme.priceFill);
+        g.addColorStop(1, 'rgba(0,0,0,0)');
+        return g;
       },
-      yAxis: {
-        ticks: {
-          color: '#5e6378', font: { size: 10 },
-          callback: v => v >= 1e6 ? '$' + (v/1e6).toFixed(1) + 'M' : '$' + (v/1e3).toFixed(0) + 'k'
-        }
-      }
-    }),
-  });
-
-  // ── SOL Price + 200 MA chart ──
+      fill: true, tension: 0.3,
+      pointRadius: ptR,
+      pointBackgroundColor: dotColors,
+      pointBorderWidth: 0,
+      order: 1,
+    },
+    {
+      label: '200d MA',
+      data: ma200View,
+      borderColor: 'rgba(255,140,0,0.7)',
+      borderWidth: 1.5,
+      borderDash: [5, 4],
+      pointRadius: 0,
+      fill: false, tension: 0.3, order: 2,
+    },
+  ];
+  if (activeAsset === 'BTC') {
+    priceDatasets.push({
+      label: '200w SMA',
+      data: ma200wView,
+      borderColor: 'rgba(255,215,0,0.5)',
+      borderWidth: 1.5,
+      borderDash: [2, 5],
+      pointRadius: 0,
+      fill: false, tension: 0.3, order: 3,
+    });
+  }
   charts.price = new Chart(document.getElementById('priceChart'), {
     type: 'line',
-    data: {
-      labels,
-      datasets: [
-        {
-          label: 'SOL Price (USD)',
-          data: prices,
-          borderColor: '#14F195',
-          borderWidth: 2,
-          backgroundColor: ctx => {
-            const { ctx: c, chartArea: a } = ctx.chart;
-            if (!a) return 'rgba(20,241,149,0.08)';
-            const g = c.createLinearGradient(0, a.top, 0, a.bottom);
-            g.addColorStop(0, 'rgba(20,241,149,0.20)');
-            g.addColorStop(1, 'rgba(20,241,149,0)');
-            return g;
-          },
-          fill: true, tension: 0.3, pointRadius: ptR, order: 1,
-        },
-        {
-          label: '200d MA',
-          data: ma200View,
-          borderColor: 'rgba(255,140,0,0.7)',
-          borderWidth: 1.5,
-          borderDash: [5, 4],
-          pointRadius: 0,
-          fill: false,
-          tension: 0.3,
-          order: 2,
-        },
-      ],
-    },
+    data: { labels, datasets: priceDatasets },
     options: chartOpts({
       plugins: {
         tooltip: {
@@ -500,6 +579,129 @@ function renderCharts() {
       }
     }),
   });
+
+  // ── Asset-specific charts ──
+  if (activeAsset === 'SOL') {
+    const feesRaw     = view.map(h => h.fees_usd);
+    const fees30dView = indices.map(i => fees30dArr[i]);
+    const ratios      = view.map(h => h.ratio);
+    const thresholds  = view.map(h => h.threshold);
+
+    charts.extra1 = new Chart(document.getElementById('extraChart1'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          { label: 'Daily Fees (USD)', data: feesRaw, borderColor: 'rgba(255,215,0,0.3)', borderWidth: 1, pointRadius: 0, fill: false, tension: 0.2, order: 2 },
+          { label: '30d Avg Fees', data: fees30dView, borderColor: '#FFD700', borderWidth: 2, pointRadius: ptR, fill: true, backgroundColor: 'rgba(255,215,0,0.06)', tension: 0.3, order: 1 },
+        ],
+      },
+      options: chartOpts({
+        plugins: {
+          tooltip: { callbacks: { label: ctx => {
+            const v = ctx.parsed.y;
+            if (v == null) return null;
+            return '  ' + ctx.dataset.label + ': ' + (v >= 1e6 ? '$' + (v/1e6).toFixed(2) + 'M' : '$' + (v/1e3).toFixed(1) + 'k');
+          }}}
+        },
+        yAxis: { ticks: { color: '#5e6378', font: { size: 10 }, callback: v => v >= 1e6 ? '$' + (v/1e6).toFixed(1) + 'M' : '$' + (v/1e3).toFixed(0) + 'k' } }
+      }),
+    });
+
+    charts.extra2 = new Chart(document.getElementById('extraChart2'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          { label: 'TVL(B)/Price', data: ratios, borderColor: '#9945FF', borderWidth: 2, backgroundColor: 'rgba(153,69,255,0.07)', fill: true, tension: 0.3, pointRadius: ptR, order: 1 },
+          { label: 'Alert threshold', data: thresholds, borderColor: '#FFD700', borderDash: [6,4], borderWidth: 1.5, pointRadius: 0, fill: false, order: 2 },
+          { label: 'Buy zone (80th %ile)', data: Array(labels.length).fill(pct.p80), borderColor: 'rgba(0,194,255,0.5)', borderDash: [3,6], borderWidth: 1.5, pointRadius: 0, fill: false, order: 3 },
+          { label: 'Sell zone (20th %ile)', data: Array(labels.length).fill(pct.p20), borderColor: 'rgba(255,51,102,0.5)', borderDash: [3,6], borderWidth: 1.5, pointRadius: 0, fill: false, order: 4 },
+        ],
+      },
+      options: chartOpts({
+        plugins: { tooltip: { callbacks: { label: ctx => {
+          if (ctx.dataset.label === 'TVL(B)/Price') {
+            const i = indices[ctx.dataIndex];
+            return '  TVL(B)/Price: ' + ctx.parsed.y.toFixed(4) + '  (factor score ' + (allScores[i].s_tvl ?? '—') + ')';
+          }
+          return '  ' + ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(4);
+        }}}}
+      }),
+    });
+
+  } else { // BTC
+    const mvrvView = indices.map(i => fullHistory[i]?.mvrv_zscore ?? null);
+    const fgView   = indices.map(i => fullHistory[i]?.fear_greed  ?? null);
+
+    charts.extra1 = new Chart(document.getElementById('extraChart1'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          {
+            label: 'MVRV Z-Score',
+            data: mvrvView,
+            borderColor: '#F7931A',
+            borderWidth: 2,
+            backgroundColor: 'rgba(247,147,26,0.07)',
+            fill: true, tension: 0.3, pointRadius: ptR, order: 1,
+          },
+        ],
+      },
+      options: chartOpts({
+        plugins: {
+          zoneBands: { bands: [[-1, -0.5, 'rgba(0,194,255,0.1)'], [7, 12, 'rgba(255,51,102,0.08)']] },
+          tooltip: { callbacks: { label: ctx => {
+            const v = ctx.parsed.y;
+            if (v == null) return null;
+            const i = indices[ctx.dataIndex];
+            return ['  MVRV Z-Score: ' + v.toFixed(2), '  Factor score: ' + (allScores[i]?.s_mvrv ?? '—')];
+          }}}
+        },
+        yAxis: { ticks: { color: '#5e6378', font: { size: 10 } } }
+      }),
+    });
+
+    charts.extra2 = new Chart(document.getElementById('extraChart2'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          {
+            label: 'Fear & Greed Index',
+            data: fgView,
+            borderColor: '#FFD700',
+            borderWidth: 2,
+            backgroundColor: ctx => {
+              const { ctx: c, chartArea: a } = ctx.chart;
+              if (!a) return 'rgba(255,215,0,0.07)';
+              const g = c.createLinearGradient(0, a.top, 0, a.bottom);
+              g.addColorStop(0, 'rgba(255,51,102,0.2)');
+              g.addColorStop(0.5, 'rgba(255,215,0,0.05)');
+              g.addColorStop(1, 'rgba(0,194,255,0.15)');
+              return g;
+            },
+            fill: true, tension: 0.3, pointRadius: ptR, order: 1,
+          },
+          { label: 'Extreme Fear (25)', data: Array(labels.length).fill(25), borderColor: 'rgba(0,194,255,0.4)', borderDash: [4,5], borderWidth: 1, pointRadius: 0, fill: false, order: 2 },
+          { label: 'Extreme Greed (75)', data: Array(labels.length).fill(75), borderColor: 'rgba(255,51,102,0.4)', borderDash: [4,5], borderWidth: 1, pointRadius: 0, fill: false, order: 3 },
+        ],
+      },
+      options: chartOpts({
+        plugins: {
+          zoneBands: { bands: [[0,25,'rgba(0,194,255,0.06)'], [75,100,'rgba(255,51,102,0.06)']] },
+          tooltip: { callbacks: { label: ctx => {
+            const v = ctx.parsed.y;
+            if (v == null) return null;
+            const label = v <= 25 ? 'Extreme Fear' : v <= 45 ? 'Fear' : v <= 55 ? 'Neutral' : v <= 75 ? 'Greed' : 'Extreme Greed';
+            return '  F&G: ' + Math.round(v) + ' — ' + label;
+          }}}
+        },
+        yAxis: { min: 0, max: 100, ticks: { color: '#5e6378', font: { size: 10 }, stepSize: 25, callback: v => ['Extreme Fear','Fear','Neutral','Greed','Extreme Greed'][v/25] || v } }
+      }),
+    });
+  }
 }
 
 function setRange(r) {
@@ -508,124 +710,155 @@ function setRange(r) {
   renderCharts();
 }
 
-// ── Bootstrap ─────────────────────────────────────────────────────────────────
-async function boot() {
-  const root = document.getElementById('root');
-  try {
-    const res = await fetch('history.json?_=' + Date.now());
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    fullHistory = await res.json();
-  } catch (e) {
-    root.innerHTML = '<div class="error">Could not load history.json: ' + e.message + '</div>';
-    return;
-  }
-  if (!Array.isArray(fullHistory) || !fullHistory.length) {
-    root.innerHTML = '<div class="error">history.json is empty — trigger the backfill workflow from the Actions tab.</div>';
-    return;
-  }
+// ── Apply theme ───────────────────────────────────────────────────────────────
+function applyTheme(asset) {
+  const t = ASSET_CONFIG[asset].theme;
+  const root = document.documentElement;
+  root.style.setProperty('--bg',      t['--bg']);
+  root.style.setProperty('--panel',   t['--panel']);
+  root.style.setProperty('--border',  t['--border']);
+  root.style.setProperty('--primary', t['--primary']);
+  root.style.setProperty('--accent',  t['--accent']);
+  document.body.style.background = t['--bg'];
+  document.querySelectorAll('.range-btn.active, .asset-btn.active').forEach(b => {
+    b.style.background = t['--primary'];
+    b.style.borderColor = t['--primary'];
+  });
+}
 
-  processHistory(fullHistory);
+// ── Render full UI ────────────────────────────────────────────────────────────
+function renderUI() {
+  const cfg      = ASSET_CONFIG[activeAsset];
+  const root     = document.getElementById('root');
+  const latest   = fullHistory[fullHistory.length - 1];
+  const lastIdx  = fullHistory.length - 1;
+  const lScore   = allScores[lastIdx];
+  const z        = zone(lScore.composite);
 
-  const latest      = fullHistory[fullHistory.length - 1];
-  const lastIdx     = fullHistory.length - 1;
-  const latestScore = allScores[lastIdx];
-  const z           = zone(latestScore.composite);
-  const chg         = latest.price_change_pct_24h;
-  const chgHtml     = chg != null
-    ? `<span class="stat-sub ${chg >= 0 ? 'pos' : 'neg'}">${chg >= 0 ? '+' : ''}${chg.toFixed(2)}% 24h</span>`
-    : '';
+  // Trend: compare to 7 days ago
+  const prevIdx  = Math.max(0, lastIdx - 7);
+  const prevComp = allScores[prevIdx].composite;
+  const delta    = lScore.composite - prevComp;
+  const trending = delta > 2 ? 'heating' : delta < -2 ? 'cooling' : 'stable';
+  const trendArrow = trending === 'heating' ? '▲' : trending === 'cooling' ? '▼' : '–';
+  const trendColor = trending === 'heating' ? '#FF8C00' : trending === 'cooling' ? '#14F195' : '#5e6378';
+  const trendTip   = trending === 'heating' ? 'Getting hotter (more expensive)' : trending === 'cooling' ? 'Getting colder (better value)' : 'Stable';
 
-  // Factor detail text
+  // Days in zone
+  const diz = daysInCurrentZone(allScores, z);
+
+  // Factor breakdown
   const maDevNow = maDevArr[lastIdx];
-  const maDetail = maDevNow != null
-    ? (maDevNow >= 0 ? '+' : '') + maDevNow.toFixed(1) + '% vs 200d avg'
-    : 'Insufficient history';
+  const maDetail = maDevNow != null ? (maDevNow >= 0 ? '+' : '') + maDevNow.toFixed(1) + '% vs 200d avg' : 'Insufficient history';
 
-  const fyNow = feesYieldArr[lastIdx];
-  const fyDetail = fyNow != null
-    ? (fyNow * 1000).toFixed(3) + ' fees/$k price'
-    : 'No fee data yet';
+  let factors;
+  if (activeAsset === 'SOL') {
+    const fyNow = feesYieldArr[lastIdx];
+    factors = [
+      { label: '200d MA Position', score: lScore.s_ma,   detail: maDetail,  weight: '40%' },
+      { label: 'Revenue Yield',    score: lScore.s_fees,  detail: fyNow != null ? (fyNow * 1000).toFixed(3) + ' fees/$k price' : 'No fee data yet', weight: '30%' },
+      { label: 'TVL / Price',      score: lScore.s_tvl,   detail: 'TVL(B)/Price ' + (latest.ratio?.toFixed(4) ?? '—'), weight: '30%' },
+    ];
+  } else {
+    const mvrvNow = latest.mvrv_zscore;
+    const fgNow   = latest.fear_greed;
+    const fgLabel = fgNow != null ? (fgNow <= 25 ? 'Extreme Fear' : fgNow <= 45 ? 'Fear' : fgNow <= 55 ? 'Neutral' : fgNow <= 75 ? 'Greed' : 'Extreme Greed') : null;
+    factors = [
+      { label: '200d MA Position', score: lScore.s_ma,   detail: maDetail, weight: '45%' },
+      { label: 'MVRV Z-Score',     score: lScore.s_mvrv, detail: mvrvNow != null ? 'Z-Score: ' + mvrvNow.toFixed(2) : 'No MVRV data', weight: '35%' },
+      { label: 'Fear & Greed',     score: lScore.s_fg,   detail: fgNow != null ? fgNow + ' — ' + fgLabel : 'No F&G data', weight: '20%' },
+    ];
+  }
 
-  const ratioDetail = 'TVL(B)/Price ' + latest.ratio.toFixed(4);
+  // Stat cards
+  let statCards;
+  if (activeAsset === 'SOL') {
+    const chg = latest.price_change_pct_24h;
+    const chgHtml = chg != null ? `<div class="stat-sub ${chg >= 0 ? 'pos' : 'neg'}">${chg >= 0 ? '+' : ''}${chg.toFixed(2)}% 24h</div>` : '';
+    statCards = `
+      <div class="stat-card"><div class="stat-label">SOL Price</div>
+        <div class="stat-value">$${latest.price.toLocaleString(undefined,{maximumFractionDigits:2})}</div>${chgHtml}</div>
+      <div class="stat-card"><div class="stat-label">TVL (DeFi)</div>
+        <div class="stat-value">$${(latest.tvl/1e9).toFixed(2)}B</div></div>
+      <div class="stat-card"><div class="stat-label">Daily Revenue</div>
+        <div class="stat-value">${latest.fees_usd!=null?'$'+(latest.fees_usd>=1e6?(latest.fees_usd/1e6).toFixed(2)+'M':(latest.fees_usd/1e3).toFixed(0)+'k'):'—'}</div></div>
+      <div class="stat-card"><div class="stat-label">Signal</div>
+        <div class="stat-value" style="color:${z.color}">${z.action}</div>
+        <div class="stat-sub" style="color:${z.color}">${z.label}</div></div>`;
+  } else {
+    const mvrvNow = latest.mvrv_zscore;
+    const fgNow   = latest.fear_greed;
+    statCards = `
+      <div class="stat-card"><div class="stat-label">BTC Price</div>
+        <div class="stat-value">$${latest.price.toLocaleString(undefined,{maximumFractionDigits:0})}</div></div>
+      <div class="stat-card"><div class="stat-label">MVRV Z-Score</div>
+        <div class="stat-value">${mvrvNow!=null?mvrvNow.toFixed(2):'—'}</div>
+        <div class="stat-sub">${mvrvNow!=null?(mvrvNow<0?'Capitulation zone':mvrvNow<2?'Undervalued':mvrvNow<5?'Fair value':'Overheated'):''}</div></div>
+      <div class="stat-card"><div class="stat-label">Fear & Greed</div>
+        <div class="stat-value">${fgNow!=null?fgNow:'—'}</div>
+        <div class="stat-sub">${fgNow!=null?(fgNow<=25?'Extreme Fear':fgNow<=45?'Fear':fgNow<=55?'Neutral':fgNow<=75?'Greed':'Extreme Greed'):''}</div></div>
+      <div class="stat-card"><div class="stat-label">Signal</div>
+        <div class="stat-value" style="color:${z.color}">${z.action}</div>
+        <div class="stat-sub" style="color:${z.color}">${z.label}</div></div>`;
+  }
 
-  const factors = [
-    { label: '200d MA Position', score: latestScore.s_ma, detail: maDetail, weight: '40% weight' },
-    { label: 'Revenue Yield',    score: latestScore.s_fees, detail: fyDetail, weight: '30% weight' },
-    { label: 'TVL / Price',      score: latestScore.s_tvl, detail: ratioDetail, weight: '30% weight' },
-  ];
+  const chartTitle1 = activeAsset === 'SOL' ? 'Protocol Revenue — Daily Fees (USD)' : 'MVRV Z-Score (on-chain holder profitability)';
+  const chartTitle2 = activeAsset === 'SOL' ? 'TVL(B) / Price Ratio' : 'Fear & Greed Index';
+  const priceTitle  = activeAsset === 'SOL'
+    ? 'SOL Price + 200-Day Moving Average'
+    : 'BTC Price + 200d MA + 200-Week SMA (bear market floor)';
 
   root.innerHTML = `
     <div class="gauge-card">
       <div class="gauge-top">
         <div class="gauge-score-block">
-          <span class="gauge-score" style="color:${z.color}">${latestScore.composite}</span><span class="gauge-denom"> / 100</span>
+          <span class="gauge-score" style="color:${z.color}">${lScore.composite}</span>
+          <span class="gauge-denom">/ 100</span>
+          <span class="gauge-trend" style="background:${trendColor}22;color:${trendColor}" title="${trendTip}">${trendArrow} ${trending}</span>
         </div>
         <div class="gauge-label-col">
           <span class="gauge-action" style="background:${z.bg};color:${z.color}">${z.action}</span>
           <div class="gauge-zone-name" style="color:${z.color}">${z.label}</div>
           <div class="gauge-sub">Composite signal · ${formatDate(latest.date)}</div>
+          <div class="gauge-days">${diz} day${diz!==1?'s':''} in ${z.label} zone</div>
         </div>
       </div>
       <div class="gauge-bar-wrap">
         <div class="gauge-bar"></div>
         <div class="gauge-ticks">
-          <div class="gauge-tick" style="left:20%"></div>
-          <div class="gauge-tick" style="left:40%"></div>
-          <div class="gauge-tick" style="left:60%"></div>
-          <div class="gauge-tick" style="left:80%"></div>
+          <div class="gauge-tick" style="left:20%"></div><div class="gauge-tick" style="left:40%"></div>
+          <div class="gauge-tick" style="left:60%"></div><div class="gauge-tick" style="left:80%"></div>
         </div>
-        <div class="gauge-needle" style="left:${latestScore.composite}%"></div>
+        <div class="gauge-needle" style="left:${lScore.composite}%"></div>
       </div>
       <div class="gauge-axis">
-        <span>0 — Deep Value (Buy)</span>
-        <span>50 — Fair Value</span>
-        <span>100 — Overheated (Sell)</span>
+        <span>0 — Deep Value (Buy)</span><span>50 — Fair Value</span><span>100 — Overheated (Sell)</span>
       </div>
       <div class="gauge-zones">
-        ${ZONES.map(z2 => `<div class="gauge-zone-cell" style="background:${z2.bg};color:${z2.color}">${z2.label}</div>`).join('')}
+        ${ZONES.map(z2=>`<div class="gauge-zone-cell" style="background:${z2.bg};color:${z2.color}">${z2.label}</div>`).join('')}
       </div>
     </div>
 
-    <div class="stat-grid">
-      <div class="stat-card">
-        <div class="stat-label">SOL Price</div>
-        <div class="stat-value">$${latest.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}</div>
-        ${chgHtml}
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">TVL (DeFi)</div>
-        <div class="stat-value">$${(latest.tvl / 1e9).toFixed(2)}B</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Daily Revenue</div>
-        <div class="stat-value">${latest.fees_usd != null ? '$' + (latest.fees_usd >= 1e6 ? (latest.fees_usd/1e6).toFixed(2)+'M' : (latest.fees_usd/1e3).toFixed(0)+'k') : '—'}</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Signal</div>
-        <div class="stat-value" style="color:${z.color}">${z.action}</div>
-        <div class="stat-sub" style="color:${z.color}">${z.label}</div>
-      </div>
-    </div>
+    <div class="stat-grid">${statCards}</div>
 
     <div class="factor-section-label">Score breakdown</div>
     <div class="factor-grid">
       ${factors.map(f => {
         const s = f.score ?? 50;
         const fz = zone(s);
-        return `
-        <div class="factor-card">
+        return `<div class="factor-card">
           <div class="factor-label">${f.label}</div>
-          <div class="factor-score" style="color:${f.score != null ? fz.color : 'var(--muted)'}">${f.score ?? '—'}<span style="font-size:0.8rem;font-weight:500;color:var(--muted)"> /100</span></div>
+          <div class="factor-score" style="color:${f.score!=null?fz.color:'var(--muted)'}">${f.score??'—'}<span style="font-size:0.8rem;font-weight:500;color:var(--muted)"> /100</span></div>
           <div class="factor-detail">${f.detail}</div>
           <div class="factor-bar-wrap"><div class="factor-bar-fill" style="width:${s}%;background:${fz.color}"></div></div>
-          <div class="factor-weight">${f.weight}</div>
+          <div class="factor-weight">${f.weight} weight</div>
         </div>`;
       }).join('')}
     </div>
 
     <div class="range-row">
       ${['1W','1M','1Y','5Y','All'].map(r =>
-        `<button class="range-btn${r === activeRange ? ' active' : ''}" data-r="${r}" onclick="setRange('${r}')">${r}</button>`
+        `<button class="range-btn${r===activeRange?' active':''}" data-r="${r}" onclick="setRange('${r}')">${r}</button>`
       ).join('')}
     </div>
 
@@ -634,23 +867,66 @@ async function boot() {
       <canvas id="scoreChart"></canvas>
     </div>
     <div class="chart-card">
-      <h2>SOL Price + 200-Day Moving Average</h2>
+      <h2>${priceTitle}</h2>
       <canvas id="priceChart"></canvas>
     </div>
     <div class="chart-card">
-      <h2>Protocol Revenue — Daily Fees (USD)</h2>
-      <canvas id="feesChart"></canvas>
+      <h2>${chartTitle1}</h2>
+      <canvas id="extraChart1"></canvas>
     </div>
     <div class="chart-card">
-      <h2>TVL(B) / Price Ratio</h2>
-      <canvas id="ratioChart"></canvas>
+      <h2>${chartTitle2}</h2>
+      <canvas id="extraChart2"></canvas>
     </div>
     <div style="color:var(--muted);font-size:0.7rem;margin-top:8px">
       ${fullHistory.length} days of history · ${formatDate(fullHistory[0].date)} to ${formatDate(latest.date)}
-    </div>
-  `;
+    </div>`;
 
   renderCharts();
+}
+
+// ── Asset switching ───────────────────────────────────────────────────────────
+async function switchAsset(asset) {
+  if (asset === activeAsset && fullHistory.length) return;
+  activeAsset = asset;
+
+  // Update nav buttons
+  document.querySelectorAll('.asset-btn').forEach(b => {
+    b.classList.toggle('active', b.id === 'nav-' + asset);
+  });
+
+  // Update header
+  const cfg = ASSET_CONFIG[asset];
+  document.getElementById('assetLogo').style.background = cfg.logoGradient;
+  document.getElementById('assetTitle').textContent = cfg.name + ' Heat Index';
+  document.getElementById('assetSub').textContent   = cfg.subtitle;
+  document.getElementById('footerText').innerHTML   = cfg.footer;
+
+  applyTheme(asset);
+
+  const root = document.getElementById('root');
+  root.innerHTML = '<div style="color:var(--muted);font-size:0.85rem;padding:60px 0;text-align:center;letter-spacing:0.05em">LOADING…</div>';
+
+  try {
+    const res = await fetch(cfg.dataFile + '?_=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    fullHistory = await res.json();
+  } catch (e) {
+    root.innerHTML = `<div class="error">Could not load ${cfg.dataFile}: ${e.message}<br><br>
+      ${asset === 'BTC' ? 'Run the <strong>One-Time BTC History Backfill</strong> workflow from the GitHub Actions tab to generate this file.' : 'Trigger the backfill workflow from the Actions tab.'}</div>`;
+    return;
+  }
+  if (!Array.isArray(fullHistory) || !fullHistory.length) {
+    root.innerHTML = `<div class="error">${cfg.dataFile} is empty — trigger the backfill workflow.</div>`;
+    return;
+  }
+
+  processHistory(fullHistory);
+  renderUI();
+}
+
+function boot() {
+  switchAsset('SOL');
 }
 
 boot();

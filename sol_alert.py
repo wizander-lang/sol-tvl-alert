@@ -36,7 +36,7 @@ CALLMEBOT_PHONE  = os.environ.get("CALLMEBOT_PHONE")
 CALLMEBOT_APIKEY = os.environ.get("CALLMEBOT_APIKEY")
 CALLMEBOT_URL    = "https://api.callmebot.com/whatsapp.php"
 
-HISTORY_FILE = "history.json"
+HISTORY_FILE = "history_sol.json"
 
 
 def fetch_json(url, timeout=15):
