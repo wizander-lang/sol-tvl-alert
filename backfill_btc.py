@@ -26,6 +26,7 @@ HISTORY_FILE = "history_btc.json"
 
 COINCAP_URL       = ("https://api.coincap.io/v2/assets/bitcoin/history"
                      "?interval=d1&start=1367107200000&end=9999999999999")
+DEFILLAMA_BTC_URL = "https://coins.llama.fi/chart/coingecko:bitcoin?start=1367107200&period=1d"
 COINMETRICS_URL   = ("https://community-api.coinmetrics.io/v4/timeseries/asset-metrics"
                      "?assets=btc&metrics=CapMrktCurUSD,CapRealizedUSD"
                      "&start_time=2013-01-01&page_size=10000")
@@ -40,10 +41,10 @@ def fetch_json(url, headers=None):
         return json.loads(resp.read().decode("utf-8"))
 
 
-# ── Price ─────────────────────────────────────────────────────────────────────
+# ── Price (fallback chain: CoinCap → DefiLlama → Binance.US) ─────────────────
 
-def fetch_btc_prices():
-    print("Fetching BTC price history from CoinCap...")
+def _try_coincap():
+    print("  Trying CoinCap...")
     data = fetch_json(COINCAP_URL)
     prices = {}
     for rec in data.get("data", []):
@@ -51,9 +52,59 @@ def fetch_btc_prices():
         if rec.get("priceUsd"):
             prices[d] = float(rec["priceUsd"])
     if len(prices) < 100:
-        raise RuntimeError("CoinCap returned only {} records".format(len(prices)))
-    print("  {} records ({} to {})".format(len(prices), min(prices), max(prices)))
+        raise ValueError("CoinCap returned only {} records".format(len(prices)))
+    print("  CoinCap: {} records ({} to {})".format(len(prices), min(prices), max(prices)))
     return prices
+
+
+def _try_defillama():
+    print("  Trying DefiLlama coins chart...")
+    data = fetch_json(DEFILLAMA_BTC_URL)
+    coin = data.get("coins", {}).get("coingecko:bitcoin", {})
+    prices = {}
+    for rec in coin.get("prices", []):
+        d = datetime.datetime.fromtimestamp(
+            rec["timestamp"], datetime.timezone.utc
+        ).date().isoformat()
+        prices[d] = float(rec["price"])
+    if len(prices) < 100:
+        raise ValueError("DefiLlama returned only {} records".format(len(prices)))
+    print("  DefiLlama: {} records ({} to {})".format(len(prices), min(prices), max(prices)))
+    return prices
+
+
+def _try_binance_us():
+    print("  Trying Binance.US...")
+    prices = {}
+    start_ms = 1367107200000  # 2013-04-28 (BTC/USD start)
+    while True:
+        url = ("https://api.binance.us/api/v3/klines"
+               "?symbol=BTCUSDT&interval=1d&startTime={}&limit=1000".format(start_ms))
+        candles = fetch_json(url)
+        if not candles:
+            break
+        for c in candles:
+            d = datetime.datetime.fromtimestamp(
+                c[0] / 1000, datetime.timezone.utc
+            ).date().isoformat()
+            prices[d] = float(c[4])
+        if len(candles) < 1000:
+            break
+        start_ms = candles[-1][0] + 86_400_000
+    if not prices:
+        raise ValueError("Binance.US returned no records")
+    print("  Binance.US: {} records ({} to {})".format(len(prices), min(prices), max(prices)))
+    return prices
+
+
+def fetch_btc_prices():
+    print("Fetching BTC price history...")
+    for fn in (_try_coincap, _try_defillama, _try_binance_us):
+        try:
+            return fn()
+        except Exception as e:
+            print("  FAILED: {}".format(e))
+    raise RuntimeError("All price sources failed")
 
 
 # ── MVRV Z-Score ──────────────────────────────────────────────────────────────
