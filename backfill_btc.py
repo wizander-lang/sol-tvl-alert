@@ -27,10 +27,12 @@ HISTORY_FILE = "history_btc.json"
 COINCAP_URL       = ("https://api.coincap.io/v2/assets/bitcoin/history"
                      "?interval=d1&start=1367107200000&end=9999999999999")
 DEFILLAMA_BTC_URL = "https://coins.llama.fi/chart/coingecko:bitcoin?start=1367107200&period=1d"
+# CapMVRVCur = market_cap / realized_cap ratio, available on free community tier
 COINMETRICS_URL   = ("https://community-api.coinmetrics.io/v4/timeseries/asset-metrics"
-                     "?assets=btc&metrics=CapMrktCurUSD,CapRealizedUSD"
-                     "&start_time=2013-01-01&page_size=10000")
-FEAR_GREED_URL    = "https://api.alternative.me/fng/?limit=3000&date_format=iso"
+                     "?assets=btc&metrics=CapMVRVCur"
+                     "&start_time=2010-01-01T00:00:00Z&page_size=10000")
+# No date_format param — returns plain unix timestamps which we parse reliably
+FEAR_GREED_URL    = "https://api.alternative.me/fng/?limit=3000"
 
 
 def fetch_json(url, headers=None):
@@ -110,38 +112,34 @@ def fetch_btc_prices():
 # ── MVRV Z-Score ──────────────────────────────────────────────────────────────
 
 def fetch_mvrv():
-    """Returns dict of date → MVRV Z-Score. Returns {} on failure (non-fatal)."""
-    print("Fetching BTC MVRV components from CoinMetrics community API...")
+    """Returns dict of date → MVRV Z-Score (normalised MVRV ratio). Non-fatal."""
+    print("Fetching BTC MVRV ratio from CoinMetrics community API...")
     try:
         data = fetch_json(COINMETRICS_URL)
         rows = data.get("data", [])
         if not rows:
-            print("  CoinMetrics returned no rows — MVRV unavailable, will use fallback.")
+            print("  CoinMetrics returned no rows — MVRV unavailable.")
             return {}
 
-        mkt_by_date  = {}
-        real_by_date = {}
+        mvrv_by_date = {}
         for row in rows:
             d = row.get("time", "")[:10]
-            if row.get("CapMrktCurUSD"):
-                mkt_by_date[d]  = float(row["CapMrktCurUSD"])
-            if row.get("CapRealizedUSD"):
-                real_by_date[d] = float(row["CapRealizedUSD"])
+            v = row.get("CapMVRVCur")
+            if v is not None:
+                mvrv_by_date[d] = float(v)
 
-        if not real_by_date:
-            print("  CapRealizedUSD missing from community tier — MVRV unavailable.")
+        if len(mvrv_by_date) < 50:
+            print("  Too few MVRV records ({}).".format(len(mvrv_by_date)))
             return {}
 
-        # Compute Z-Score = (MktCap - RealizedCap) / StdDev(MktCap - RealizedCap)
-        common = sorted(set(mkt_by_date) & set(real_by_date))
-        diffs  = [mkt_by_date[d] - real_by_date[d] for d in common]
-        if len(diffs) < 30:
-            print("  Insufficient overlap for Z-Score.")
-            return {}
-        std = statistics.stdev(diffs)
+        # Normalise ratio to Z-score: (ratio - mean) / stdev over full history.
+        # When ratio << mean → very negative Z → Deep Value. When >> mean → Overheated.
+        values = list(mvrv_by_date.values())
+        mean   = sum(values) / len(values)
+        std    = statistics.stdev(values)
         if std == 0:
             return {}
-        mvrv_z = {d: (mkt_by_date[d] - real_by_date[d]) / std for d in common}
+        mvrv_z = {d: round((v - mean) / std, 4) for d, v in mvrv_by_date.items()}
         print("  MVRV Z-Score: {} records ({} to {})".format(
             len(mvrv_z), min(mvrv_z), max(mvrv_z)))
         return mvrv_z
@@ -159,15 +157,11 @@ def fetch_fear_greed():
         data = fetch_json(FEAR_GREED_URL)
         fg = {}
         for rec in data.get("data", []):
-            # date_format=iso gives timestamp as ISO date string or unix
+            # Without date_format param the API returns plain unix timestamps
             ts = rec.get("timestamp", "")
-            # Alternative.me returns unix timestamp even with date_format=iso
-            try:
-                d = datetime.datetime.fromtimestamp(
-                    int(ts), datetime.timezone.utc
-                ).date().isoformat()
-            except (ValueError, TypeError):
-                d = str(ts)[:10]
+            d = datetime.datetime.fromtimestamp(
+                int(ts), datetime.timezone.utc
+            ).date().isoformat()
             fg[d] = int(rec["value"])
         if not fg:
             print("  No F&G data returned.")
