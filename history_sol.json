@@ -17692,5 +17692,14 @@
     "ratio": 0.06494,
     "threshold": 0.075,
     "price_change_pct_24h": 0.5
+  },
+  {
+    "date": "2026-08-03",
+    "price": 72.3917,
+    "tvl": 4718802007.0,
+    "fees_usd": 422077.0,
+    "ratio": 0.065184,
+    "threshold": 0.075,
+    "price_change_pct_24h": -0.6700000166893005
   }
 ]
