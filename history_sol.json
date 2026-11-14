@@ -18592,5 +18592,14 @@
     "ratio": 0.062392,
     "threshold": 0.075,
     "price_change_pct_24h": -2.5199999809265137
+  },
+  {
+    "date": "2026-11-14",
+    "price": 73.5629,
+    "tvl": 4788960275.0,
+    "fees_usd": 448750.0,
+    "ratio": 0.0651,
+    "threshold": 0.075,
+    "price_change_pct_24h": -7.5
   }
 ]
